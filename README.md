@@ -1,8 +1,10 @@
-**Petral-UI**是一个iOS的以Swift实现的 UI布局框架，以最少的代码，实现UI的搭建、属性设置以及布局控制。
+![](http://www.koudaikr.cn/Petral/logo.png)
+
+**Petral-UI**是一个以Swift实现的 UI布局框架，以最少的代码，实现UI的搭建、属性设置以及布局控制。
 
 Petral-UI主要是下面两个部分：
 
-##1.连续点方法
+## 1.连续点方法
 连续设置UIView的属性，例如
 ```swift
 let nameLabel = UILabel.init()
@@ -14,7 +16,7 @@ let nameLabel = UILabel.init()
 通过直接调用.pt_为前缀的方法，直接连续设置View的UI属性，与调用系统方法的API类似。可实现对View的连续设置，减少代码。
 现有的API可以基本满足UI设置，大家可以根据实际需要自行添加更多的API方法。
 
-##2.自动布局
+## 2.自动布局
 通过最少的代码，实现类似AutoLayout/Masory自动布局的功能，但代码量远少于这两个框架。
 
 自动布局的使用步骤：
@@ -30,15 +32,15 @@ nameLabel.petralRestraint
 ```
 ------------
 
-###自动布局的API
+### 自动布局的API
 
-####1.同级间View的约束
+#### 1.同级间View的约束
 
 View a与View b是属于同一层级的两个View，View b的位置可以由View a决定。
 
 **注意：如果a与b不是属于同一层级，调用以下方法将报错。**
 
-#####（1）to方法
+##### （1）to方法
 
 - **pt_leftTo()**
 
@@ -91,7 +93,7 @@ b.petralRestraint.pt_bottomTo(a, distance: n)
 ![](http://www.koudaikr.cn/Petral/bottomto.png)
 
 
-#####（2）as方法
+##### （2）as方法
 
 - **pt_leftAs**
 
@@ -189,7 +191,7 @@ View b的中间点与View a的中间点位置一致
 
 
 
-####2.父子间View的约束
+#### 2.父子间View的约束
 
 View a与View b的父View，View b的位置可以由View a决定。
 
@@ -309,7 +311,7 @@ b.petralRestraint.pt_centerIn(a)
 
 
 
-####3.指定View的固定宽高
+#### 3.指定View的固定宽高
 
 
 
@@ -345,7 +347,7 @@ b.petralRestraint.pt_height(n)
 
 
 
-###布局的级联更新
+### 布局的级联更新
 
 - **pt_updateDependeds()**
 
@@ -359,7 +361,7 @@ a.petralRestraint.pt_updateDependeds();
 
 ![](http://www.koudaikr.cn/Petral/relative2.png)
 
-###布局冲突的情况
+### 布局冲突的情况
 
 以下的情形会发生布局冲突，运行时抛出fatalError：
 
