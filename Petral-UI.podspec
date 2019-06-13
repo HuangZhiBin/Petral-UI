@@ -28,7 +28,7 @@ Petral-UI是一个以Swift实现的 UI布局框架，以最少的代码，实现
   s.source           = { :git => 'https://github.com/HuangZhiBin/Petral-UI.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '7.0'
+  s.ios.deployment_target = '8.0'
 
   s.source_files = 'Petral/Classes/**/*'
   
