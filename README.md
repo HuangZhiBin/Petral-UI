@@ -1,3 +1,5 @@
+![](http://www.koudaikr.cn/Petral/logo.png)
+
 **Petral-UI**是一个以Swift实现的 UI布局框架，以最少的代码，实现UI的搭建、属性设置以及布局控制。
 
 Petral-UI主要是下面两个部分：
