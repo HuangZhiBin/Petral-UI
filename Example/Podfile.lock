@@ -1,0 +1,16 @@
+PODS:
+  - Petral (0.1.0)
+
+DEPENDENCIES:
+  - Petral (from `../`)
+
+EXTERNAL SOURCES:
+  Petral:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Petral: 6aa4cacc2bd0a1c20ca97fc7f8f1e77494405a87
+
+PODFILE CHECKSUM: c52a46443d0daf816d14cc1f12047dd781b75e53
+
+COCOAPODS: 1.6.1

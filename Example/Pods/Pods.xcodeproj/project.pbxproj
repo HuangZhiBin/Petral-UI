@@ -1,0 +1,808 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0B07AB00FEC96BE4A7AFEEECDC2B64D8 /* Petral-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 345E43F5A3C6F13FCE6B77A2974CCAFE /* Petral-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1B2258C7F44B525D5BFF3F8218CB3F61 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+		2F5F938DF9AF57D83AD387938BD85F65 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+		491EF321FDC2DF63537845E13E181D8A /* Pods-Petral_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FC38205A32D7F3E41ECA6A6A4D050E07 /* Pods-Petral_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8485BB562993115D575627CD9374E14A /* Petral-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DD40A685F175C7EB5ABB39C4C5B75835 /* Petral-dummy.m */; };
+		919E83A9A333DCD668BA21B3CCAAEBFC /* Pods-Petral_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAC023E82CD764301D214CAA18D6732 /* Pods-Petral_Example-dummy.m */; };
+		93521E0A22B241EF001EE7AB /* PetralRestraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93521E0122B241EE001EE7AB /* PetralRestraint.swift */; };
+		93521E0B22B241EF001EE7AB /* UIScrollView+Petral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93521E0222B241EE001EE7AB /* UIScrollView+Petral.swift */; };
+		93521E0C22B241EF001EE7AB /* UITextField+Petral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93521E0322B241EE001EE7AB /* UITextField+Petral.swift */; };
+		93521E0D22B241EF001EE7AB /* UIButton+Petral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93521E0422B241EE001EE7AB /* UIButton+Petral.swift */; };
+		93521E0E22B241EF001EE7AB /* UITextView+Petral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93521E0522B241EE001EE7AB /* UITextView+Petral.swift */; };
+		93521E0F22B241EF001EE7AB /* UILabel+Petral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93521E0622B241EE001EE7AB /* UILabel+Petral.swift */; };
+		93521E1022B241EF001EE7AB /* UIView+Petral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93521E0722B241EE001EE7AB /* UIView+Petral.swift */; };
+		93521E1122B241EF001EE7AB /* UIImageView+Petral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93521E0822B241EE001EE7AB /* UIImageView+Petral.swift */; };
+		93521E1222B241EF001EE7AB /* UITableView+Petral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93521E0922B241EF001EE7AB /* UITableView+Petral.swift */; };
+		C68AA1F68EAD95EA059ED0A111796EC0 /* Pods-Petral_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 95A05CEBC89E7FC0311BBF49A13CB3AA /* Pods-Petral_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D526964CB1D13B057657CE8E84F529EB /* Pods-Petral_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DF52D86EBC8AE8CF233B8A3C54F25D /* Pods-Petral_Tests-dummy.m */; };
+		E85A05D0A87FCF306F5BCF1E716AB9C9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		17837D400A54F699C2E2F76C1F93A3C4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 63A36A9094A53784BDB10DAFA65F9FE0;
+			remoteInfo = Petral;
+		};
+		4F9D0129BCADBFA7C40D62B0F72F7004 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 425D59FDBFD8D2F5C9E8CB3C5886E5B8;
+			remoteInfo = "Pods-Petral_Example";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		049B60187E3307541BEA2038E2B66009 /* Pods-Petral_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Petral_Example-frameworks.sh"; sourceTree = "<group>"; };
+		33C7C50CC8308AA359D038C8F1DA45BA /* Petral.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Petral.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		345E43F5A3C6F13FCE6B77A2974CCAFE /* Petral-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Petral-umbrella.h"; sourceTree = "<group>"; };
+		358ABDE5A02686EE6197C8D53FB88726 /* Pods-Petral_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Petral_Example.release.xcconfig"; sourceTree = "<group>"; };
+		3CCBA75F3AE16A63C0BDD7494ED1E673 /* Pods-Petral_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Petral_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		4639479F27B833F0A92EBE2AD075090F /* Pods-Petral_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Petral_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		4A0201AB1F11A2F948FBC53669BE9754 /* Pods-Petral_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Petral_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		4CE54E6332797A5AEF4F466EF0725BDB /* Pods-Petral_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Petral_Example-Info.plist"; sourceTree = "<group>"; };
+		53C390C84A48B71292051DE21991B18E /* Pods_Petral_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Petral_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		563AFEBC035EF19C478C6A65F81E099F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		5993D2EEA98E45EE94507196C2DAF2A0 /* Petral.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Petral.xcconfig; sourceTree = "<group>"; };
+		7006C1CDA9B5D6A7680715A49F510937 /* Petral-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Petral-Info.plist"; sourceTree = "<group>"; };
+		7904C77F28A866276857D438B1D2721C /* Pods-Petral_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Petral_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		8142E9155C6D0085C706B987AD63A57E /* Pods_Petral_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Petral_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		81DF52D86EBC8AE8CF233B8A3C54F25D /* Pods-Petral_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Petral_Tests-dummy.m"; sourceTree = "<group>"; };
+		8E1EF8C33AF8C2F6FDB9012BD7B6F8C4 /* Pods-Petral_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Petral_Example.modulemap"; sourceTree = "<group>"; };
+		93521E0122B241EE001EE7AB /* PetralRestraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PetralRestraint.swift; path = Petral/Classes/PetralRestraint.swift; sourceTree = "<group>"; };
+		93521E0222B241EE001EE7AB /* UIScrollView+Petral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIScrollView+Petral.swift"; path = "Petral/Classes/UIScrollView+Petral.swift"; sourceTree = "<group>"; };
+		93521E0322B241EE001EE7AB /* UITextField+Petral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITextField+Petral.swift"; path = "Petral/Classes/UITextField+Petral.swift"; sourceTree = "<group>"; };
+		93521E0422B241EE001EE7AB /* UIButton+Petral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIButton+Petral.swift"; path = "Petral/Classes/UIButton+Petral.swift"; sourceTree = "<group>"; };
+		93521E0522B241EE001EE7AB /* UITextView+Petral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITextView+Petral.swift"; path = "Petral/Classes/UITextView+Petral.swift"; sourceTree = "<group>"; };
+		93521E0622B241EE001EE7AB /* UILabel+Petral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UILabel+Petral.swift"; path = "Petral/Classes/UILabel+Petral.swift"; sourceTree = "<group>"; };
+		93521E0722B241EE001EE7AB /* UIView+Petral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Petral.swift"; path = "Petral/Classes/UIView+Petral.swift"; sourceTree = "<group>"; };
+		93521E0822B241EE001EE7AB /* UIImageView+Petral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImageView+Petral.swift"; path = "Petral/Classes/UIImageView+Petral.swift"; sourceTree = "<group>"; };
+		93521E0922B241EF001EE7AB /* UITableView+Petral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITableView+Petral.swift"; path = "Petral/Classes/UITableView+Petral.swift"; sourceTree = "<group>"; };
+		95A05CEBC89E7FC0311BBF49A13CB3AA /* Pods-Petral_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Petral_Example-umbrella.h"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		B41CC1A46DD1A97C3C5D4C45EA30F891 /* Petral.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Petral.modulemap; sourceTree = "<group>"; };
+		BA1D9235D3E6DDCC48D19A857C89B990 /* Petral.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = Petral.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		C05D464F70642468A370AA27633EFD9B /* Pods-Petral_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Petral_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		CC2CB02C336291591CFB1CB731485729 /* Pods-Petral_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Petral_Tests.modulemap"; sourceTree = "<group>"; };
+		DD40A685F175C7EB5ABB39C4C5B75835 /* Petral-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Petral-dummy.m"; sourceTree = "<group>"; };
+		DFAC023E82CD764301D214CAA18D6732 /* Pods-Petral_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Petral_Example-dummy.m"; sourceTree = "<group>"; };
+		EC81C8E2666E84EF26061C0DDE763DCD /* Petral-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Petral-prefix.pch"; sourceTree = "<group>"; };
+		EDF97B7DE7B9EC270E2C698C9525C836 /* Pods-Petral_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Petral_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		EF3C982839C96D89E02E6384E478E4AE /* Pods-Petral_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Petral_Tests-Info.plist"; sourceTree = "<group>"; };
+		F440CD6B76750D29BD1EFC385196B61B /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		FA9A360E3E1E5E75FC576C490966683C /* Pods-Petral_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Petral_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		FC38205A32D7F3E41ECA6A6A4D050E07 /* Pods-Petral_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Petral_Tests-umbrella.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		01C2917227752651DC84A59778D8F473 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F5F938DF9AF57D83AD387938BD85F65 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		808344567F2E0ED306A42B33C1595B66 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E85A05D0A87FCF306F5BCF1E716AB9C9 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D14ED7E8030917E9D76E2DFA3EE70E39 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B2258C7F44B525D5BFF3F8218CB3F61 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0974E66B4EF0650F4B24847D34DA100F /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B41CC1A46DD1A97C3C5D4C45EA30F891 /* Petral.modulemap */,
+				5993D2EEA98E45EE94507196C2DAF2A0 /* Petral.xcconfig */,
+				DD40A685F175C7EB5ABB39C4C5B75835 /* Petral-dummy.m */,
+				7006C1CDA9B5D6A7680715A49F510937 /* Petral-Info.plist */,
+				EC81C8E2666E84EF26061C0DDE763DCD /* Petral-prefix.pch */,
+				345E43F5A3C6F13FCE6B77A2974CCAFE /* Petral-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/Petral";
+			sourceTree = "<group>";
+		};
+		11CEE4FBC6F15EFF2AC5581D6138256C /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				F440CD6B76750D29BD1EFC385196B61B /* LICENSE */,
+				BA1D9235D3E6DDCC48D19A857C89B990 /* Petral.podspec */,
+				563AFEBC035EF19C478C6A65F81E099F /* README.md */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		3014B4828C023C3C2F0B96411BF8E8F2 /* Pods-Petral_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				CC2CB02C336291591CFB1CB731485729 /* Pods-Petral_Tests.modulemap */,
+				3CCBA75F3AE16A63C0BDD7494ED1E673 /* Pods-Petral_Tests-acknowledgements.markdown */,
+				FA9A360E3E1E5E75FC576C490966683C /* Pods-Petral_Tests-acknowledgements.plist */,
+				81DF52D86EBC8AE8CF233B8A3C54F25D /* Pods-Petral_Tests-dummy.m */,
+				EF3C982839C96D89E02E6384E478E4AE /* Pods-Petral_Tests-Info.plist */,
+				FC38205A32D7F3E41ECA6A6A4D050E07 /* Pods-Petral_Tests-umbrella.h */,
+				4639479F27B833F0A92EBE2AD075090F /* Pods-Petral_Tests.debug.xcconfig */,
+				7904C77F28A866276857D438B1D2721C /* Pods-Petral_Tests.release.xcconfig */,
+			);
+			name = "Pods-Petral_Tests";
+			path = "Target Support Files/Pods-Petral_Tests";
+			sourceTree = "<group>";
+		};
+		781A5985DC133CC14F031D3998312C24 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				90B794BDC0A6417D46045B411654AA3A /* Pods-Petral_Example */,
+				3014B4828C023C3C2F0B96411BF8E8F2 /* Pods-Petral_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		8CEA57994D0216D68FAAB0C0D76F76B4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				33C7C50CC8308AA359D038C8F1DA45BA /* Petral.framework */,
+				53C390C84A48B71292051DE21991B18E /* Pods_Petral_Example.framework */,
+				8142E9155C6D0085C706B987AD63A57E /* Pods_Petral_Tests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		90B794BDC0A6417D46045B411654AA3A /* Pods-Petral_Example */ = {
+			isa = PBXGroup;
+			children = (
+				8E1EF8C33AF8C2F6FDB9012BD7B6F8C4 /* Pods-Petral_Example.modulemap */,
+				C05D464F70642468A370AA27633EFD9B /* Pods-Petral_Example-acknowledgements.markdown */,
+				4A0201AB1F11A2F948FBC53669BE9754 /* Pods-Petral_Example-acknowledgements.plist */,
+				DFAC023E82CD764301D214CAA18D6732 /* Pods-Petral_Example-dummy.m */,
+				049B60187E3307541BEA2038E2B66009 /* Pods-Petral_Example-frameworks.sh */,
+				4CE54E6332797A5AEF4F466EF0725BDB /* Pods-Petral_Example-Info.plist */,
+				95A05CEBC89E7FC0311BBF49A13CB3AA /* Pods-Petral_Example-umbrella.h */,
+				EDF97B7DE7B9EC270E2C698C9525C836 /* Pods-Petral_Example.debug.xcconfig */,
+				358ABDE5A02686EE6197C8D53FB88726 /* Pods-Petral_Example.release.xcconfig */,
+			);
+			name = "Pods-Petral_Example";
+			path = "Target Support Files/Pods-Petral_Example";
+			sourceTree = "<group>";
+		};
+		9B055D0CFEA43187E72B03DED11F5662 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		AF1315BFFFDEAC38E43E2F4EA9D4244C /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FC459B758BDDDF27F77E5538F392621F /* Petral */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				AF1315BFFFDEAC38E43E2F4EA9D4244C /* Development Pods */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				8CEA57994D0216D68FAAB0C0D76F76B4 /* Products */,
+				781A5985DC133CC14F031D3998312C24 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9B055D0CFEA43187E72B03DED11F5662 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FC459B758BDDDF27F77E5538F392621F /* Petral */ = {
+			isa = PBXGroup;
+			children = (
+				93521E0122B241EE001EE7AB /* PetralRestraint.swift */,
+				93521E0422B241EE001EE7AB /* UIButton+Petral.swift */,
+				93521E0822B241EE001EE7AB /* UIImageView+Petral.swift */,
+				93521E0622B241EE001EE7AB /* UILabel+Petral.swift */,
+				93521E0222B241EE001EE7AB /* UIScrollView+Petral.swift */,
+				93521E0922B241EF001EE7AB /* UITableView+Petral.swift */,
+				93521E0322B241EE001EE7AB /* UITextField+Petral.swift */,
+				93521E0522B241EE001EE7AB /* UITextView+Petral.swift */,
+				93521E0722B241EE001EE7AB /* UIView+Petral.swift */,
+				11CEE4FBC6F15EFF2AC5581D6138256C /* Pod */,
+				0974E66B4EF0650F4B24847D34DA100F /* Support Files */,
+			);
+			name = Petral;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		38BFCFB1D1141B8ABF64E941E7E418BB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C68AA1F68EAD95EA059ED0A111796EC0 /* Pods-Petral_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6DD41F7DA2AD0C8FDA3288F57E30E977 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B07AB00FEC96BE4A7AFEEECDC2B64D8 /* Petral-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A020BC505C45D13DDFBF16F413A4AD5B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				491EF321FDC2DF63537845E13E181D8A /* Pods-Petral_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		425D59FDBFD8D2F5C9E8CB3C5886E5B8 /* Pods-Petral_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 94C9C5CABFAAB21BDD2346C859CAC58C /* Build configuration list for PBXNativeTarget "Pods-Petral_Example" */;
+			buildPhases = (
+				38BFCFB1D1141B8ABF64E941E7E418BB /* Headers */,
+				4C4E0655CA944D3D6B269E5F869FC8B6 /* Sources */,
+				D14ED7E8030917E9D76E2DFA3EE70E39 /* Frameworks */,
+				7EAED38131A3D796A3BD021CB6FF9A40 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				97D6F5DFB67AFF60C0FAD8B8CB3E019D /* PBXTargetDependency */,
+			);
+			name = "Pods-Petral_Example";
+			productName = "Pods-Petral_Example";
+			productReference = 53C390C84A48B71292051DE21991B18E /* Pods_Petral_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		63A36A9094A53784BDB10DAFA65F9FE0 /* Petral */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC1D5323C887B2AF0F7B3AA2356D74E5 /* Build configuration list for PBXNativeTarget "Petral" */;
+			buildPhases = (
+				6DD41F7DA2AD0C8FDA3288F57E30E977 /* Headers */,
+				02F9B46863B83010217F5A1D1D6E3CE1 /* Sources */,
+				808344567F2E0ED306A42B33C1595B66 /* Frameworks */,
+				207E417CD6AA9442A9D03D68BBCB751D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Petral;
+			productName = Petral;
+			productReference = 33C7C50CC8308AA359D038C8F1DA45BA /* Petral.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F099D486051ED1D19B78A3616EFCCBAA /* Pods-Petral_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 849A391F75AC22FA83D1B3575FA84E07 /* Build configuration list for PBXNativeTarget "Pods-Petral_Tests" */;
+			buildPhases = (
+				A020BC505C45D13DDFBF16F413A4AD5B /* Headers */,
+				9255F71BA35B2F81FF90C4029826C22E /* Sources */,
+				01C2917227752651DC84A59778D8F473 /* Frameworks */,
+				1C1350E29A5B4E2ED4378F7C5A756EC7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5E8D44C196491A9AC6B1DF24C14618E6 /* PBXTargetDependency */,
+			);
+			name = "Pods-Petral_Tests";
+			productName = "Pods-Petral_Tests";
+			productReference = 8142E9155C6D0085C706B987AD63A57E /* Pods_Petral_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+				TargetAttributes = {
+					63A36A9094A53784BDB10DAFA65F9FE0 = {
+						LastSwiftMigration = 1010;
+					};
+				};
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 8CEA57994D0216D68FAAB0C0D76F76B4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				63A36A9094A53784BDB10DAFA65F9FE0 /* Petral */,
+				425D59FDBFD8D2F5C9E8CB3C5886E5B8 /* Pods-Petral_Example */,
+				F099D486051ED1D19B78A3616EFCCBAA /* Pods-Petral_Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1C1350E29A5B4E2ED4378F7C5A756EC7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		207E417CD6AA9442A9D03D68BBCB751D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7EAED38131A3D796A3BD021CB6FF9A40 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		02F9B46863B83010217F5A1D1D6E3CE1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93521E0A22B241EF001EE7AB /* PetralRestraint.swift in Sources */,
+				93521E0D22B241EF001EE7AB /* UIButton+Petral.swift in Sources */,
+				93521E1022B241EF001EE7AB /* UIView+Petral.swift in Sources */,
+				93521E0C22B241EF001EE7AB /* UITextField+Petral.swift in Sources */,
+				93521E0F22B241EF001EE7AB /* UILabel+Petral.swift in Sources */,
+				93521E0B22B241EF001EE7AB /* UIScrollView+Petral.swift in Sources */,
+				93521E1122B241EF001EE7AB /* UIImageView+Petral.swift in Sources */,
+				8485BB562993115D575627CD9374E14A /* Petral-dummy.m in Sources */,
+				93521E0E22B241EF001EE7AB /* UITextView+Petral.swift in Sources */,
+				93521E1222B241EF001EE7AB /* UITableView+Petral.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C4E0655CA944D3D6B269E5F869FC8B6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				919E83A9A333DCD668BA21B3CCAAEBFC /* Pods-Petral_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9255F71BA35B2F81FF90C4029826C22E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D526964CB1D13B057657CE8E84F529EB /* Pods-Petral_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5E8D44C196491A9AC6B1DF24C14618E6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-Petral_Example";
+			target = 425D59FDBFD8D2F5C9E8CB3C5886E5B8 /* Pods-Petral_Example */;
+			targetProxy = 4F9D0129BCADBFA7C40D62B0F72F7004 /* PBXContainerItemProxy */;
+		};
+		97D6F5DFB67AFF60C0FAD8B8CB3E019D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Petral;
+			target = 63A36A9094A53784BDB10DAFA65F9FE0 /* Petral */;
+			targetProxy = 17837D400A54F699C2E2F76C1F93A3C4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		3A8FCE854631F8C9E4135BCFCD1B05E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5993D2EEA98E45EE94507196C2DAF2A0 /* Petral.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Petral/Petral-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Petral/Petral-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Petral/Petral.modulemap";
+				PRODUCT_MODULE_NAME = Petral;
+				PRODUCT_NAME = Petral;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		650E396C7B57339D78E4998886C73F64 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5993D2EEA98E45EE94507196C2DAF2A0 /* Petral.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Petral/Petral-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Petral/Petral-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Petral/Petral.modulemap";
+				PRODUCT_MODULE_NAME = Petral;
+				PRODUCT_NAME = Petral;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		76C3DD41DD960C4A04FA7AB980AA8CC6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EDF97B7DE7B9EC270E2C698C9525C836 /* Pods-Petral_Example.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Petral_Example/Pods-Petral_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Petral_Example/Pods-Petral_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		AB4D69770D8ACE3A05E80BB3502666F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		BB711DA7115462A013A7FB93BBC9FB80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4639479F27B833F0A92EBE2AD075090F /* Pods-Petral_Tests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Petral_Tests/Pods-Petral_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Petral_Tests/Pods-Petral_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C7F142C036A85BBF363DA4EBFD2707D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7904C77F28A866276857D438B1D2721C /* Pods-Petral_Tests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Petral_Tests/Pods-Petral_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Petral_Tests/Pods-Petral_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F232B5ECA11A71BFA199A229B323F454 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		FBEE5F079B1114CDE6F380455D2321BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 358ABDE5A02686EE6197C8D53FB88726 /* Pods-Petral_Example.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Petral_Example/Pods-Petral_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Petral_Example/Pods-Petral_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB4D69770D8ACE3A05E80BB3502666F6 /* Debug */,
+				F232B5ECA11A71BFA199A229B323F454 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		849A391F75AC22FA83D1B3575FA84E07 /* Build configuration list for PBXNativeTarget "Pods-Petral_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB711DA7115462A013A7FB93BBC9FB80 /* Debug */,
+				C7F142C036A85BBF363DA4EBFD2707D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		94C9C5CABFAAB21BDD2346C859CAC58C /* Build configuration list for PBXNativeTarget "Pods-Petral_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				76C3DD41DD960C4A04FA7AB980AA8CC6 /* Debug */,
+				FBEE5F079B1114CDE6F380455D2321BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CC1D5323C887B2AF0F7B3AA2356D74E5 /* Build configuration list for PBXNativeTarget "Petral" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				650E396C7B57339D78E4998886C73F64 /* Debug */,
+				3A8FCE854631F8C9E4135BCFCD1B05E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

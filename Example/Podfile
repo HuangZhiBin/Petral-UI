@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'Petral_Example' do
+  pod 'Petral', :path => '../'
+
+  target 'Petral_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

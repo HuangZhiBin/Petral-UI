@@ -1,0 +1,6 @@
+framework module Pods_Petral_Tests {
+  umbrella header "Pods-Petral_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
