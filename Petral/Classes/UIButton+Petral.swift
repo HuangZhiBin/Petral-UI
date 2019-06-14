@@ -15,22 +15,22 @@ extension UIButton {
         return self;
     }
     
-    public func pt_titleColor(_ titleColor: UIColor, state: UIControlState) -> UIButton {
+    public func pt_titleColor(_ titleColor: UIColor, state: UIControl.State) -> UIButton {
         self.setTitleColor(titleColor, for: state);
         return self;
     }
     
-    public func pt_backgroundColor(_ color: UIColor, state: UIControlState) -> UIButton {
+    public func pt_backgroundColor(_ color: UIColor, state: UIControl.State) -> UIButton {
         self.setBackgroundImage(self.createImageWithColor(color: color), for: state);
         return self;
     }
     
-    public func pt_backgroundImage(_ image: UIImage, state: UIControlState) -> UIButton {
+    public func pt_backgroundImage(_ image: UIImage, state: UIControl.State) -> UIButton {
         self.setBackgroundImage(image, for: state);
         return self;
     }
     
-    public func pt_title(_ title: String, state: UIControlState) -> UIButton {
+    public func pt_title(_ title: String, state: UIControl.State) -> UIButton {
         self.setTitle(title, for: state)
         return self;
     }
