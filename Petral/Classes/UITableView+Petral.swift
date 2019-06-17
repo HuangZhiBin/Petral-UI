@@ -10,27 +10,32 @@ import UIKit
 
 extension UITableView {
     
+    @discardableResult
     override public func pt_frame(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) -> UITableView {
         self.frame = CGRect.init(x: x, y: y, width: width, height: height);
         return self;
     }
     
+    @discardableResult
     override public func pt_backgroundColor(_ color: UIColor) -> UITableView {
         self.backgroundColor = color;
         return self;
     }
     
+    @discardableResult
     override public func pt_borderRadius(_ radius: CGFloat) -> UITableView {
         self.layer.masksToBounds = true;
         self.layer.cornerRadius = radius;
         return self;
     }
     
+    @discardableResult
     override public func pt_borderWidth(_ borderWidth: CGFloat) -> UITableView {
         self.layer.borderWidth = borderWidth;
         return self;
     }
     
+    @discardableResult
     override public func pt_borderColor(_ borderColor: UIColor) -> UITableView {
         self.layer.borderColor = borderColor.cgColor;
         return self;
