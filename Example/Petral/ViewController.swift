@@ -66,8 +66,8 @@ class ViewController: UIViewController {
             .pt_borderRadius(12);
         self.view.addSubview(button);
         button.petralRestraint
-            .pt_rightAs(label)
-            .pt_topTo(label, distance: 20)
+            .pt_centerAs(label, xOffset: 40, yOffset: 10)
+//            .pt_leftAs(label, offset: 20)
         //.pt_centerAs(label);
         
         let view = UIView.init()
