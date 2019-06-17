@@ -1,5 +1,5 @@
 //
-//  UILabel+Petral.swift
+//  UIScrollView+Petral.swift
 //  Petral
 //
 //  Created by bin on 2019/6/9.
@@ -8,66 +8,64 @@
 
 import UIKit
 
-extension UILabel {
+@objc protocol PetralScrollViewProtocol {
+    
+    func pt_contentSize(_ contentSize: CGSize) -> UIScrollView;
+    
+    func pt_contentOffset(_ contentOffset: CGPoint) -> UIScrollView;
+    
+    func pt_contentInset(_ contentInset: UIEdgeInsets) -> UIScrollView;
+    
+}
+
+extension UIScrollView : PetralScrollViewProtocol {
     
     @discardableResult
-    public func pt_font(size: CGFloat, bold: Bool) -> UILabel {
-        self.font = bold == true ? UIFont.boldSystemFont(ofSize: size) : UIFont.systemFont(ofSize: size);
-        return self;
-    }
-    
-    @discardableResult
-    public func pt_textColor(_ color: UIColor) -> UILabel {
-        self.textColor = color;
-        return self;
-    }
-    
-    @discardableResult
-    public func pt_text(_ text: String) -> UILabel {
-        self.text = text;
-        return self;
-    }
-    
-    @discardableResult
-    public func pt_lines(_ lines: Int) -> UILabel{
-        self.numberOfLines = lines;
-        return self;
-    }
-    
-    @discardableResult
-    public func pt_align(_ align: NSTextAlignment) -> UILabel{
-        self.textAlignment = align;
-        return self;
-    }
-    
-    @discardableResult
-    override public func pt_frame(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) -> UILabel {
+    override public func pt_frame(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) -> UIScrollView {
         self.frame = CGRect.init(x: x, y: y, width: width, height: height);
         return self;
     }
     
     @discardableResult
-    override public func pt_backgroundColor(_ color: UIColor) -> UILabel {
+    override public func pt_backgroundColor(_ color: UIColor) -> UIScrollView {
         self.backgroundColor = color;
         return self;
     }
     
     @discardableResult
-    override public func pt_borderRadius(_ radius: CGFloat) -> UILabel {
+    override public func pt_borderRadius(_ radius: CGFloat) -> UIScrollView {
         self.layer.masksToBounds = true;
         self.layer.cornerRadius = radius;
         return self;
     }
     
     @discardableResult
-    override public func pt_borderWidth(_ borderWidth: CGFloat) -> UILabel {
+    override public func pt_borderWidth(_ borderWidth: CGFloat) -> UIScrollView {
         self.layer.borderWidth = borderWidth;
         return self;
     }
     
     @discardableResult
-    override public func pt_borderColor(_ borderColor: UIColor) -> UILabel {
+    override public func pt_borderColor(_ borderColor: UIColor) -> UIScrollView {
         self.layer.borderColor = borderColor.cgColor;
+        return self;
+    }
+    
+    @discardableResult
+    public func pt_contentSize(_ contentSize: CGSize) -> UIScrollView {
+        self.contentSize = contentSize;
+        return self;
+    }
+    
+    @discardableResult
+    public func pt_contentOffset(_ contentOffset: CGPoint) -> UIScrollView {
+        self.contentOffset = contentOffset;
+        return self;
+    }
+    
+    @discardableResult
+    public func pt_contentInset(_ contentInset: UIEdgeInsets) -> UIScrollView {
+        self.contentInset = contentInset;
         return self;
     }
 
