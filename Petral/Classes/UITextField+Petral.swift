@@ -10,62 +10,74 @@ import UIKit
 
 extension UITextField {
     
+    @discardableResult
     public func pt_font(size: CGFloat, bold: Bool) -> UITextField {
         self.font = bold == true ? UIFont.boldSystemFont(ofSize: size) : UIFont.systemFont(ofSize: size);
         return self;
     }
     
+    @discardableResult
     public func pt_textColor(_ color: UIColor) -> UITextField {
         self.textColor = color;
         return self;
     }
     
+    @discardableResult
     public func pt_text(_ text: String) -> UITextField {
         self.text = text;
         return self;
     }
     
+    @discardableResult
     public func pt_placeholder(_ placeholder: String) -> UITextField {
         self.placeholder = placeholder;
         return self;
     }
     
+    @discardableResult
     public func pt_align(_ align: NSTextAlignment) -> UITextField{
         self.textAlignment = align;
         return self;
     }
     
+    @discardableResult
     public func pt_isSecureText(_ isSecureTextEntry: Bool) -> UITextField {
         self.isSecureTextEntry = isSecureTextEntry;
         return self;
     }
     
+    @discardableResult
     public func pt_keyboardType(_ keyboardType: UIKeyboardType) -> UITextField {
         self.keyboardType = keyboardType;
         return self;
     }
     
+    @discardableResult
     override public func pt_frame(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) -> UITextField {
         self.frame = CGRect.init(x: x, y: y, width: width, height: height);
         return self;
     }
     
+    @discardableResult
     override public func pt_backgroundColor(_ color: UIColor) -> UITextField {
         self.backgroundColor = color;
         return self;
     }
     
+    @discardableResult
     override public func pt_borderRadius(_ radius: CGFloat) -> UITextField {
         self.layer.masksToBounds = true;
         self.layer.cornerRadius = radius;
         return self;
     }
     
+    @discardableResult
     override public func pt_borderWidth(_ borderWidth: CGFloat) -> UITextField {
         self.layer.borderWidth = borderWidth;
         return self;
     }
     
+    @discardableResult
     override public func pt_borderColor(_ borderColor: UIColor) -> UITextField {
         self.layer.borderColor = borderColor.cgColor;
         return self;
