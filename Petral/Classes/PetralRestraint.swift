@@ -167,7 +167,7 @@ extension PetralRestraint{
                     view.petralRestraint.pt_leftIn(referenceView, distance: restraint.distance);
                 }
                 else if restraint.referenceType == .same{
-                    view.petralRestraint.pt_leftAs(referenceView);
+                    view.petralRestraint.pt_leftAs(referenceView, offset: restraint.distance);
                 }
                 else if restraint.referenceType == .to{
                     view.petralRestraint.pt_leftTo(referenceView, distance: restraint.distance);
@@ -181,7 +181,7 @@ extension PetralRestraint{
                     view.petralRestraint.pt_rightIn(referenceView, distance: restraint.distance);
                 }
                 else if restraint.referenceType == .same{
-                    view.petralRestraint.pt_rightAs(referenceView);
+                    view.petralRestraint.pt_rightAs(referenceView, offset: restraint.distance);
                 }
                 else if restraint.referenceType == .to{
                     view.petralRestraint.pt_rightTo(referenceView, distance: restraint.distance);
@@ -195,7 +195,7 @@ extension PetralRestraint{
                     view.petralRestraint.pt_bottomIn(referenceView, distance: restraint.distance);
                 }
                 else if restraint.referenceType == .same{
-                    view.petralRestraint.pt_bottomAs(referenceView);
+                    view.petralRestraint.pt_bottomAs(referenceView, offset: restraint.distance);
                 }
                 else if restraint.referenceType == .to{
                     view.petralRestraint.pt_bottomTo(referenceView, distance: restraint.distance);
@@ -209,7 +209,7 @@ extension PetralRestraint{
                     view.petralRestraint.pt_topIn(referenceView, distance: restraint.distance);
                 }
                 else if restraint.referenceType == .same{
-                    view.petralRestraint.pt_topAs(referenceView);
+                    view.petralRestraint.pt_topAs(referenceView, offset: restraint.distance);
                 }
                 else if restraint.referenceType == .to{
                     view.petralRestraint.pt_topTo(referenceView, distance: restraint.distance);
@@ -223,7 +223,7 @@ extension PetralRestraint{
                     view.petralRestraint.pt_xCenterIn(referenceView);
                 }
                 else if restraint.referenceType == .same{
-                    view.petralRestraint.pt_xCenterAs(referenceView);
+                    view.petralRestraint.pt_xCenterAs(referenceView, offset: restraint.distance);
                 }
                 else if restraint.referenceType == .to{
                     //do nothing
@@ -237,7 +237,7 @@ extension PetralRestraint{
                     view.petralRestraint.pt_yCenterIn(referenceView);
                 }
                 else if restraint.referenceType == .same{
-                    view.petralRestraint.pt_yCenterAs(referenceView);
+                    view.petralRestraint.pt_yCenterAs(referenceView, offset: restraint.distance);
                 }
                 else if restraint.referenceType == .to{
                     //do nothing
@@ -291,10 +291,10 @@ extension PetralRestraint{
     //MARK: -
     
     @discardableResult
-    public func pt_xCenterAs(_ view: UIView) -> PetralRestraint{
+    public func pt_xCenterAs(_ view: UIView, offset: CGFloat) -> PetralRestraint{
         if(self.attachedView.superview == view.superview){
-            self.attachedView.petralRestraint.set(type: .xCenter, referenceView: view, distance: 0, referenceType: .same);
-            self.attachedView.frame = CGRect.init(x: view.frame.origin.x + view.frame.size.width/2 - self.attachedView.frame.size.width/2, y: self.attachedView.frame.origin.y, width: self.attachedView.frame.size.width, height: self.attachedView.frame.size.height);
+            self.attachedView.petralRestraint.set(type: .xCenter, referenceView: view, distance: offset, referenceType: .same);
+            self.attachedView.frame = CGRect.init(x: view.frame.origin.x + view.frame.size.width/2 - self.attachedView.frame.size.width/2 + offset, y: self.attachedView.frame.origin.y, width: self.attachedView.frame.size.width, height: self.attachedView.frame.size.height);
         }
         else{
             fatalError("[Petral-UI] Error: pt_xCenterTo() fail, because this view and the reference view should have the same superview");
@@ -304,10 +304,10 @@ extension PetralRestraint{
     }
     
     @discardableResult
-    public func pt_yCenterAs(_ view: UIView) -> PetralRestraint{
+    public func pt_yCenterAs(_ view: UIView, offset: CGFloat) -> PetralRestraint{
         if(self.attachedView.superview == view.superview){
-            self.attachedView.petralRestraint.set(type: .yCenter, referenceView: view, distance: 0, referenceType: .same);
-            self.attachedView.frame = CGRect.init(x: self.attachedView.frame.origin.x, y: view.frame.origin.y + view.frame.size.height/2 - self.attachedView.frame.size.height/2, width: self.attachedView.frame.size.width, height: self.attachedView.frame.size.height);
+            self.attachedView.petralRestraint.set(type: .yCenter, referenceView: view, distance: offset, referenceType: .same);
+            self.attachedView.frame = CGRect.init(x: self.attachedView.frame.origin.x, y: view.frame.origin.y + view.frame.size.height/2 - self.attachedView.frame.size.height/2 + offset, width: self.attachedView.frame.size.width, height: self.attachedView.frame.size.height);
         }
         else{
             fatalError("[Petral-UI] Error: pt_yCenterTo() fail, because this view and the reference view should have the same superview");
@@ -317,12 +317,12 @@ extension PetralRestraint{
     }
     
     @discardableResult
-    public func pt_centerAs(_ view: UIView) -> PetralRestraint{
+    public func pt_centerAs(_ view: UIView, xOffset: CGFloat, yOffset: CGFloat) -> PetralRestraint{
         if(self.attachedView.superview == view.superview){
-            self.attachedView.petralRestraint.set(type: .xCenter, referenceView: view, distance: 0, referenceType: .same);
-            self.attachedView.petralRestraint.set(type: .yCenter, referenceView: view, distance: 0, referenceType: .same);
+            self.attachedView.petralRestraint.set(type: .xCenter, referenceView: view, distance: xOffset, referenceType: .same);
+            self.attachedView.petralRestraint.set(type: .yCenter, referenceView: view, distance: yOffset, referenceType: .same);
             
-            self.attachedView.frame = CGRect.init(x: view.frame.origin.x + view.frame.size.width/2 - self.attachedView.frame.size.width/2, y: view.frame.origin.y + view.frame.size.height/2 - self.attachedView.frame.size.height/2, width: self.attachedView.frame.size.width, height: self.attachedView.frame.size.height);
+            self.attachedView.frame = CGRect.init(x: view.frame.origin.x + view.frame.size.width/2 - self.attachedView.frame.size.width/2 + xOffset, y: view.frame.origin.y + view.frame.size.height/2 - self.attachedView.frame.size.height/2 + yOffset, width: self.attachedView.frame.size.width, height: self.attachedView.frame.size.height);
         }
         else{
             fatalError("[Petral-UI] Error: pt_centerTo() fail, because this view and the reference view should have the same superview");
@@ -505,10 +505,10 @@ extension PetralRestraint{
     //MARK: -
     
     @discardableResult
-    public func pt_leftAs(_ view: UIView) -> PetralRestraint{
+    public func pt_leftAs(_ view: UIView, offset: CGFloat) -> PetralRestraint{
         if(self.attachedView.superview == view.superview){
-            self.pt_leftTo(view, distance: -view.frame.size.width);
-            self.set(type: .left, referenceView: view, distance: 0, referenceType: .same);
+            self.pt_leftTo(view, distance: -view.frame.size.width + offset);
+            self.set(type: .left, referenceView: view, distance: offset, referenceType: .same);
         }
         else{
             fatalError("[Petral-UI] Error: pt_leftAs() fail, because this view and the reference view should have the same superview");
@@ -518,10 +518,10 @@ extension PetralRestraint{
     }
     
     @discardableResult
-    public func pt_rightAs(_ view: UIView) -> PetralRestraint{
+    public func pt_rightAs(_ view: UIView, offset: CGFloat) -> PetralRestraint{
         if(self.attachedView.superview == view.superview){
-            self.pt_rightTo(view, distance: -view.frame.size.width);
-            self.set(type: .right, referenceView: view, distance: 0, referenceType: .same);
+            self.pt_rightTo(view, distance: -view.frame.size.width - offset);
+            self.set(type: .right, referenceView: view, distance: offset, referenceType: .same);
         }
         else{
             fatalError("[Petral-UI] Error: pt_rightAs() fail, because this view and the reference view should have the same superview");
@@ -530,10 +530,10 @@ extension PetralRestraint{
     }
     
     @discardableResult
-    public func pt_topAs(_ view: UIView) -> PetralRestraint{
+    public func pt_topAs(_ view: UIView, offset: CGFloat) -> PetralRestraint{
         if(self.attachedView.superview == view.superview){
-            self.pt_topTo(view, distance: -view.frame.size.height);
-            self.set(type: .top, referenceView: view, distance: 0, referenceType: .same);
+            self.pt_topTo(view, distance: -view.frame.size.height + offset);
+            self.set(type: .top, referenceView: view, distance: offset, referenceType: .same);
         }
         else{
             fatalError("[Petral-UI] Error: pt_topAs() fail, because this view and the reference view should have the same superview");
@@ -542,10 +542,10 @@ extension PetralRestraint{
     }
     
     @discardableResult
-    public func pt_bottomAs(_ view: UIView) -> PetralRestraint{
+    public func pt_bottomAs(_ view: UIView, offset: CGFloat) -> PetralRestraint{
         if(self.attachedView.superview == view.superview){
-            self.pt_bottomTo(view, distance: -view.frame.size.height);
-            self.set(type: .bottom, referenceView: view, distance: 0, referenceType: .same);
+            self.pt_bottomTo(view, distance: -view.frame.size.height - offset);
+            self.set(type: .bottom, referenceView: view, distance: offset, referenceType: .same);
         }
         else{
             fatalError("[Petral-UI] Error: pt_bottomAs() fail, because this view and the reference view should have the same superview");
