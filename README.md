@@ -109,10 +109,10 @@ b.petralRestraint.pt_bottomTo(a, distance: n)
 
 - **pt_leftAs**
 
-View b的左边与View a的左边的水平位置一致
+View b的左边与View a的左边的水平位置一致（可偏离n）
 
 ```swift
-b.petralRestraint.pt_leftAs(a)
+b.petralRestraint.pt_leftAs(a, offset: n)
 ```
 
 ![](http://www.koudaikr.cn/Petral/leftas.png)
@@ -123,9 +123,9 @@ b.petralRestraint.pt_leftAs(a)
 
 - **pt_rightAs**
 
-View b的右边与View a的右边的水平位置一致
+View b的右边与View a的右边的水平位置一致（可偏离n）
 ```swift
-b.petralRestraint.pt_rightAs(a)
+b.petralRestraint.pt_rightAs(a, offset: n)
 ```
 
 
@@ -137,10 +137,10 @@ b.petralRestraint.pt_rightAs(a)
 
 - **pt_topAs**
 
-View b的顶部与View a的顶部的水平位置一致
+View b的顶部与View a的顶部的水平位置一致（可偏离n）
 
 ```swift
-b.petralRestraint.pt_topAs(a)
+b.petralRestraint.pt_topAs(a, offset: n)
 ```
 
 ![](http://www.koudaikr.cn/Petral/topas.png)
@@ -151,10 +151,10 @@ b.petralRestraint.pt_topAs(a)
 
 - **pt_bottomAs**
 
-View b的底部与View a的底部的水平位置一致
+View b的底部与View a的底部的水平位置一致（可偏离n）
 
 ```swift
-b.petralRestraint.pt_bottomAs(a)
+b.petralRestraint.pt_bottomAs(a, offset: n)
 ```
 
 
@@ -167,9 +167,9 @@ b.petralRestraint.pt_bottomAs(a)
 - **pt_xCenterAs**
 
 ```swift
-b.petralRestraint.pt_xCenterAs(a)
+b.petralRestraint.pt_xCenterAs(a, offset: n)
 ```
-View b的中间水平位置与View a的中间水平位置一致
+View b的中间水平位置与View a的中间水平位置一致（可偏离n）
 
 
 ![](http://www.koudaikr.cn/Petral/xcenteras.png)
@@ -181,9 +181,9 @@ View b的中间水平位置与View a的中间水平位置一致
 - **pt_yCenterAs**
 
 ```swift
-b.petralRestraint.pt_yCenterAs(a)
+b.petralRestraint.pt_yCenterAs(a, offset: n)
 ```
-View b的中间垂直位置与View a的中间垂直位置一致
+View b的中间垂直位置与View a的中间垂直位置一致（可偏离n）
 
 ![](http://www.koudaikr.cn/Petral/ycenteras.png)
 
@@ -195,9 +195,9 @@ View b的中间垂直位置与View a的中间垂直位置一致
 - **pt_centerAs**
 
 ```swift
-b.petralRestraint.pt_centerAs(a)
+b.petralRestraint.pt_centerAs(a, xOffset: m, yOffset: n)
 ```
-View b的中间点与View a的中间点位置一致
+View b的中间点与View a的中间点位置一致（x可偏离m,y可偏离n）
 
 ![](http://www.koudaikr.cn/Petral/centeras.png)
 
