@@ -56,8 +56,8 @@ public class PetralRestraint: NSObject {
             if(item.type == type){
                 //移除被依赖view的petralRelatives的元素，表示self.attachmentView已不再依赖这个view了
                 let originReferenceView =  (self.attachedView.superview?.viewWithTag(item.referenceViewTag))!;
-                originReferenceView.petralRestraint.dependings.remove(at: (originReferenceView.petralRestraint.dependings.index(of:self.attachedView.tag))!);
-                self.restraints.remove(at: self.restraints.index(of: item)!);
+                originReferenceView.petralRestraint.dependings.remove(at: (originReferenceView.petralRestraint.dependings.firstIndex(of:self.attachedView.tag))!);
+                self.restraints.remove(at: self.restraints.firstIndex(of: item)!);
             }
         }
         
