@@ -289,6 +289,10 @@ extension PetralRestraint{
     }
     
     //MARK: -
+    @discardableResult
+    public func pt_xCenterAs(_ view: UIView) -> PetralRestraint{
+        return self.pt_xCenterAs(view, offset: 0);
+    }
     
     @discardableResult
     public func pt_xCenterAs(_ view: UIView, offset: CGFloat) -> PetralRestraint{
@@ -304,6 +308,11 @@ extension PetralRestraint{
     }
     
     @discardableResult
+    public func pt_yCenterAs(_ view: UIView) -> PetralRestraint{
+        return self.pt_yCenterAs(view, offset: 0);
+    }
+    
+    @discardableResult
     public func pt_yCenterAs(_ view: UIView, offset: CGFloat) -> PetralRestraint{
         if(self.attachedView.superview == view.superview){
             self.attachedView.petralRestraint.set(type: .yCenter, referenceView: view, distance: offset, referenceType: .same);
@@ -314,6 +323,11 @@ extension PetralRestraint{
         }
         
         return self;
+    }
+    
+    @discardableResult
+    public func pt_centerAs(_ view: UIView) -> PetralRestraint{
+        return self.pt_centerAs(view, xOffset: 0, yOffset: 0);
     }
     
     @discardableResult
@@ -332,12 +346,16 @@ extension PetralRestraint{
     }
     
     //MARK: -
-    
     @discardableResult
     public func pt_xCenterIn(_ view: UIView) -> PetralRestraint{
+        return self.pt_xCenterIn(view, offset: 0);
+    }
+    
+    @discardableResult
+    public func pt_xCenterIn(_ view: UIView, offset: CGFloat) -> PetralRestraint{
         if(self.attachedView.superview == view){
-            self.attachedView.petralRestraint.set(type: .xCenter, referenceView: view, distance: 0, referenceType: .inside);
-            self.attachedView.frame = CGRect.init(x: (view.frame.size.width - self.attachedView.frame.size.width) / 2, y: self.attachedView.frame.origin.y, width: self.attachedView.frame.size.width, height: self.attachedView.frame.size.height);
+            self.attachedView.petralRestraint.set(type: .xCenter, referenceView: view, distance: offset, referenceType: .inside);
+            self.attachedView.frame = CGRect.init(x: (view.frame.size.width - self.attachedView.frame.size.width) / 2 + offset, y: self.attachedView.frame.origin.y, width: self.attachedView.frame.size.width, height: self.attachedView.frame.size.height);
         }
         else{
             fatalError("[Petral-UI] Error: pt_xCenterIn() fail, because this view's superview should be the reference view");
@@ -348,9 +366,14 @@ extension PetralRestraint{
     
     @discardableResult
     public func pt_yCenterIn(_ view: UIView) -> PetralRestraint{
+        return self.pt_yCenterIn(view, offset: 0);
+    }
+    
+    @discardableResult
+    public func pt_yCenterIn(_ view: UIView, offset: CGFloat) -> PetralRestraint{
         if(self.attachedView.superview == view){
-            self.attachedView.petralRestraint.set(type: .yCenter, referenceView: view, distance: 0, referenceType: .inside);
-            self.attachedView.frame = CGRect.init(x: self.attachedView.frame.origin.x, y: (view.frame.size.height - self.attachedView.frame.size.height) / 2, width: self.attachedView.frame.size.width, height: self.attachedView.frame.size.height);
+            self.attachedView.petralRestraint.set(type: .yCenter, referenceView: view, distance: offset, referenceType: .inside);
+            self.attachedView.frame = CGRect.init(x: self.attachedView.frame.origin.x, y: (view.frame.size.height - self.attachedView.frame.size.height) / 2 + offset, width: self.attachedView.frame.size.width, height: self.attachedView.frame.size.height);
         }
         else{
             fatalError("[Petral-UI] Error: pt_yCenterIn() fail, because this view's superview should be the reference view");
@@ -361,11 +384,16 @@ extension PetralRestraint{
     
     @discardableResult
     public func pt_centerIn(_ view: UIView) -> PetralRestraint{
+        return self.pt_centerIn(view, xOffset: 0, yOffset: 0);
+    }
+    
+    @discardableResult
+    public func pt_centerIn(_ view: UIView, xOffset: CGFloat, yOffset: CGFloat) -> PetralRestraint{
         if(self.attachedView.superview == view){
-            self.attachedView.petralRestraint.set(type: .xCenter, referenceView: view, distance: 0, referenceType: .inside);
-            self.attachedView.petralRestraint.set(type: .yCenter, referenceView: view, distance: 0, referenceType: .inside);
+            self.attachedView.petralRestraint.set(type: .xCenter, referenceView: view, distance: xOffset, referenceType: .inside);
+            self.attachedView.petralRestraint.set(type: .yCenter, referenceView: view, distance: yOffset, referenceType: .inside);
             
-            self.attachedView.frame = CGRect.init(x: (view.frame.size.width - self.attachedView.frame.size.width) / 2, y: (view.frame.size.height - self.attachedView.frame.size.height) / 2, width: self.attachedView.frame.size.width, height: self.attachedView.frame.size.height);
+            self.attachedView.frame = CGRect.init(x: (view.frame.size.width - self.attachedView.frame.size.width) / 2 + xOffset, y: (view.frame.size.height - self.attachedView.frame.size.height) / 2 + yOffset, width: self.attachedView.frame.size.width, height: self.attachedView.frame.size.height);
         }
         else{
             fatalError("[Petral-UI] Error: pt_centerIn() fail, because this view's superview should be the reference view");
@@ -505,6 +533,11 @@ extension PetralRestraint{
     //MARK: -
     
     @discardableResult
+    public func pt_leftAs(_ view: UIView) -> PetralRestraint{
+        return self.pt_leftAs(view, offset: 0);
+    }
+    
+    @discardableResult
     public func pt_leftAs(_ view: UIView, offset: CGFloat) -> PetralRestraint{
         if(self.attachedView.superview == view.superview){
             self.pt_leftTo(view, distance: -view.frame.size.width + offset);
@@ -515,6 +548,11 @@ extension PetralRestraint{
         }
         
         return self;
+    }
+    
+    @discardableResult
+    public func pt_rightAs(_ view: UIView) -> PetralRestraint{
+        return self.pt_rightAs(view, offset: 0);
     }
     
     @discardableResult
@@ -530,6 +568,11 @@ extension PetralRestraint{
     }
     
     @discardableResult
+    public func pt_topAs(_ view: UIView) -> PetralRestraint{
+        return self.pt_topAs(view, offset: 0);
+    }
+    
+    @discardableResult
     public func pt_topAs(_ view: UIView, offset: CGFloat) -> PetralRestraint{
         if(self.attachedView.superview == view.superview){
             self.pt_topTo(view, distance: -view.frame.size.height + offset);
@@ -539,6 +582,11 @@ extension PetralRestraint{
             fatalError("[Petral-UI] Error: pt_topAs() fail, because this view and the reference view should have the same superview");
         }
         return self;
+    }
+    
+    @discardableResult
+    public func pt_bottomAs(_ view: UIView) -> PetralRestraint{
+        return self.pt_bottomAs(view, offset: 0);
     }
     
     @discardableResult
@@ -554,6 +602,11 @@ extension PetralRestraint{
     }
     
     //MARK: -
+    
+    @discardableResult
+    public func pt_leftIn(_ view: UIView) -> PetralRestraint{
+        return self.pt_leftIn(view, distance: 0);
+    }
     
     @discardableResult
     public func pt_leftIn(_ view: UIView, distance: CGFloat) -> PetralRestraint{
@@ -585,6 +638,11 @@ extension PetralRestraint{
         }
         
         return self;
+    }
+    
+    @discardableResult
+    public func pt_rightIn(_ view: UIView) -> PetralRestraint{
+        return self.pt_rightIn(view, distance: 0);
     }
     
     @discardableResult
@@ -620,6 +678,11 @@ extension PetralRestraint{
     }
     
     @discardableResult
+    public func pt_topIn(_ view: UIView) -> PetralRestraint{
+        return self.pt_topIn(view, distance: 0);
+    }
+    
+    @discardableResult
     public func pt_topIn(_ view: UIView, distance: CGFloat) -> PetralRestraint{
         if(self.attachedView.superview == view){
             self.attachedView.petralRestraint.set(type: .top, referenceView: view, distance: distance, referenceType: .inside);
@@ -649,6 +712,11 @@ extension PetralRestraint{
         }
         
         return self;
+    }
+    
+    @discardableResult
+    public func pt_bottomIn(_ view: UIView) -> PetralRestraint{
+        return self.pt_bottomIn(view, distance: 0);
     }
     
     @discardableResult
