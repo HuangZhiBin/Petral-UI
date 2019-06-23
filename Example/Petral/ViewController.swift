@@ -66,7 +66,7 @@ class ViewController: UIViewController {
             .pt_borderRadius(12);
         self.view.addSubview(button);
         button.petralRestraint
-            .pt_centerAs(label, xOffset: 40, yOffset: 10)
+            .pt_xCenterAs(label, offset: 40)
 //            .pt_leftAs(label, offset: 20)
         //.pt_centerAs(label);
         
@@ -116,6 +116,14 @@ class ViewController: UIViewController {
             .pt_width(320)
             .pt_height(120);
         label.petralRestraint.pt_updateDependeds();
+        
+        let label3 = UILabel.init()
+            .pt_frame(x: 20, y: 0, width: 120, height: 100)
+            .pt_backgroundColor(UIColor.purple)
+            .pt_text("My name");
+        self.view.addSubview(label3);
+        label3.petralRestraint
+            .pt_locateIn(self.view, inset: UIEdgeInsets.init(top: 10, left: 20, bottom: 30, right: 40));
         
     }
     

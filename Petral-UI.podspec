@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Petral-UI'
-  s.version          = '1.0.3'
+  s.version          = '1.0.5'
   s.summary          = '以Swift实现的 UI布局框架，以最少的代码，实现UI的搭建、属性设置以及布局控制'
 
 # This description is used to generate tags and improve search results.
@@ -29,7 +29,7 @@ Petral-UI是一个以Swift实现的 UI布局框架，以最少的代码，实现
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
-  s.swift_version = '4.2.1'
+  s.swift_version = '4.0'
 
   s.source_files = 'Petral/Classes/**/*'
   

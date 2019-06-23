@@ -15,10 +15,27 @@ enum PetralReferenceType{
     case none
 }
 
+enum PetralRestraintPriority{
+    case low
+    case medium //default level
+    case high
+}
+
+public enum PetralRestraintType{
+    case left
+    case right
+    case bottom
+    case top
+    case xCenter
+    case yCenter
+    case width
+    case height
+}
+
 public class PetralRestraint: NSObject {
-    weak var attachedView : UIView!;
-    var restraints : [PetralRestraintItem]! = [];
-    var dependings: [Int]! = [];//relative view's hash ids
+    private weak var attachedView : UIView!;
+    private var restraints : [PetralRestraintItem]! = [];
+    private var dependings: [Int]! = [];//relative view's hash ids
     
     init(_ attachedView: UIView) {
         super.init();
@@ -56,8 +73,8 @@ public class PetralRestraint: NSObject {
             if(item.type == type){
                 //移除被依赖view的petralRelatives的元素，表示self.attachmentView已不再依赖这个view了
                 let originReferenceView =  (self.attachedView.superview?.viewWithTag(item.referenceViewTag))!;
-                originReferenceView.petralRestraint.dependings.remove(at: (originReferenceView.petralRestraint.dependings.firstIndex(of:self.attachedView.tag))!);
-                self.restraints.remove(at: self.restraints.firstIndex(of: item)!);
+                originReferenceView.petralRestraint.dependings.remove(at: (originReferenceView.petralRestraint.dependings.index(of:self.attachedView.tag))!);
+                self.restraints.remove(at: self.restraints.index(of: item)!);
             }
         }
         
@@ -84,15 +101,15 @@ public class PetralRestraint: NSObject {
             [PetralRestraintType.yCenter, PetralRestraintType.top],
             [PetralRestraintType.yCenter, PetralRestraintType.bottom],
         ];
-        for conflicts in CONFLICTS{
+        for conflictRule in CONFLICTS{
             var conflictedCount = 0;
-            for conflict in conflicts{
+            for conflict in conflictRule{
                 if(types.contains(conflict)){
                     conflictedCount = conflictedCount + 1;
                 }
             }
-            if(conflictedCount == conflicts.count){
-                fatalError("[Petral] UI Restraints conflicted! Due to rule :\(conflicts).");
+            if(conflictedCount == conflictRule.count){
+                fatalError("[Petral] UI Restraints conflicted! Due to rule :\(conflictRule).");
             }
             
         }
@@ -113,24 +130,29 @@ public class PetralRestraint: NSObject {
         }
         return arr[0];
     }
+    
+    public func pt_reset(){
+        self.restraints = [];
+    }
+    
+    public func pt_remove(type: PetralRestraintType){
+        for item in self.restraints{
+            if(item.type == type){
+                self.restraints.remove(at: self.restraints.index(of: item)!);
+                break;
+            }
+        }
+    }
 }
 
-enum PetralRestraintType{
-    case left
-    case right
-    case bottom
-    case top
-    case xCenter
-    case yCenter
-    case width
-    case height
-}
+
 
 class PetralRestraintItem: NSObject {
     var type : PetralRestraintType!;
     var referenceViewTag : Int!;
     var distance: CGFloat!;
     var referenceType: PetralReferenceType!;
+    var priority: PetralRestraintPriority! = .medium;
     
     init(type: PetralRestraintType, referenceViewTag: Int, distance: CGFloat, referenceType: PetralReferenceType) {
         super.init();
@@ -144,6 +166,8 @@ class PetralRestraintItem: NSObject {
 extension PetralRestraint{
     
     //MARK: -
+    
+    
     
     public func pt_updateDependeds(){
         let dependedArray = Array(Set(self.dependings));
@@ -289,16 +313,12 @@ extension PetralRestraint{
     }
     
     //MARK: -
-    @discardableResult
-    public func pt_xCenterAs(_ view: UIView) -> PetralRestraint{
-        return self.pt_xCenterAs(view, offset: 0);
-    }
     
     @discardableResult
-    public func pt_xCenterAs(_ view: UIView, offset: CGFloat) -> PetralRestraint{
+    public func pt_xCenterAs(_ view: UIView, offset: CGFloat? = nil) -> PetralRestraint{
         if(self.attachedView.superview == view.superview){
-            self.attachedView.petralRestraint.set(type: .xCenter, referenceView: view, distance: offset, referenceType: .same);
-            self.attachedView.frame = CGRect.init(x: view.frame.origin.x + view.frame.size.width/2 - self.attachedView.frame.size.width/2 + offset, y: self.attachedView.frame.origin.y, width: self.attachedView.frame.size.width, height: self.attachedView.frame.size.height);
+            self.attachedView.petralRestraint.set(type: .xCenter, referenceView: view, distance: offset!, referenceType: .same);
+            self.attachedView.frame = CGRect.init(x: view.frame.origin.x + view.frame.size.width/2 - self.attachedView.frame.size.width/2 + (offset ?? 0), y: self.attachedView.frame.origin.y, width: self.attachedView.frame.size.width, height: self.attachedView.frame.size.height);
         }
         else{
             fatalError("[Petral-UI] Error: pt_xCenterTo() fail, because this view and the reference view should have the same superview");
@@ -308,15 +328,10 @@ extension PetralRestraint{
     }
     
     @discardableResult
-    public func pt_yCenterAs(_ view: UIView) -> PetralRestraint{
-        return self.pt_yCenterAs(view, offset: 0);
-    }
-    
-    @discardableResult
-    public func pt_yCenterAs(_ view: UIView, offset: CGFloat) -> PetralRestraint{
+    public func pt_yCenterAs(_ view: UIView, offset: CGFloat? = nil) -> PetralRestraint{
         if(self.attachedView.superview == view.superview){
-            self.attachedView.petralRestraint.set(type: .yCenter, referenceView: view, distance: offset, referenceType: .same);
-            self.attachedView.frame = CGRect.init(x: self.attachedView.frame.origin.x, y: view.frame.origin.y + view.frame.size.height/2 - self.attachedView.frame.size.height/2 + offset, width: self.attachedView.frame.size.width, height: self.attachedView.frame.size.height);
+            self.attachedView.petralRestraint.set(type: .yCenter, referenceView: view, distance: (offset ?? 0), referenceType: .same);
+            self.attachedView.frame = CGRect.init(x: self.attachedView.frame.origin.x, y: view.frame.origin.y + view.frame.size.height/2 - self.attachedView.frame.size.height/2 + (offset ?? 0), width: self.attachedView.frame.size.width, height: self.attachedView.frame.size.height);
         }
         else{
             fatalError("[Petral-UI] Error: pt_yCenterTo() fail, because this view and the reference view should have the same superview");
@@ -326,17 +341,12 @@ extension PetralRestraint{
     }
     
     @discardableResult
-    public func pt_centerAs(_ view: UIView) -> PetralRestraint{
-        return self.pt_centerAs(view, xOffset: 0, yOffset: 0);
-    }
-    
-    @discardableResult
-    public func pt_centerAs(_ view: UIView, xOffset: CGFloat, yOffset: CGFloat) -> PetralRestraint{
+    public func pt_centerAs(_ view: UIView, xOffset: CGFloat? = nil, yOffset: CGFloat? = nil) -> PetralRestraint{
         if(self.attachedView.superview == view.superview){
-            self.attachedView.petralRestraint.set(type: .xCenter, referenceView: view, distance: xOffset, referenceType: .same);
-            self.attachedView.petralRestraint.set(type: .yCenter, referenceView: view, distance: yOffset, referenceType: .same);
+            self.attachedView.petralRestraint.set(type: .xCenter, referenceView: view, distance: (xOffset ?? 0), referenceType: .same);
+            self.attachedView.petralRestraint.set(type: .yCenter, referenceView: view, distance: (yOffset ?? 0), referenceType: .same);
             
-            self.attachedView.frame = CGRect.init(x: view.frame.origin.x + view.frame.size.width/2 - self.attachedView.frame.size.width/2 + xOffset, y: view.frame.origin.y + view.frame.size.height/2 - self.attachedView.frame.size.height/2 + yOffset, width: self.attachedView.frame.size.width, height: self.attachedView.frame.size.height);
+            self.attachedView.frame = CGRect.init(x: view.frame.origin.x + view.frame.size.width/2 - self.attachedView.frame.size.width/2 + (xOffset ?? 0), y: view.frame.origin.y + view.frame.size.height/2 - self.attachedView.frame.size.height/2 + (yOffset ?? 0), width: self.attachedView.frame.size.width, height: self.attachedView.frame.size.height);
         }
         else{
             fatalError("[Petral-UI] Error: pt_centerTo() fail, because this view and the reference view should have the same superview");
@@ -346,16 +356,12 @@ extension PetralRestraint{
     }
     
     //MARK: -
-    @discardableResult
-    public func pt_xCenterIn(_ view: UIView) -> PetralRestraint{
-        return self.pt_xCenterIn(view, offset: 0);
-    }
     
     @discardableResult
-    public func pt_xCenterIn(_ view: UIView, offset: CGFloat) -> PetralRestraint{
+    public func pt_xCenterIn(_ view: UIView, offset: CGFloat? = nil) -> PetralRestraint{
         if(self.attachedView.superview == view){
-            self.attachedView.petralRestraint.set(type: .xCenter, referenceView: view, distance: offset, referenceType: .inside);
-            self.attachedView.frame = CGRect.init(x: (view.frame.size.width - self.attachedView.frame.size.width) / 2 + offset, y: self.attachedView.frame.origin.y, width: self.attachedView.frame.size.width, height: self.attachedView.frame.size.height);
+            self.attachedView.petralRestraint.set(type: .xCenter, referenceView: view, distance: (offset ?? 0), referenceType: .inside);
+            self.attachedView.frame = CGRect.init(x: (view.frame.size.width - self.attachedView.frame.size.width) / 2 + (offset ?? 0), y: self.attachedView.frame.origin.y, width: self.attachedView.frame.size.width, height: self.attachedView.frame.size.height);
         }
         else{
             fatalError("[Petral-UI] Error: pt_xCenterIn() fail, because this view's superview should be the reference view");
@@ -365,15 +371,10 @@ extension PetralRestraint{
     }
     
     @discardableResult
-    public func pt_yCenterIn(_ view: UIView) -> PetralRestraint{
-        return self.pt_yCenterIn(view, offset: 0);
-    }
-    
-    @discardableResult
-    public func pt_yCenterIn(_ view: UIView, offset: CGFloat) -> PetralRestraint{
+    public func pt_yCenterIn(_ view: UIView, offset: CGFloat? = nil) -> PetralRestraint{
         if(self.attachedView.superview == view){
-            self.attachedView.petralRestraint.set(type: .yCenter, referenceView: view, distance: offset, referenceType: .inside);
-            self.attachedView.frame = CGRect.init(x: self.attachedView.frame.origin.x, y: (view.frame.size.height - self.attachedView.frame.size.height) / 2 + offset, width: self.attachedView.frame.size.width, height: self.attachedView.frame.size.height);
+            self.attachedView.petralRestraint.set(type: .yCenter, referenceView: view, distance: (offset ?? 0), referenceType: .inside);
+            self.attachedView.frame = CGRect.init(x: self.attachedView.frame.origin.x, y: (view.frame.size.height - self.attachedView.frame.size.height) / 2 + (offset ?? 0), width: self.attachedView.frame.size.width, height: self.attachedView.frame.size.height);
         }
         else{
             fatalError("[Petral-UI] Error: pt_yCenterIn() fail, because this view's superview should be the reference view");
@@ -383,17 +384,12 @@ extension PetralRestraint{
     }
     
     @discardableResult
-    public func pt_centerIn(_ view: UIView) -> PetralRestraint{
-        return self.pt_centerIn(view, xOffset: 0, yOffset: 0);
-    }
-    
-    @discardableResult
-    public func pt_centerIn(_ view: UIView, xOffset: CGFloat, yOffset: CGFloat) -> PetralRestraint{
+    public func pt_centerIn(_ view: UIView, xOffset: CGFloat? = nil, yOffset: CGFloat? = nil) -> PetralRestraint{
         if(self.attachedView.superview == view){
-            self.attachedView.petralRestraint.set(type: .xCenter, referenceView: view, distance: xOffset, referenceType: .inside);
-            self.attachedView.petralRestraint.set(type: .yCenter, referenceView: view, distance: yOffset, referenceType: .inside);
+            self.attachedView.petralRestraint.set(type: .xCenter, referenceView: view, distance: (xOffset ?? 0), referenceType: .inside);
+            self.attachedView.petralRestraint.set(type: .yCenter, referenceView: view, distance: (yOffset ?? 0), referenceType: .inside);
             
-            self.attachedView.frame = CGRect.init(x: (view.frame.size.width - self.attachedView.frame.size.width) / 2 + xOffset, y: (view.frame.size.height - self.attachedView.frame.size.height) / 2 + yOffset, width: self.attachedView.frame.size.width, height: self.attachedView.frame.size.height);
+            self.attachedView.frame = CGRect.init(x: (view.frame.size.width - self.attachedView.frame.size.width) / 2 + (xOffset ?? 0), y: (view.frame.size.height - self.attachedView.frame.size.height) / 2 + (yOffset ?? 0), width: self.attachedView.frame.size.width, height: self.attachedView.frame.size.height);
         }
         else{
             fatalError("[Petral-UI] Error: pt_centerIn() fail, because this view's superview should be the reference view");
@@ -402,32 +398,47 @@ extension PetralRestraint{
         return self;
     }
     
+    @discardableResult
+    public func pt_locateIn(_ view: UIView, inset: UIEdgeInsets) -> PetralRestraint{
+        if(self.attachedView.superview == view){
+            self.pt_topIn(view, distance: inset.top);
+            self.pt_bottomIn(view, distance: inset.bottom);
+            self.pt_leftIn(view, distance: inset.left);
+            self.pt_rightIn(view, distance: inset.right);
+        }
+        else{
+            fatalError("[Petral-UI] Error: pt_bottomIn() fail, because this view's superview should be the reference view");
+        }
+        
+        return self;
+    }
+    
     //MARK: -
     
     @discardableResult
-    public func pt_leftTo(_ view: UIView, distance: CGFloat) -> PetralRestraint{
+    public func pt_leftTo(_ view: UIView, distance: CGFloat? = nil) -> PetralRestraint{
         if(self.attachedView.superview == view.superview){
-            self.attachedView.petralRestraint.set(type: .left, referenceView: view, distance: distance, referenceType: .to);
+            self.attachedView.petralRestraint.set(type: .left, referenceView: view, distance: (distance ?? 0), referenceType: .to);
             
             var viewWidth = self.attachedView.frame.size.width;
             if(self.existType(type: .right, referenceType: .to)){
                 let item = self.filterType(type: .right);
                 let referenceView : UIView = (self.attachedView.superview?.viewWithTag(item.referenceViewTag))!;
                 
-                viewWidth = referenceView.frame.origin.x - item.distance - view.frame.origin.x - view.frame.size.width - distance;
+                viewWidth = referenceView.frame.origin.x - item.distance - view.frame.origin.x - view.frame.size.width - (distance ?? 0);
             }
             else if(self.existType(type: .right, referenceType: .same)){
                 let item = self.filterType(type: .right);
                 let referenceView : UIView = (self.attachedView.superview?.viewWithTag(item.referenceViewTag))!;
                 
-                viewWidth = referenceView.frame.origin.x + referenceView.frame.size.width - view.frame.origin.x - view.frame.size.width - distance;
+                viewWidth = referenceView.frame.origin.x + referenceView.frame.size.width - view.frame.origin.x - view.frame.size.width - (distance ?? 0);
             }
             else if(self.existType(type: .right, referenceType: .inside)){
                 let item = self.filterType(type: .right);
                 let referenceView : UIView = (self.attachedView.superview)!;
-                viewWidth = referenceView.frame.size.width - view.frame.origin.x - view.frame.size.width - distance - item.distance;
+                viewWidth = referenceView.frame.size.width - view.frame.origin.x - view.frame.size.width - (distance ?? 0) - item.distance;
             }
-            self.attachedView.frame = CGRect.init(x: view.frame.origin.x + view.frame.size.width + distance, y: self.attachedView.frame.origin.y, width: viewWidth, height: self.attachedView.frame.size.height);
+            self.attachedView.frame = CGRect.init(x: view.frame.origin.x + view.frame.size.width + (distance ?? 0), y: self.attachedView.frame.origin.y, width: viewWidth, height: self.attachedView.frame.size.height);
         }
         else{
             fatalError("[Petral-UI] Error: pt_leftTo() fail, because this view and the reference view should have the same superview");
@@ -437,28 +448,28 @@ extension PetralRestraint{
     }
     
     @discardableResult
-    public func pt_rightTo(_ view: UIView, distance: CGFloat) -> PetralRestraint{
+    public func pt_rightTo(_ view: UIView, distance: CGFloat? = nil) -> PetralRestraint{
         if(self.attachedView.superview == view.superview){
-            self.attachedView.petralRestraint.set(type: .right, referenceView: view, distance: distance, referenceType: .to);
+            self.attachedView.petralRestraint.set(type: .right, referenceView: view, distance: (distance ?? 0), referenceType: .to);
             
             var viewWidth = self.attachedView.frame.size.width;
             if(self.existType(type: .left, referenceType: .to)){
                 let item = self.filterType(type: .left);
                 let referenceView : UIView = (self.attachedView.superview?.viewWithTag(item.referenceViewTag))!;
                 
-                viewWidth = view.frame.origin.x - distance - referenceView.frame.origin.x - referenceView.frame.size.width - item.distance;
+                viewWidth = view.frame.origin.x - (distance ?? 0) - referenceView.frame.origin.x - referenceView.frame.size.width - item.distance;
             }
             else if(self.existType(type: .left, referenceType: .same)){
                 let item = self.filterType(type: .left);
                 let referenceView : UIView = (self.attachedView.superview?.viewWithTag(item.referenceViewTag))!;
                 
-                viewWidth = view.frame.origin.x - distance - referenceView.frame.origin.x;
+                viewWidth = view.frame.origin.x - (distance ?? 0) - referenceView.frame.origin.x;
             }
             else if(self.existType(type: .left, referenceType: .inside)){
                 let item = self.filterType(type: .left);
-                viewWidth = view.frame.origin.x - distance - item.distance;
+                viewWidth = view.frame.origin.x - (distance ?? 0) - item.distance;
             }
-            self.attachedView.frame = CGRect.init(x: view.frame.origin.x - viewWidth - distance, y: self.attachedView.frame.origin.y, width: viewWidth, height: self.attachedView.frame.size.height);
+            self.attachedView.frame = CGRect.init(x: view.frame.origin.x - viewWidth - (distance ?? 0), y: self.attachedView.frame.origin.y, width: viewWidth, height: self.attachedView.frame.size.height);
         }
         else{
             fatalError("[Petral-UI] Error: pt_rightTo() fail, because this view and the reference view should have the same superview");
@@ -468,29 +479,29 @@ extension PetralRestraint{
     }
     
     @discardableResult
-    public func pt_bottomTo(_ view: UIView, distance: CGFloat) -> PetralRestraint{
+    public func pt_bottomTo(_ view: UIView, distance: CGFloat? = nil) -> PetralRestraint{
         if(self.attachedView.superview == view.superview){
-            self.attachedView.petralRestraint.set(type: .bottom, referenceView: view, distance: distance, referenceType: .to);
+            self.attachedView.petralRestraint.set(type: .bottom, referenceView: view, distance: (distance ?? 0), referenceType: .to);
             
             var viewHeight = self.attachedView.frame.size.height;
             if(self.existType(type: .top, referenceType: .to)){
                 let item = self.filterType(type: .top);
                 let referenceView : UIView = (self.attachedView.superview?.viewWithTag(item.referenceViewTag))!;
                 
-                viewHeight = view.frame.origin.y - referenceView.frame.size.height - referenceView.frame.origin.y - distance - item.distance;
+                viewHeight = view.frame.origin.y - referenceView.frame.size.height - referenceView.frame.origin.y - (distance ?? 0) - item.distance;
             }
             else if(self.existType(type: .top, referenceType: .same)){
                 let item = self.filterType(type: .top);
                 let referenceView : UIView = (self.attachedView.superview?.viewWithTag(item.referenceViewTag))!;
                 
-                viewHeight = view.frame.origin.y - referenceView.frame.origin.y - distance;
+                viewHeight = view.frame.origin.y - referenceView.frame.origin.y - (distance ?? 0);
             }
             else if(self.existType(type: .top, referenceType: .inside)){
                 let item = self.filterType(type: .top);
-                viewHeight = view.frame.origin.y - distance - item.distance;
+                viewHeight = view.frame.origin.y - (distance ?? 0) - item.distance;
             }
             
-            self.attachedView.frame = CGRect.init(x: self.attachedView.frame.origin.x, y: view.frame.origin.y - distance - viewHeight, width: self.attachedView.frame.size.width, height: viewHeight);
+            self.attachedView.frame = CGRect.init(x: self.attachedView.frame.origin.x, y: view.frame.origin.y - (distance ?? 0) - viewHeight, width: self.attachedView.frame.size.width, height: viewHeight);
         }
         else{
             fatalError("[Petral-UI] Error: pt_bottomTo() fail, because this view and the reference view should have the same superview");
@@ -500,28 +511,28 @@ extension PetralRestraint{
     }
     
     @discardableResult
-    public func pt_topTo(_ view: UIView, distance: CGFloat) -> PetralRestraint{
+    public func pt_topTo(_ view: UIView, distance: CGFloat? = nil) -> PetralRestraint{
         if(self.attachedView.superview == view.superview){
-            self.attachedView.petralRestraint.set(type: .top, referenceView: view, distance: distance, referenceType: .to);
+            self.attachedView.petralRestraint.set(type: .top, referenceView: view, distance: (distance ?? 0), referenceType: .to);
             var viewHeight = self.attachedView.frame.size.height;
             if(self.existType(type: .bottom, referenceType: .to)){
                 let item = self.filterType(type: .bottom);
                 let referenceView : UIView = (self.attachedView.superview?.viewWithTag(item.referenceViewTag))!;
                 
-                viewHeight = referenceView.frame.origin.y - view.frame.size.height - view.frame.origin.y - distance - item.distance;
+                viewHeight = referenceView.frame.origin.y - view.frame.size.height - view.frame.origin.y - (distance ?? 0) - item.distance;
             }
             else if(self.existType(type: .bottom, referenceType: .same)){
                 let item = self.filterType(type: .bottom);
                 let referenceView : UIView = (self.attachedView.superview?.viewWithTag(item.referenceViewTag))!;
                 
-                viewHeight = referenceView.frame.size.height + referenceView.frame.origin.y - view.frame.size.height - view.frame.origin.y - distance;
+                viewHeight = referenceView.frame.size.height + referenceView.frame.origin.y - view.frame.size.height - view.frame.origin.y - (distance ?? 0);
             }
             else if(self.existType(type: .bottom, referenceType: .inside)){
                 let item = self.filterType(type: .bottom);
                 
-                viewHeight = self.attachedView.superview!.frame.size.height - view.frame.size.height - view.frame.origin.y - distance - item.distance;
+                viewHeight = self.attachedView.superview!.frame.size.height - view.frame.size.height - view.frame.origin.y - (distance ?? 0) - item.distance;
             }
-            self.attachedView.frame = CGRect.init(x: self.attachedView.frame.origin.x, y: view.frame.origin.y + view.frame.size.height + distance, width: self.attachedView.frame.size.width, height: viewHeight);
+            self.attachedView.frame = CGRect.init(x: self.attachedView.frame.origin.x, y: view.frame.origin.y + view.frame.size.height + (distance ?? 0), width: self.attachedView.frame.size.width, height: viewHeight);
         }
         else{
             fatalError("[Petral-UI] Error: pt_topTo() fail, because this view and the reference view should have the same superview");
@@ -533,15 +544,10 @@ extension PetralRestraint{
     //MARK: -
     
     @discardableResult
-    public func pt_leftAs(_ view: UIView) -> PetralRestraint{
-        return self.pt_leftAs(view, offset: 0);
-    }
-    
-    @discardableResult
-    public func pt_leftAs(_ view: UIView, offset: CGFloat) -> PetralRestraint{
+    public func pt_leftAs(_ view: UIView, offset: CGFloat? = nil) -> PetralRestraint{
         if(self.attachedView.superview == view.superview){
-            self.pt_leftTo(view, distance: -view.frame.size.width + offset);
-            self.set(type: .left, referenceView: view, distance: offset, referenceType: .same);
+            self.pt_leftTo(view, distance: -view.frame.size.width + (offset ?? 0));
+            self.set(type: .left, referenceView: view, distance: (offset ?? 0), referenceType: .same);
         }
         else{
             fatalError("[Petral-UI] Error: pt_leftAs() fail, because this view and the reference view should have the same superview");
@@ -551,15 +557,10 @@ extension PetralRestraint{
     }
     
     @discardableResult
-    public func pt_rightAs(_ view: UIView) -> PetralRestraint{
-        return self.pt_rightAs(view, offset: 0);
-    }
-    
-    @discardableResult
-    public func pt_rightAs(_ view: UIView, offset: CGFloat) -> PetralRestraint{
+    public func pt_rightAs(_ view: UIView, offset: CGFloat? = nil) -> PetralRestraint{
         if(self.attachedView.superview == view.superview){
-            self.pt_rightTo(view, distance: -view.frame.size.width - offset);
-            self.set(type: .right, referenceView: view, distance: offset, referenceType: .same);
+            self.pt_rightTo(view, distance: -view.frame.size.width - (offset ?? 0));
+            self.set(type: .right, referenceView: view, distance: (offset ?? 0), referenceType: .same);
         }
         else{
             fatalError("[Petral-UI] Error: pt_rightAs() fail, because this view and the reference view should have the same superview");
@@ -568,15 +569,10 @@ extension PetralRestraint{
     }
     
     @discardableResult
-    public func pt_topAs(_ view: UIView) -> PetralRestraint{
-        return self.pt_topAs(view, offset: 0);
-    }
-    
-    @discardableResult
-    public func pt_topAs(_ view: UIView, offset: CGFloat) -> PetralRestraint{
+    public func pt_topAs(_ view: UIView, offset: CGFloat? = nil) -> PetralRestraint{
         if(self.attachedView.superview == view.superview){
-            self.pt_topTo(view, distance: -view.frame.size.height + offset);
-            self.set(type: .top, referenceView: view, distance: offset, referenceType: .same);
+            self.pt_topTo(view, distance: -view.frame.size.height + (offset ?? 0));
+            self.set(type: .top, referenceView: view, distance: (offset ?? 0), referenceType: .same);
         }
         else{
             fatalError("[Petral-UI] Error: pt_topAs() fail, because this view and the reference view should have the same superview");
@@ -585,15 +581,10 @@ extension PetralRestraint{
     }
     
     @discardableResult
-    public func pt_bottomAs(_ view: UIView) -> PetralRestraint{
-        return self.pt_bottomAs(view, offset: 0);
-    }
-    
-    @discardableResult
-    public func pt_bottomAs(_ view: UIView, offset: CGFloat) -> PetralRestraint{
+    public func pt_bottomAs(_ view: UIView, offset: CGFloat? = nil) -> PetralRestraint{
         if(self.attachedView.superview == view.superview){
-            self.pt_bottomTo(view, distance: -view.frame.size.height - offset);
-            self.set(type: .bottom, referenceView: view, distance: offset, referenceType: .same);
+            self.pt_bottomTo(view, distance: -view.frame.size.height - (offset ?? 0));
+            self.set(type: .bottom, referenceView: view, distance: (offset ?? 0), referenceType: .same);
         }
         else{
             fatalError("[Petral-UI] Error: pt_bottomAs() fail, because this view and the reference view should have the same superview");
@@ -604,34 +595,29 @@ extension PetralRestraint{
     //MARK: -
     
     @discardableResult
-    public func pt_leftIn(_ view: UIView) -> PetralRestraint{
-        return self.pt_leftIn(view, distance: 0);
-    }
-    
-    @discardableResult
-    public func pt_leftIn(_ view: UIView, distance: CGFloat) -> PetralRestraint{
+    public func pt_leftIn(_ view: UIView, distance: CGFloat? = nil) -> PetralRestraint{
         if(self.attachedView.superview == view){
-            self.attachedView.petralRestraint.set(type: .left, referenceView: view, distance: distance, referenceType: .inside);
+            self.attachedView.petralRestraint.set(type: .left, referenceView: view, distance: (distance ?? 0), referenceType: .inside);
             
             var viewWidth = self.attachedView.frame.size.width;
             if(self.existType(type: .right, referenceType: .to)){
                 let item = self.filterType(type: .right);
                 let referenceView : UIView = (self.attachedView.superview?.viewWithTag(item.referenceViewTag))!;
                 
-                viewWidth = referenceView.frame.origin.x - item.distance - distance;
+                viewWidth = referenceView.frame.origin.x - item.distance - (distance ?? 0);
             }
             else if(self.existType(type: .right, referenceType: .same)){
                 let item = self.filterType(type: .right);
                 let referenceView : UIView = (self.attachedView.superview?.viewWithTag(item.referenceViewTag))!;
                 
-                viewWidth = referenceView.frame.origin.x + referenceView.frame.size.width - distance;
+                viewWidth = referenceView.frame.origin.x + referenceView.frame.size.width - (distance ?? 0);
             }
             else if(self.existType(type: .right, referenceType: .inside)){
                 let item = self.filterType(type: .right);
-                viewWidth = self.attachedView.superview!.frame.size.width - item.distance - distance;
+                viewWidth = self.attachedView.superview!.frame.size.width - item.distance - (distance ?? 0);
             }
             
-            self.attachedView.frame = CGRect.init(x: distance, y: self.attachedView.frame.origin.y, width: viewWidth, height: self.attachedView.frame.size.height);
+            self.attachedView.frame = CGRect.init(x: (distance ?? 0), y: self.attachedView.frame.origin.y, width: viewWidth, height: self.attachedView.frame.size.height);
         }
         else{
             fatalError("[Petral-UI] Error: pt_leftIn() fail, because this view's superview should be the reference view");
@@ -641,34 +627,29 @@ extension PetralRestraint{
     }
     
     @discardableResult
-    public func pt_rightIn(_ view: UIView) -> PetralRestraint{
-        return self.pt_rightIn(view, distance: 0);
-    }
-    
-    @discardableResult
-    public func pt_rightIn(_ view: UIView, distance: CGFloat) -> PetralRestraint{
+    public func pt_rightIn(_ view: UIView, distance: CGFloat? = nil) -> PetralRestraint{
         if(self.attachedView.superview == view){
-            self.attachedView.petralRestraint.set(type: .right, referenceView: view, distance: distance, referenceType: .inside);
+            self.attachedView.petralRestraint.set(type: .right, referenceView: view, distance: (distance ?? 0), referenceType: .inside);
             
             var viewWidth = self.attachedView.frame.size.width;
             if(self.existType(type: .left, referenceType: .to)){
                 let item = self.filterType(type: .left);
                 let referenceView : UIView = (self.attachedView.superview?.viewWithTag(item.referenceViewTag))!;
                 
-                viewWidth = self.attachedView.superview!.frame.size.width - referenceView.frame.origin.x - referenceView.frame.size.width - item.distance - distance;
+                viewWidth = self.attachedView.superview!.frame.size.width - referenceView.frame.origin.x - referenceView.frame.size.width - item.distance - (distance ?? 0);
             }
             else if(self.existType(type: .left, referenceType: .same)){
                 let item = self.filterType(type: .left);
                 let referenceView : UIView = (self.attachedView.superview?.viewWithTag(item.referenceViewTag))!;
                 
-                viewWidth = referenceView.frame.origin.x + referenceView.frame.size.width - distance;
+                viewWidth = referenceView.frame.origin.x + referenceView.frame.size.width - (distance ?? 0);
             }
             else if(self.existType(type: .left, referenceType: .inside)){
                 let item = self.filterType(type: .left);
-                viewWidth = self.attachedView.superview!.frame.size.width - item.distance - distance;
+                viewWidth = self.attachedView.superview!.frame.size.width - item.distance - (distance ?? 0);
             }
             
-            self.attachedView.frame = CGRect.init(x: view.frame.size.width - viewWidth - distance, y: self.attachedView.frame.origin.y, width: viewWidth, height: self.attachedView.frame.size.height);
+            self.attachedView.frame = CGRect.init(x: view.frame.size.width - viewWidth - (distance ?? 0), y: self.attachedView.frame.origin.y, width: viewWidth, height: self.attachedView.frame.size.height);
         }
         else{
             fatalError("[Petral-UI] Error: pt_rightIn() fail, because this view's superview should be the reference view");
@@ -678,34 +659,29 @@ extension PetralRestraint{
     }
     
     @discardableResult
-    public func pt_topIn(_ view: UIView) -> PetralRestraint{
-        return self.pt_topIn(view, distance: 0);
-    }
-    
-    @discardableResult
-    public func pt_topIn(_ view: UIView, distance: CGFloat) -> PetralRestraint{
+    public func pt_topIn(_ view: UIView, distance: CGFloat? = nil) -> PetralRestraint{
         if(self.attachedView.superview == view){
-            self.attachedView.petralRestraint.set(type: .top, referenceView: view, distance: distance, referenceType: .inside);
+            self.attachedView.petralRestraint.set(type: .top, referenceView: view, distance: (distance ?? 0), referenceType: .inside);
             
             var viewHeight = self.attachedView.frame.size.height;
             if(self.existType(type: .bottom, referenceType: .to)){
                 let item = self.filterType(type: .bottom);
                 let referenceView : UIView = (self.attachedView.superview?.viewWithTag(item.referenceViewTag))!;
                 
-                viewHeight = referenceView.frame.origin.y - item.distance - distance;
+                viewHeight = referenceView.frame.origin.y - item.distance - (distance ?? 0);
             }
             else if(self.existType(type: .bottom, referenceType: .same)){
                 let item = self.filterType(type: .bottom);
                 let referenceView : UIView = (self.attachedView.superview?.viewWithTag(item.referenceViewTag))!;
                 
-                viewHeight = referenceView.frame.origin.y + referenceView.frame.size.height - distance;
+                viewHeight = referenceView.frame.origin.y + referenceView.frame.size.height - (distance ?? 0);
             }
             else if(self.existType(type: .bottom, referenceType: .inside)){
                 let item = self.filterType(type: .bottom);
-                viewHeight = self.attachedView.superview!.frame.size.height - item.distance - distance;
+                viewHeight = self.attachedView.superview!.frame.size.height - item.distance - (distance ?? 0);
             }
             
-            self.attachedView.frame = CGRect.init(x: self.attachedView.frame.origin.x, y: distance, width: self.attachedView.frame.size.width, height: viewHeight);
+            self.attachedView.frame = CGRect.init(x: self.attachedView.frame.origin.x, y: (distance ?? 0), width: self.attachedView.frame.size.width, height: viewHeight);
         }
         else{
             fatalError("[Petral-UI] Error: pt_topIn() fail, because this view's superview should be the reference view");
@@ -715,34 +691,29 @@ extension PetralRestraint{
     }
     
     @discardableResult
-    public func pt_bottomIn(_ view: UIView) -> PetralRestraint{
-        return self.pt_bottomIn(view, distance: 0);
-    }
-    
-    @discardableResult
-    public func pt_bottomIn(_ view: UIView, distance: CGFloat) -> PetralRestraint{
+    public func pt_bottomIn(_ view: UIView, distance: CGFloat? = nil) -> PetralRestraint{
         if(self.attachedView.superview == view){
-            self.attachedView.petralRestraint.set(type: .bottom, referenceView: view, distance: distance, referenceType: .inside);
+            self.attachedView.petralRestraint.set(type: .bottom, referenceView: view, distance: (distance ?? 0), referenceType: .inside);
             
             var viewHeight = self.attachedView.frame.size.height;
             if(self.existType(type: .top, referenceType: .to)){
                 let item = self.filterType(type: .top);
                 let referenceView : UIView = (self.attachedView.superview?.viewWithTag(item.referenceViewTag))!;
                 
-                viewHeight = self.attachedView.superview!.frame.size.height - referenceView.frame.size.height - referenceView.frame.origin.y - item.distance - distance;
+                viewHeight = self.attachedView.superview!.frame.size.height - referenceView.frame.size.height - referenceView.frame.origin.y - item.distance - (distance ?? 0);
             }
             else if(self.existType(type: .top, referenceType: .to)){
                 let item = self.filterType(type: .top);
                 let referenceView : UIView = (self.attachedView.superview?.viewWithTag(item.referenceViewTag))!;
                 
-                viewHeight = self.attachedView.superview!.frame.size.height - referenceView.frame.origin.y - distance;
+                viewHeight = self.attachedView.superview!.frame.size.height - referenceView.frame.origin.y - (distance ?? 0);
             }
             else if(self.existType(type: .top, referenceType: .inside)){
                 let item = self.filterType(type: .top);
-                viewHeight = self.attachedView.superview!.frame.size.height - item.distance - distance;
+                viewHeight = self.attachedView.superview!.frame.size.height - item.distance - (distance ?? 0);
             }
             
-            self.attachedView.frame = CGRect.init(x: self.attachedView.frame.origin.x, y: view.frame.size.height - viewHeight - distance, width: self.attachedView.frame.size.width, height: viewHeight);
+            self.attachedView.frame = CGRect.init(x: self.attachedView.frame.origin.x, y: view.frame.size.height - viewHeight - (distance ?? 0), width: self.attachedView.frame.size.width, height: viewHeight);
         }
         else{
             fatalError("[Petral-UI] Error: pt_bottomIn() fail, because this view's superview should be the reference view");
@@ -750,6 +721,9 @@ extension PetralRestraint{
         
         return self;
     }
+    
+    
+    
     
     //MARK: - 
     
