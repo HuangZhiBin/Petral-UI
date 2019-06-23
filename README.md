@@ -384,7 +384,25 @@ a.petralRestraint.pt_updateDependeds();
 - 同时设置view的top、yCenter约束
 - 同时设置view的bottom、yCenter约束
 
-运行时发现fatalError的情形，请修改约束条件后重新运行。
+运行时发现fatalError的情形，请修改约束条件，或者通过下面的方法解决冲突。
+
+### 解决布局冲突的办法
+
+根据fatalError的说明，首先应了解冲突发生的具体规则，然后通过下面的方法解决冲突。
+
+- 1.修改已有的约束条件（即改动已有的代码，重新修改约束条件）
+- 2.**pt_reset()** 重置布局
+- 3.**pt_remove(type: PetralRestraintType)** 删除冲突的约束条件
+
+PetralRestraintType的类型：
+- left
+- right
+- bottom
+- top
+- xCenter
+- yCenter
+- width
+- height
 
 ### 微信讨论群
 
