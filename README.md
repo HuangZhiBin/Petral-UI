@@ -5,7 +5,7 @@
 ## 接入条件
 
 ```
-swift.version >= 4.2.0
+swift.version >= 4.0
 ```
 
 ## 接入方式
