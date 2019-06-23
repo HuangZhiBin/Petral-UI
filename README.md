@@ -395,6 +395,7 @@ a.petralRestraint.pt_updateDependeds();
 - 3.**pt_remove(type: PetralRestraintType)** 删除冲突的约束条件
 
 **PetralRestraintType**的类型：
+
 类型 | 说明
 ---- | ---
 left | 左约束
