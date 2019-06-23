@@ -387,4 +387,4 @@ a.petralRestraint.pt_updateDependeds();
 运行时发现fatalError的情形，请修改约束条件后重新运行。
 
 ### 微信讨论群
-![](http://www.koudaikr.cn/Petral/WechatIMG19.jpeg){:width="20%"}
+![](http://www.koudaikr.cn/Petral/WechatIMG19.jpeg =200x360}
