@@ -385,3 +385,6 @@ a.petralRestraint.pt_updateDependeds();
 - 同时设置view的bottom、yCenter约束
 
 运行时发现fatalError的情形，请修改约束条件后重新运行。
+
+### 微信讨论群
+![](http://www.koudaikr.cn/Petral/WechatIMG19.jpeg)
