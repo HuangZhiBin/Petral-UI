@@ -390,4 +390,4 @@ a.petralRestraint.pt_updateDependeds();
 
 二维码若过期，请加微信ikrboy，请注明petral或者github。
 
-<img width="200" height="360" src="http://www.koudaikr.cn/Petral/WechatIMG19.jpeg"/>
+<img width="300" height="540" src="http://www.koudaikr.cn/Petral/WechatIMG19.jpeg"/>
