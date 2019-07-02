@@ -16,114 +16,122 @@ class ViewController: UIViewController {
         
         //MARK: - Petral
         
-        let label = UILabel.init()
-            .pt_frame(x: 100, y: 100, width: 200, height: 80)
-            .pt_font(size: 18, bold: true)
-            .pt_text("UILabel")
-            .pt_textColor(UIColor.black)
-            .pt_lines(1)
-            .pt_align(.center)
-            .pt_backgroundColor(UIColor.gray)
-            .pt_borderColor(UIColor.red)
-            .pt_borderWidth(2)
-            .pt_borderRadius(12);
+        let label = UILabel.init();
+        label.petralize()
+            .frame(x: 100, y: 100, width: 200, height: 80)
+            .font(size: 18, bold: true)
+            .text("UILabel")
+            .textColor(UIColor.black)
+            .lines(1)
+            .align(.center)
+            .backgroundColor(UIColor.gray)
+            .borderColor(UIColor.red)
+            .borderWidth(2)
+            .borderRadius(12);
         print(label.hash);
         self.view.addSubview(label);
         
-        let textField = UITextField.init()
-            .pt_frame(x: 0, y: 100, width: 80, height: 50)
-            .pt_font(size: 18, bold: true)
-            .pt_text("UITextField")
-            .pt_placeholder("this is hint")
-            .pt_textColor(UIColor.black)
-            .pt_align(.center)
-            .pt_keyboardType(.numberPad)
-            .pt_backgroundColor(UIColor.gray)
-            .pt_borderColor(UIColor.red)
-            .pt_borderWidth(2)
-            .pt_borderRadius(12);
+        let textField = UITextField.init();
+        textField.petralize()
+            .frame(x: 0, y: 100, width: 80, height: 50)
+            .font(size: 18, bold: true)
+            .text("UITextField")
+            .placeholder("this is hint")
+            .textColor(UIColor.black)
+            .align(.center)
+            .keyboardType(.numberPad)
+            .backgroundColor(UIColor.gray)
+            .borderColor(UIColor.red)
+            .borderWidth(2)
+            .borderRadius(12);
         self.view.addSubview(textField);
         textField.petralRestraint
-            .pt_rightTo(label, distance: 40)
-            .pt_topIn(self.view, distance: 10)
-            .pt_bottomTo(label, distance: 20)
+            .rightTo(label, distance: 40)
+            .topIn(self.view, distance: 10)
+            .bottomTo(label, distance: 20)
         
-        //                .pt_width(30)
-        //                .pt_height(50)
+        //                .width(30)
+        //                .height(50)
         
-        let button = UIButton.init()
-            .pt_frame(x: 0, y: 200, width: 120, height: 50)
-            .pt_font(size: 18, bold: true)
-            .pt_backgroundColor(UIColor.green, state: .normal)
-            .pt_backgroundColor(UIColor.blue, state: .highlighted)
-            .pt_title("UIButton", state: .normal)
-            .pt_title("UIButton2", state: .highlighted)
-            .pt_titleColor(UIColor.black, state: .normal)
-            .pt_titleColor(UIColor.white, state: .highlighted)
-            .pt_align(.center)
-            .pt_borderColor(UIColor.red)
-            .pt_borderWidth(2)
-            .pt_borderRadius(12);
+        let button = UIButton.init();
+        button.petralize()
+            .frame(x: 0, y: 200, width: 120, height: 50)
+            .font(size: 18, bold: true)
+            .backgroundColor(UIColor.green, state: .normal)
+            .backgroundColor(UIColor.blue, state: .highlighted)
+            .title("UIButton", state: .normal)
+            .title("UIButton2", state: .highlighted)
+            .titleColor(UIColor.black, state: .normal)
+            .titleColor(UIColor.white, state: .highlighted)
+            .align(.center)
+            .masksToBounds(true)
+            .borderColor(UIColor.red)
+            .borderWidth(2)
+            .borderRadius(12);
         self.view.addSubview(button);
         button.petralRestraint
-            .pt_xCenterAs(label, offset: 40)
-//            .pt_leftAs(label, offset: 20)
-        //.pt_centerAs(label);
+            .xCenterAs(label, offset: 40)
+//            .leftAs(label, offset: 20)
+        //.centerAs(label);
         
-        let view = UIView.init()
-            .pt_frame(x: 0, y: 360, width: 300, height: 300)
-            .pt_backgroundColor(UIColor.lightGray)
-            .pt_borderColor(UIColor.red)
-            .pt_borderWidth(2)
-            .pt_borderRadius(12);
+        let view = UIView.init();
+        view.petralize()
+            .frame(x: 0, y: 360, width: 300, height: 300)
+            .backgroundColor(UIColor.lightGray)
+            .borderColor(UIColor.red)
+            .borderWidth(2)
+            .borderRadius(12);
         self.view.addSubview(view);
         view.petralRestraint
-            .pt_leftIn(self.view, distance: 20)
-            .pt_rightIn(self.view, distance: 20)
-            //                .pt_topIn(self.view, distance: 20)
-            .pt_bottomIn(self.view, distance: 20);
+            .leftIn(self.view, distance: 20)
+            .rightIn(self.view, distance: 20)
+            //                .topIn(self.view, distance: 20)
+            .bottomIn(self.view, distance: 20);
         
-        let textView = UITextView.init()
-            .pt_frame(x: 0, y: 0, width: 140, height: 50)
-            .pt_backgroundColor(UIColor.lightGray)
-            .pt_font(size: 18, bold: true)
-            .pt_text("UITextView")
-            .pt_textColor(UIColor.black)
-            .pt_align(.center)
-            .pt_borderColor(UIColor.red)
-            .pt_borderWidth(2)
-            .pt_borderRadius(12);
+        let textView = UITextView.init();
+        textView.petralize()
+            .frame(x: 0, y: 0, width: 140, height: 50)
+            .backgroundColor(UIColor.lightGray)
+            .font(size: 18, bold: true)
+            .text("UITextView")
+            .textColor(UIColor.black)
+            .align(.center)
+            .borderColor(UIColor.red)
+            .borderWidth(2)
+            .borderRadius(12);
         view.addSubview(textView);
         textView.petralRestraint
-            .pt_centerIn(view)
-            .pt_width(200)
-            .pt_height(100)
+            .centerIn(view)
+            .width(200)
+            .height(100)
         
-        let label2 = UILabel.init()
-            .pt_frame(x: 20, y: 0, width: 120, height: 100)
-            .pt_backgroundColor(UIColor.blue)
-            .pt_text("his name");
+        let label2 = UILabel.init();
+        label2.petralize()
+            .frame(x: 20, y: 0, width: 120, height: 100)
+            .backgroundColor(UIColor.blue)
+            .text("his name");
         self.view.addSubview(label2);
         label2.petralRestraint
-            .pt_leftIn(self.view, distance: 30)
-            .pt_rightIn(self.view, distance: 30)
-            .pt_height(40)
-            .pt_topTo(button, distance: 20);
+            .leftIn(self.view, distance: 30)
+            .rightIn(self.view, distance: 30)
+            .height(40)
+            .topTo(button, distance: 20);
         
         
         label.petralRestraint
-            .pt_leftIn(self.view, distance: 50)
-            .pt_width(320)
-            .pt_height(120);
-        label.petralRestraint.pt_updateDependeds();
+            .leftIn(self.view, distance: 50)
+            .width(320)
+            .height(120);
+        label.petralRestraint.updateDependeds();
         
-        let label3 = UILabel.init()
-            .pt_frame(x: 20, y: 0, width: 120, height: 100)
-            .pt_backgroundColor(UIColor.purple)
-            .pt_text("My name");
+        let label3 = UILabel.init();
+        label3.petralize()
+            .frame(x: 20, y: 0, width: 120, height: 100)
+            .backgroundColor(UIColor.purple)
+            .text("My name");
         self.view.addSubview(label3);
         label3.petralRestraint
-            .pt_locateIn(self.view, inset: UIEdgeInsets.init(top: 10, left: 20, bottom: 30, right: 40));
+            .locateIn(self.view, inset: UIEdgeInsets.init(top: 200, left: 100, bottom: 360, right: 140));
         
     }
     
