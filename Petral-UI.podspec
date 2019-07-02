@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Petral-UI'
-  s.version          = '1.0.5'
+  s.version          = '1.0.7'
   s.summary          = '以Swift实现的 UI布局框架，以最少的代码，实现UI的搭建、属性设置以及布局控制'
 
 # This description is used to generate tags and improve search results.
