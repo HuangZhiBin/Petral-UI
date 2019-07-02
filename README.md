@@ -19,13 +19,14 @@ Petral-UI主要是下面两个部分：
 ## 1.连续点方法
 连续设置UIView的属性，例如
 ```swift
-let nameLabel = UILabel.init()
-.pt_frame(x: 0, y: 0, width: 80, height: 20)
-.pt_text("姓名")
-.pt_font(size: 14, bold: true)
-.pt_textColor(UIColor.init(hexString: "#1f1f1f"));
+let nameLabel = UILabel.init();
+nameLabel.petralize()
+  .frame(x: 0, y: 0, width: 80, height: 20)
+  .text("姓名")
+  .font(size: 14, bold: true)
+  .textColor(UIColor.init(hexString: "#1f1f1f"));
 ```
-通过直接调用.pt_为前缀的方法，直接连续设置View的UI属性，与调用系统方法的API类似。可实现对View的连续设置，减少代码。
+通过直接调用.为前缀的方法，直接连续设置View的UI属性，与调用系统方法的API类似。可实现对View的连续设置，减少代码。
 现有的API可以基本满足UI设置，大家可以根据实际需要自行添加更多的API方法。
 
 ## 2.自动布局
@@ -36,11 +37,11 @@ let nameLabel = UILabel.init()
 ```swift
 self.view.addSubview(nameLabel);
 ```
-2.访问View的petralRestraint属性，通过以pt_为前缀的方法设置布局。
+2.访问View的petralRestraint属性的方法设置布局。
 ```swift
 nameLabel.petralRestraint
-.pt_topIn(self.view, distance: 10) // View的顶部与父View的距离为10
-.pt_leftIn(self.view, distance: 20);// View的左边与父View的距离为20
+.topIn(self.view, distance: 10) // View的顶部与父View的距离为10
+.leftIn(self.view, distance: 20);// View的左边与父View的距离为20
 ```
 ------------
 
@@ -54,12 +55,12 @@ View a与View b是属于同一层级的两个View，View b的位置可以由View
 
 ##### （1）to方法
 
-- **pt_leftTo()**
+- **leftTo()**
 
 View b的左边与View a的距离是n
 
 ```swift
-b.petralRestraint.pt_leftTo(a, distance: n)
+b.petralRestraint.leftTo(a, distance: n)
 ```
 
 ![](http://www.koudaikr.cn/Petral/leftto.png)
@@ -67,12 +68,12 @@ b.petralRestraint.pt_leftTo(a, distance: n)
 ------------
 
 
-- **pt_rightTo()**
+- **rightTo()**
 
 View b的右边与View a的距离是n
 
 ```swift
-b.petralRestraint.pt_rightTo(a, distance: n)
+b.petralRestraint.rightTo(a, distance: n)
 ```
 
 ![](http://www.koudaikr.cn/Petral/rightto.png)
@@ -80,12 +81,12 @@ b.petralRestraint.pt_rightTo(a, distance: n)
 ------------
 
 
-- **pt_topTo()**
+- **topTo()**
 
 View b的顶部与View a的距离是n
 
 ```swift
-b.petralRestraint.pt_topTo(a, distance: n)
+b.petralRestraint.topTo(a, distance: n)
 ```
 
 ![](http://www.koudaikr.cn/Petral/topto.png)
@@ -94,12 +95,12 @@ b.petralRestraint.pt_topTo(a, distance: n)
 ------------
 
 
-- **pt_bottomTo()**
+- **bottomTo()**
 
 View b的底部与View a的距离是n
 
 ```swift
-b.petralRestraint.pt_bottomTo(a, distance: n)
+b.petralRestraint.bottomTo(a, distance: n)
 ```
 
 ![](http://www.koudaikr.cn/Petral/bottomto.png)
@@ -107,12 +108,12 @@ b.petralRestraint.pt_bottomTo(a, distance: n)
 
 ##### （2）as方法
 
-- **pt_leftAs**
+- **leftAs**
 
 View b的左边与View a的左边的水平位置一致（可偏离n）
 
 ```swift
-b.petralRestraint.pt_leftAs(a, offset: n)
+b.petralRestraint.leftAs(a, offset: n)
 ```
 
 ![](http://www.koudaikr.cn/Petral/leftas.png)
@@ -121,11 +122,11 @@ b.petralRestraint.pt_leftAs(a, offset: n)
 ------------
 
 
-- **pt_rightAs**
+- **rightAs**
 
 View b的右边与View a的右边的水平位置一致（可偏离n）
 ```swift
-b.petralRestraint.pt_rightAs(a, offset: n)
+b.petralRestraint.rightAs(a, offset: n)
 ```
 
 
@@ -135,12 +136,12 @@ b.petralRestraint.pt_rightAs(a, offset: n)
 ------------
 
 
-- **pt_topAs**
+- **topAs**
 
 View b的顶部与View a的顶部的水平位置一致（可偏离n）
 
 ```swift
-b.petralRestraint.pt_topAs(a, offset: n)
+b.petralRestraint.topAs(a, offset: n)
 ```
 
 ![](http://www.koudaikr.cn/Petral/topas.png)
@@ -149,12 +150,12 @@ b.petralRestraint.pt_topAs(a, offset: n)
 
 
 
-- **pt_bottomAs**
+- **bottomAs**
 
 View b的底部与View a的底部的水平位置一致（可偏离n）
 
 ```swift
-b.petralRestraint.pt_bottomAs(a, offset: n)
+b.petralRestraint.bottomAs(a, offset: n)
 ```
 
 
@@ -164,10 +165,10 @@ b.petralRestraint.pt_bottomAs(a, offset: n)
 ------------
 
 
-- **pt_xCenterAs**
+- **xCenterAs**
 
 ```swift
-b.petralRestraint.pt_xCenterAs(a, offset: n)
+b.petralRestraint.xCenterAs(a, offset: n)
 ```
 View b的中间水平位置与View a的中间水平位置一致（可偏离n）
 
@@ -178,10 +179,10 @@ View b的中间水平位置与View a的中间水平位置一致（可偏离n）
 ------------
 
 
-- **pt_yCenterAs**
+- **yCenterAs**
 
 ```swift
-b.petralRestraint.pt_yCenterAs(a, offset: n)
+b.petralRestraint.yCenterAs(a, offset: n)
 ```
 View b的中间垂直位置与View a的中间垂直位置一致（可偏离n）
 
@@ -192,10 +193,10 @@ View b的中间垂直位置与View a的中间垂直位置一致（可偏离n）
 
 
 
-- **pt_centerAs**
+- **centerAs**
 
 ```swift
-b.petralRestraint.pt_centerAs(a, xOffset: m, yOffset: n)
+b.petralRestraint.centerAs(a, xOffset: m, yOffset: n)
 ```
 View b的中间点与View a的中间点位置一致（x可偏离m,y可偏离n）
 
@@ -212,12 +213,12 @@ View a与View b的父View，View b的位置可以由View a决定。
 
 
 
-- **pt_leftIn()**
+- **leftIn()**
 
 View b的左边与父View a的左边的距离为n
 
 ```swift
-b.petralRestraint.pt_leftIn(a, distance: n)
+b.petralRestraint.leftIn(a, distance: n)
 ```
 
 
@@ -229,12 +230,12 @@ b.petralRestraint.pt_leftIn(a, distance: n)
 
 
 
-- **pt_rightIn()**
+- **rightIn()**
 
 View b的右边与父View a的y右边的距离为n
 
 ```swift
-b.petralRestraint.pt_rightIn(a, distance: n)
+b.petralRestraint.rightIn(a, distance: n)
 ```
 
 
@@ -246,12 +247,12 @@ b.petralRestraint.pt_rightIn(a, distance: n)
 
 
 
-- **pt_topIn()**
+- **topIn()**
 
 View b的顶部与父View a的顶部的距离为n
 
 ```swift
-b.petralRestraint.pt_topIn(a, distance: n)
+b.petralRestraint.topIn(a, distance: n)
 ```
 
 ![](http://www.koudaikr.cn/Petral/topin.png)
@@ -262,12 +263,12 @@ b.petralRestraint.pt_topIn(a, distance: n)
 
 
 
-- **pt_bottomIn()**
+- **bottomIn()**
 
 View b的底部与父View a的底部的距离为n
 
 ```swift
-b.petralRestraint.pt_bottomIn(a, distance: n)
+b.petralRestraint.bottomIn(a, distance: n)
 ```
 
 
@@ -279,12 +280,12 @@ b.petralRestraint.pt_bottomIn(a, distance: n)
 
 
 
-- **pt_xCenterIn()**
+- **xCenterIn()**
 
 View b的水平位置位于父View a的中间
 
 ```swift
-b.petralRestraint.pt_xCenterIn(a)
+b.petralRestraint.xCenterIn(a)
 ```
 
 ![](http://www.koudaikr.cn/Petral/xcenterin.png)
@@ -293,12 +294,12 @@ b.petralRestraint.pt_xCenterIn(a)
 ------------
 
 
-- **pt_yCenterIn()**
+- **yCenterIn()**
 
 View b的垂直位置位于父View a的中间
 
 ```swift
-b.petralRestraint.pt_yCenterIn(a)
+b.petralRestraint.yCenterIn(a)
 ```
 
 
@@ -310,12 +311,12 @@ b.petralRestraint.pt_yCenterIn(a)
 
 
 
-- **pt_centerIn()**
+- **centerIn()**
 
 View b的水平和垂直位置位于父View a的中间
 
 ```swift
-b.petralRestraint.pt_centerIn(a)
+b.petralRestraint.centerIn(a)
 ```
 
 
@@ -328,12 +329,12 @@ b.petralRestraint.pt_centerIn(a)
 
 
 
-- **pt_width()**
+- **width()**
 
 View b的固定宽度为n
 
 ```swift
-b.petralRestraint.pt_width(n)
+b.petralRestraint.width(n)
 ```
 
 
@@ -346,12 +347,12 @@ b.petralRestraint.pt_width(n)
 
 
 
-- **pt_height()**
+- **height()**
 
 View b的固定高度为n
 
 ```swift
-b.petralRestraint.pt_height(n)
+b.petralRestraint.height(n)
 ```
 
 
@@ -361,12 +362,12 @@ b.petralRestraint.pt_height(n)
 
 ### 布局的级联更新
 
-- **pt_updateDependeds()**
+- **updateDependeds()**
 
-View b的位置受到View a的制约，View c的位置受到View b的制约，若View a的位置或者大小发生改变，要保持之前的制约条件(Restraint)，需要手动调用API方法a.petralRestraint.pt_updateDependeds();进行更新，使View b和View c的位置和大小发生改变。不手动调用该方法，将不主动实现UI的级联更新。
+View b的位置受到View a的制约，View c的位置受到View b的制约，若View a的位置或者大小发生改变，要保持之前的制约条件(Restraint)，需要手动调用API方法a.petralRestraint.updateDependeds();进行更新，使View b和View c的位置和大小发生改变。不手动调用该方法，将不主动实现UI的级联更新。
 
 ```swift
-a.petralRestraint.pt_updateDependeds();
+a.petralRestraint.updateDependeds();
 ```
 
 ![](http://www.koudaikr.cn/Petral/relative.png)
@@ -391,8 +392,8 @@ a.petralRestraint.pt_updateDependeds();
 根据fatalError的说明，首先应了解冲突发生的具体规则，然后选择下面的其中一个方法解决冲突。
 
 - 1.修改已有的约束条件（即改动已有的代码，重新修改约束条件）
-- 2.**pt_reset()** 重置布局
-- 3.**pt_remove(type: PetralRestraintType)** 删除冲突的约束条件
+- 2.**reset()** 重置布局
+- 3.**remove(type: PetralRestraintType)** 删除冲突的约束条件
 
 **PetralRestraintType**的类型：
 
