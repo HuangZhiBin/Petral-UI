@@ -172,6 +172,12 @@ public class PetralAttributeUIButton: PetralAttribute {
         UIGraphicsEndImageContext()
         return theImage!
     }
+    
+    @discardableResult
+    public override func masksToBounds(_ masksToBounds: Bool) -> PetralAttributeUIButton {
+        super.masksToBounds(masksToBounds);
+        return self;
+    }
 }
 
 // MARK: -
@@ -217,6 +223,12 @@ public class PetralAttributeUIImageView: PetralAttribute{
     @discardableResult
     override public func borderColor(_ borderColor: UIColor) -> PetralAttributeUIImageView {
         super.borderColor(borderColor);
+        return self;
+    }
+    
+    @discardableResult
+    public override func masksToBounds(_ masksToBounds: Bool) -> PetralAttributeUIImageView {
+        super.masksToBounds(masksToBounds);
         return self;
     }
 }
@@ -290,6 +302,12 @@ public class PetralAttributeUILabel: PetralAttribute{
         super.borderColor(borderColor);
         return self;
     }
+    
+    @discardableResult
+    public override func masksToBounds(_ masksToBounds: Bool) -> PetralAttributeUILabel {
+        super.masksToBounds(masksToBounds);
+        return self;
+    }
 
 }
 
@@ -351,6 +369,12 @@ public class PetralAttributeUIScrollView: PetralAttribute{
         return self;
     }
     
+    @discardableResult
+    public override func masksToBounds(_ masksToBounds: Bool) -> PetralAttributeUIScrollView {
+        super.masksToBounds(masksToBounds);
+        return self;
+    }
+    
 }
 
 // MARK: -
@@ -390,6 +414,12 @@ public class PetralAttributeUITableView: PetralAttributeUIScrollView {
     @discardableResult
     override public func borderColor(_ borderColor: UIColor) -> PetralAttributeUITableView {
         super.borderColor(borderColor);
+        return self;
+    }
+    
+    @discardableResult
+    public override func masksToBounds(_ masksToBounds: Bool) -> PetralAttributeUITableView {
+        super.masksToBounds(masksToBounds);
         return self;
     }
     
@@ -477,6 +507,12 @@ public class PetralAttributeUITextField: PetralAttribute{
         return self;
     }
     
+    @discardableResult
+    public override func masksToBounds(_ masksToBounds: Bool) -> PetralAttributeUITextField {
+        super.masksToBounds(masksToBounds);
+        return self;
+    }
+    
 }
 
 // MARK: -
@@ -555,4 +591,9 @@ public class PetralAttributeUITextView: PetralAttributeUIScrollView {
         return self;
     }
     
+    @discardableResult
+    public override func masksToBounds(_ masksToBounds: Bool) -> PetralAttributeUITextView{
+        super.masksToBounds(masksToBounds);
+        return self;
+    }
 }

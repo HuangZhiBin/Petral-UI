@@ -44,25 +44,25 @@ extension UIView {
             if result == nil {
                 //print("==1==");
                 var attribute : PetralAttribute;
-                if(NSStringFromClass(self.classForCoder) == "UIButton"){
+                if(self.isKind(of: UIButton.self)){
                     attribute = PetralAttributeUIButton.init(self);
                 }
-                else if(NSStringFromClass(self.classForCoder) == "UIImageView"){
+                else if(self.isKind(of: UIImageView.self)){
                     attribute = PetralAttributeUIImageView.init(self);
                 }
-                else if(NSStringFromClass(self.classForCoder) == "UILabel"){
+                else if(self.isKind(of: UILabel.self)){
                     attribute = PetralAttributeUILabel.init(self);
                 }
-                else if(NSStringFromClass(self.classForCoder) == "UITextField"){
+                else if(self.isKind(of: UITextField.self)){
                     attribute = PetralAttributeUITextField.init(self);
                 }
-                else if(NSStringFromClass(self.classForCoder) == "UITextView"){
+                else if(self.isKind(of: UITextView.self)){
                     attribute = PetralAttributeUITextView.init(self);
                 }
-                else if(NSStringFromClass(self.classForCoder) == "UIScrollView"){
+                else if(self.isKind(of: UIScrollView.self)){
                     attribute = PetralAttributeUIScrollView.init(self);
                 }
-                else if(NSStringFromClass(self.classForCoder) == "UITableView"){
+                else if(self.isKind(of: UITableView.self)){
                     attribute = PetralAttributeUITableView.init(self);
                 }
                 else{
