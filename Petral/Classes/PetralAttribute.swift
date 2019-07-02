@@ -2,7 +2,7 @@
 //  PetralAttribute.swift
 //  Petral
 //
-//  Created by 黄智彬 on 2019/6/26.
+//  Created by BinHuang on 2019/6/26.
 //
 
 import UIKit
