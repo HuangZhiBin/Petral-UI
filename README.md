@@ -40,8 +40,8 @@ self.view.addSubview(nameLabel);
 2.访问View的petralRestraint属性的方法设置布局。
 ```swift
 nameLabel.petralRestraint
-.topIn(self.view, distance: 10) // View的顶部与父View的距离为10
-.leftIn(self.view, distance: 20);// View的左边与父View的距离为20
+.topIn(offset: 10) // View的顶部与父View的距离为10
+.leftIn(offset: 20);// View的左边与父View的距离为20
 ```
 ------------
 
@@ -60,7 +60,7 @@ View a与View b是属于同一层级的两个View，View b的位置可以由View
 View b的左边与View a的距离是n
 
 ```swift
-b.petralRestraint.leftTo(a, distance: n)
+b.petralRestraint.leftTo(a, offset: n)
 ```
 
 ![](http://www.koudaikr.cn/Petral/leftto.png)
@@ -73,7 +73,7 @@ b.petralRestraint.leftTo(a, distance: n)
 View b的右边与View a的距离是n
 
 ```swift
-b.petralRestraint.rightTo(a, distance: n)
+b.petralRestraint.rightTo(a, offset: n)
 ```
 
 ![](http://www.koudaikr.cn/Petral/rightto.png)
@@ -86,7 +86,7 @@ b.petralRestraint.rightTo(a, distance: n)
 View b的顶部与View a的距离是n
 
 ```swift
-b.petralRestraint.topTo(a, distance: n)
+b.petralRestraint.topTo(a, offset: n)
 ```
 
 ![](http://www.koudaikr.cn/Petral/topto.png)
@@ -100,7 +100,7 @@ b.petralRestraint.topTo(a, distance: n)
 View b的底部与View a的距离是n
 
 ```swift
-b.petralRestraint.bottomTo(a, distance: n)
+b.petralRestraint.bottomTo(a, offset: n)
 ```
 
 ![](http://www.koudaikr.cn/Petral/bottomto.png)
@@ -215,10 +215,10 @@ View a与View b的父View，View b的位置可以由View a决定。
 
 - **leftIn()**
 
-View b的左边与父View a的左边的距离为n
+View b的左边与父View的左边的距离为n
 
 ```swift
-b.petralRestraint.leftIn(a, distance: n)
+b.petralRestraint.leftIn(offset: n)
 ```
 
 
@@ -232,10 +232,10 @@ b.petralRestraint.leftIn(a, distance: n)
 
 - **rightIn()**
 
-View b的右边与父View a的y右边的距离为n
+View b的右边与父View的y右边的距离为n
 
 ```swift
-b.petralRestraint.rightIn(a, distance: n)
+b.petralRestraint.rightIn(offset: n)
 ```
 
 
@@ -249,10 +249,10 @@ b.petralRestraint.rightIn(a, distance: n)
 
 - **topIn()**
 
-View b的顶部与父View a的顶部的距离为n
+View b的顶部与父View的顶部的距离为n
 
 ```swift
-b.petralRestraint.topIn(a, distance: n)
+b.petralRestraint.topIn(offset: n)
 ```
 
 ![](http://www.koudaikr.cn/Petral/topin.png)
@@ -265,10 +265,10 @@ b.petralRestraint.topIn(a, distance: n)
 
 - **bottomIn()**
 
-View b的底部与父View a的底部的距离为n
+View b的底部与父View的底部的距离为n
 
 ```swift
-b.petralRestraint.bottomIn(a, distance: n)
+b.petralRestraint.bottomIn(offset: n)
 ```
 
 
@@ -282,10 +282,10 @@ b.petralRestraint.bottomIn(a, distance: n)
 
 - **xCenterIn()**
 
-View b的水平位置位于父View a的中间
+View b的水平位置位于父View的中间
 
 ```swift
-b.petralRestraint.xCenterIn(a)
+b.petralRestraint.xCenterIn()
 ```
 
 ![](http://www.koudaikr.cn/Petral/xcenterin.png)
@@ -296,10 +296,10 @@ b.petralRestraint.xCenterIn(a)
 
 - **yCenterIn()**
 
-View b的垂直位置位于父View a的中间
+View b的垂直位置位于父View的中间
 
 ```swift
-b.petralRestraint.yCenterIn(a)
+b.petralRestraint.yCenterIn()
 ```
 
 
@@ -313,10 +313,10 @@ b.petralRestraint.yCenterIn(a)
 
 - **centerIn()**
 
-View b的水平和垂直位置位于父View a的中间
+View b的水平和垂直位置位于父View的中间
 
 ```swift
-b.petralRestraint.centerIn(a)
+b.petralRestraint.centerIn()
 ```
 
 
