@@ -2,7 +2,7 @@
 
 **Petral-UI**基于 Swift 实现的 UI 框架，功能包括：
 
-- 1.UI 控件的设置属性的方法的连续调用
+- 1.UI 控件方法的连续调用
 - 2.自动布局
 - 3.解析 XML 布局(重点推荐)
 
@@ -20,7 +20,7 @@ pod 'Petral-UI'
 
 Petral-UI 主要是下面两个部分：
 
-## 1.UI 控件的设置属性的方法的连续调用
+## 1.UI 控件方法的连续调用
 
 连续设置 UIView 的属性，例如
 
@@ -402,7 +402,12 @@ XML 布局代码的编写有一定的规范：
 
 #### 3.XML 代码提示
 
-推荐 VSCode 编辑 XML 代码，安装插件：**XML Language Support by Red Hat**
+- 推荐 VSCode 编辑 XML 代码，安装插件：**XML Language Support by Red Hat**
+- 属性值的类型可参考：PetralParser.swift
+
+| 值类型               | 值的格式 1 | 值的格式 2 | 值的格式 3 | 值的格式 4 | 值的格式 5 |
+| -------------------- | ---------- | ---------- | ---------- | ---------- | ---------- |
+| PetralRestraintParam | 1          | 2          | 3          | 4          | 5          |
 
 #### 4.控件的设置
 
@@ -429,7 +434,7 @@ XML 布局支持大部分可静态配置的 UI 控件，例如：UIView、UIButt
 | UISwitch           | switch           |
 | UIWebView          | webview          |
 
-除了上面的控件之外，还支持自定义控件，控件名称为对应的 class 类型，例如 RedImageView 是一个自定义的继承 UIImageView 的类：
+除了上面的控件之外，还支持自定义控件，控件名称为对应的 class 类型，例如 RedImageView 是一个继承 UIImageView 的自定义类：
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -440,6 +445,30 @@ XML 布局支持大部分可静态配置的 UI 控件，例如：UIView、UIButt
     image="icon_profile"></RedImageView>
 </views>
 ```
+
+RedImageView 类可通用父类的属性，例如 image 属性
+
+#### 5.控件的互相嵌套
+
+全面支持系统和自定义控件之间的互相嵌套
+
+### (2)iOS 引用 XML 布局
+
+#### 1.XML 控件的加载
+
+```Swift
+self.view.petralLoadXmlViews(xmlPath: "XmlViewController");
+```
+
+上面的代码表示 self.view 加载 XmlViewController.xml 的布局文件
+
+#### 2.指定控件的访问
+
+```Swift
+let userInfoView = self.view.petralViewById(id: "userInfoView") as! UserInfoView;
+```
+
+上面的代码表示 userInfoView 是 XmlViewController 里 id 属性为"userInfoView"的控件。
 
 ### 微信讨论群
 
