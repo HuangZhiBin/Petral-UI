@@ -407,47 +407,47 @@ XML 布局代码的编写有一定的规范：
 
 ##### [1] 控件属性的值类型
 
-| 控件属性类型    | 值格式 1              | 值格式 2           | 值格式 3         | 值格式 4           | 值格式 5 |
-| --------------- | --------------------- | ------------------ | ---------------- | ------------------ | -------- |
-| NSTextAlignment | left                  | right              | center           | justified          | natural  |
-|                 | 居左                  | 居右               | 居中             |                    |          |
-| UIFont          | 12                    | 12+                |                  |                    |          |
-|                 | 系统字体 12 号        | 系统字体 12 号加粗 |                  |                    |          |
-| UIEdgeInsets    | 10,20.0,30,40         |                    |                  |                    |          |
-|                 | top,left,bottom,right |                    |                  |                    |          |
-| CGSize          | 10,20.4               |                    |                  |                    |          |
-|                 | width,height          |                    |                  |                    |          |
-| CGPoint         | 10,20.4               |                    |                  |                    |          |
-|                 | x,y                   |                    |                  |                    |          |
-| Bool            | true                  | false              |                  |                    |          |
-|                 | 真                    | 假                 |                  |                    |          |
-| CGRect          | 0                     | 100.0,200          | 10.0,20,100,200  |                    |          |
-|                 | CGRect.zero           | width,height       | x,y,width,height |                    |          |
-| UIColor         | #d7d7d7               | d7d7d7             | rgb(100,200,231) | rgba(10,20,30,0.5) | red      |
-|                 | HEX 值                | HEX 值             | RGB 值           | RGBA 值            | 颜色名   |
+| 控件属性类型    | 值格式 1              | 值格式 2     | 值格式 3         | 值格式 4           | 值格式 5 |
+| --------------- | --------------------- | ------------ | ---------------- | ------------------ | -------- |
+| NSTextAlignment | left                  | right        | center           | justified          | natural  |
+|                 | 居左                  | 居右         | 居中             |                    |          |
+| UIFont          | 12                    | 12+          |                  |                    |          |
+|                 | 系统 12               | 系统 12 加粗 |                  |                    |          |
+| UIEdgeInsets    | 10,20.0,30,40         |              |                  |                    |          |
+|                 | top,left,bottom,right |              |                  |                    |          |
+| CGSize          | 10,20.4               |              |                  |                    |          |
+|                 | width,height          |              |                  |                    |          |
+| CGPoint         | 10,20.4               |              |                  |                    |          |
+|                 | x,y                   |              |                  |                    |          |
+| Bool            | true                  | false        |                  |                    |          |
+|                 | 真                    | 假           |                  |                    |          |
+| CGRect          | 0                     | 100.0,200    | 10.0,20,100,200  |                    |          |
+|                 | CGRect.zero           | width,height | x,y,width,height |                    |          |
+| UIColor         | #d7d7d7               | d7d7d7       | rgb(100,200,231) | rgba(10,20,30,0.5) | red      |
+|                 | HEX 值                | HEX 值       | RGB 值           | RGBA 值            | 颜色名   |
 
 ##### [2] 布局属性的值类型
 
-| 布局属性类型 | 值格式 1                | 值格式 2                 | 值格式 3                 | 值格式 4     | 值格式 5      |
-| ------------ | ----------------------- | ------------------------ | ------------------------ | ------------ | ------------- |
-| left         | 0                       | label1                   | label1,100               | textview1;20 | button1,20,30 |
-|              | 左边与 superView 距离 0 | 左边的位置与 label1 相同 | 左边的位置与 label1 相同 |              |               |
-| right        | 0                       | label1                   | label1,100               | textview1;20 | button1,20,30 |
-|              | 系统字体 12 号          | 系统字体 12 号加粗       |                          |              |               |
-| top          | 0                       | label1                   | label1,100               | textview1;20 | button1,20,30 |
-|              | top,left,bottom,right   |                          |                          |              |               |
-| bottom       | 0                       | label1                   | label1,100               | textview1;20 | button1,20,30 |
-|              | width,height            |                          |                          |              |               |
-| xCenter      | 0                       | label1                   | label1,100               | textview1;20 | button1,20,30 |
-|              | x,y                     |                          |                          |              |               |
-| yCenter      | 0                       | label1                   | label1,100               | textview1;20 | button1,20,30 |
-|              | 真                      | 假                       |                          |              |               |
-| center       | 0                       | label1                   | label1,100               | textview1;20 | button1,20,30 |
-|              | CGRect.zero             | width,height             | x,y,width,height         |              |               |
-| width        | 0                       | label1                   | label1,100               | textview1;20 | button1,20,30 |
-|              | HEX 值                  | HEX 值                   | RGB 值                   | RGBA 值      | 颜色类型      |
-| height       | 0                       | label1                   | label1,100               | textview1;20 | button1,20,30 |
-|              | HEX 值                  | HEX 值                   | RGB 值                   | RGBA 值      | 颜色类型      |
+| 布局属性类型 | 值格式 1                | 值格式 2           | 值格式 3                             | 值格式 4               | 值格式 5 |
+| ------------ | ----------------------- | ------------------ | ------------------------------------ | ---------------------- | -------- |
+| left         | 0                       | label1             | label1,100                           | label1;20              |          |
+|              | 左边与 superView 距离 0 | 左边与 label1 相同 | 左边与 label1 偏离 100               | 左边与 label1 距离 100 |          |
+| right        | 0                       | label1             | label1,100                           | label1;20              |          |
+|              | 右边与 superView 距离 0 | 右边与 label1 相同 | 右边与 label1 偏离 100               | 右边与 label1 距离 100 |          |
+| top          | 0                       | label1             | label1,100                           | label1;20              |          |
+|              | 顶部与 superView 距离 0 | 顶部与 label1 相同 | 顶部与 label1 偏离 100               | 顶部与 label1 距离 100 |          |
+| bottom       | 0                       | label1             | label1,100                           | label1;20              |          |
+|              | 底部与 superView 距离 0 | 底部与 label1 相同 | 底部与 label1 偏离 100               | 底部与 label1 距离 100 |          |
+| xCenter      | 0                       | label1             | label1,100                           |                        |          |
+|              | x 与 superView 居中     | x 与 label1 居中   | x 与 label1 居中并偏离 100           |                        |          |
+| yCenter      | 0                       | label1             | label1,100                           |                        |          |
+|              | y 与 superView 居中     | y 与 label1 居中   | y 与 label1 居中并偏离 100           |                        |          |
+| center       | 0                       | label1             | label1,20,30                         |                        |          |
+|              | 与 superView 居中       | 与 label1 居中     | 与 label1 居中，x 偏离 20，y 偏离 30 |                        |          |
+| width        | 0                       | label1             | label1,100                           |                        |          |
+|              | 宽度为 0                | 宽度与 label1 相同 | 宽度与 label1 一致并偏离 100         |                        |          |
+| height       | 0                       | label1             | label1,100                           |                        |          |
+|              | 高度为 0                | 高度与 label1 相同 | 高度与 label1 一致并偏离 100         |                        |          |
 
 #### 4.控件的设置
 
