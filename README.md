@@ -4,7 +4,6 @@
 
 - 1.UI 控件的设置属性的方法的连续调用
 - 2.自动布局
-- 3.解析 XML 布局(重点推荐)
 
 ## 接入条件
 
@@ -357,89 +356,6 @@ a.petralRestraint.updateDependeds();
 | yCenter | 垂直居中 |
 | width   | 宽度约束 |
 | height  | 高度约束 |
-
-## 3.解析 XML 布局
-
-通过新建 XML 的布局文件，实现 UI 的布局、控件的属性设置、控件的自动布局，实现 UI 层级的结构化，提高编辑及修改 UI 的效率。
-
-### (1)新建 XML 布局文件
-
-```XML
-<?xml version="1.0" encoding="utf-8"?>
-<views xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.koudaikr.cn/petral-ui.xsd">
-  <label
-    id="label1"
-    frame="10,50,100,20"
-    font="18"
-    textColor="#555555"
-    backgroundColor="#d3d3d3"
-    text="发送短信"
-    lines="1"
-    align="right"
-    top="image1;0"
-    height="image1,0"></label>
-</views>
-```
-
-#### 1.XML 布局文件的结构
-
-XML 布局文件，即 iOS 代码在运行时动态地解析项目中指定的 XML 文件，实现 UI 的搭建与设置。
-
-#### 2.必须遵循的原则
-
-XML 布局代码的编写有一定的规范：
-
-- 有且只有一个**views**根节点
-- 指定 xsi（只需要复制上面的 xsi 配置，不作任何改动。xsd 文件提供了 XML 代码提示和校验的功能。）
-  综上所述，XML 布局需保持以下的格式：
-
-```XML
-<?xml version="1.0" encoding="utf-8"?>
-<views xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.koudaikr.cn/petral-ui.xsd">
-  <!-- insert any view here -->
-</views>
-```
-
-#### 3.XML 代码提示
-
-推荐 VSCode 编辑 XML 代码，安装插件：**XML Language Support by Red Hat**
-
-#### 4.控件的设置
-
-XML 布局支持大部分可静态配置的 UI 控件，例如：UIView、UIButton、UIImageView 等。其中 UIView 可缩写成全部小写的 view，具体类型如下：
-
-| 类型               | 缩写             |
-| ------------------ | ---------------- |
-| UIView             | view             |
-| UIButton           | button           |
-| UIImageView        | imageview        |
-| UILabel            | label            |
-| UIScrollView       | scrollview       |
-| UITableView        | tableview        |
-| UITextField        | textfield        |
-| UITextView         | textview         |
-| UICollectionView   | collectionview   |
-| UIDatePicker       | datepicker       |
-| UIPickerView       | pickerview       |
-| UIProgressView     | progressview     |
-| UISearchBar        | searchbar        |
-| UISegmentedControl | segmentedcontrol |
-| UISlider           | slider           |
-| UIStepper          | stepper          |
-| UISwitch           | switch           |
-| UIWebView          | webview          |
-
-除了上面的控件之外，还支持自定义控件，控件名称为对应的 class 类型，例如 RedImageView 是一个自定义的继承 UIImageView 的类：
-
-```XML
-<?xml version="1.0" encoding="utf-8"?>
-<views xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.koudaikr.cn/petral-ui.xsd">
-  <RedImageView
-    id="image1"
-    frame="10,50,100,20"
-    image="icon_profile"></RedImageView>
-</views>
-```
 
 ### 微信讨论群
 
