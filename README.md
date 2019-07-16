@@ -479,18 +479,10 @@ XML 布局支持大部分可静态配置的 UI 控件，例如：UIView、UIButt
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
 <views xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.koudaikr.cn/petral-ui.xsd">
-  <scrollview
-            id="scrollview1"
-            frame="10,370,300,120"
-            contentSize="300,120"
-            contentOffset="0,0"
-            contentInset="10,20,10,10"
-            backgroundColor="#d6d6d6">
-    <RedImageView
-      id="image1"
-      frame="10,50,100,20"
-      image="icon_profile"></RedImageView>
-  </scrollview>
+  <RedImageView
+    id="image1"
+    frame="10,50,100,20"
+    image="icon_profile"></RedImageView>
 </views>
 ```
 
@@ -503,10 +495,18 @@ RedImageView 类可通用父类的属性，例如 image 属性
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
 <views xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.koudaikr.cn/petral-ui.xsd">
-  <RedImageView
-    id="image1"
-    frame="10,50,100,20"
-    image="icon_profile"></RedImageView>
+  <scrollview
+            id="scrollview1"
+            frame="10,370,300,120"
+            contentSize="300,120"
+            contentOffset="0,0"
+            contentInset="10,20,10,10"
+            backgroundColor="#d6d6d6">
+    <RedImageView
+      id="image1"
+      frame="10,50,100,20"
+      image="icon_profile"></RedImageView>
+  </scrollview>
 </views>
 ```
 
