@@ -405,9 +405,24 @@ XML 布局代码的编写有一定的规范：
 - 推荐 VSCode 编辑 XML 代码，安装插件：**XML Language Support by Red Hat**
 - 属性值的类型可参考：PetralParser.swift
 
-| 值类型               | 值的格式 1 | 值的格式 2 | 值的格式 3 | 值的格式 4 | 值的格式 5 |
-| -------------------- | ---------- | ---------- | ---------- | ---------- | ---------- |
-| PetralRestraintParam | 1          | 2          | 3          | 4          | 5          |
+| 值类型          | 值的格式 1            | 值的格式 2         | 值的格式 3       | 值的格式 4         | 值的格式 5 |
+| --------------- | --------------------- | ------------------ | ---------------- | ------------------ | ---------- |
+| NSTextAlignment | left                  | right              | center           | justified          | natural    |
+|                 | 居左                  | 居右               | 居中             |                    |            |
+| UIFont          | 12                    | 12+                |                  |                    |            |
+|                 | 系统字体 12 号        | 系统字体 12 号加粗 |                  |                    |            |
+| UIEdgeInsets    | 10,20.0,30,40         |                    |                  |                    |            |
+|                 | top,left,bottom,right |                    |                  |                    |            |
+| CGSize          | 10,20.4               |                    |                  |                    |            |
+|                 | width,height          |                    |                  |                    |            |
+| CGPoint         | 10,20.4               |                    |                  |                    |            |
+|                 | x,y                   |                    |                  |                    |            |
+| Bool            | true                  | false              |                  |                    |            |
+|                 | 真                    | 假                 |                  |                    |            |
+| CGRect          | 0                     | 100.0,200          | 10.0,20,100,200  |                    |            |
+|                 | CGRect.zero           | width,height       | x,y,width,height |                    |            |
+| UIColor         | #d7d7d7               | d7d7d7             | rgb(100,200,231) | rgba(10,20,30,0.5) | red        |
+|                 | HEX 值                | HEX 值             | RGB 值           | RGBA 值            | 颜色类型   |
 
 #### 4.控件的设置
 
