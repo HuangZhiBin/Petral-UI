@@ -391,6 +391,7 @@ XML 布局代码的编写有一定的规范：
 
 - 有且只有一个**views**根节点
 - 指定 xsi（只需要复制上面的 xsi 配置，不作任何改动。xsd 文件提供了 XML 代码提示和校验的功能。）
+
   综上所述，XML 布局需保持以下的格式：
 
 ```XML
@@ -403,6 +404,8 @@ XML 布局代码的编写有一定的规范：
 #### 3.XML 代码提示
 
 - 推荐 VSCode 编辑 XML 代码，安装插件：**XML Language Support by Red Hat**
+  ![](http://www.koudaikr.cn/Petral/xml.png)
+
 - 属性值的类型可参考：PetralParser.swift
 
 ##### [1] 控件属性的值类型
