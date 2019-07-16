@@ -360,7 +360,7 @@ a.petralRestraint.updateDependeds();
 
 ## 3.解析 XML 布局
 
-通过新建 XML 的布局文件，实现 UI 的布局、控件的属性设置、控件的自动布局，实现 UI 层级的结构化，提高编辑及修改 UI 的效率。
+通过新建 XML 的布局文件，实现 UI 控件的创建、属性设置、自动布局，实现 UI 层级的结构化，提高编辑及修改 UI 的效率。
 
 ### (1)新建 XML 布局文件
 
@@ -405,24 +405,49 @@ XML 布局代码的编写有一定的规范：
 - 推荐 VSCode 编辑 XML 代码，安装插件：**XML Language Support by Red Hat**
 - 属性值的类型可参考：PetralParser.swift
 
-| 值类型          | 值的格式 1            | 值的格式 2         | 值的格式 3       | 值的格式 4         | 值的格式 5 |
-| --------------- | --------------------- | ------------------ | ---------------- | ------------------ | ---------- |
-| NSTextAlignment | left                  | right              | center           | justified          | natural    |
-|                 | 居左                  | 居右               | 居中             |                    |            |
-| UIFont          | 12                    | 12+                |                  |                    |            |
-|                 | 系统字体 12 号        | 系统字体 12 号加粗 |                  |                    |            |
-| UIEdgeInsets    | 10,20.0,30,40         |                    |                  |                    |            |
-|                 | top,left,bottom,right |                    |                  |                    |            |
-| CGSize          | 10,20.4               |                    |                  |                    |            |
-|                 | width,height          |                    |                  |                    |            |
-| CGPoint         | 10,20.4               |                    |                  |                    |            |
-|                 | x,y                   |                    |                  |                    |            |
-| Bool            | true                  | false              |                  |                    |            |
-|                 | 真                    | 假                 |                  |                    |            |
-| CGRect          | 0                     | 100.0,200          | 10.0,20,100,200  |                    |            |
-|                 | CGRect.zero           | width,height       | x,y,width,height |                    |            |
-| UIColor         | #d7d7d7               | d7d7d7             | rgb(100,200,231) | rgba(10,20,30,0.5) | red        |
-|                 | HEX 值                | HEX 值             | RGB 值           | RGBA 值            | 颜色类型   |
+##### [1] 控件属性的值类型
+
+| 控件属性类型    | 值格式 1              | 值格式 2           | 值格式 3         | 值格式 4           | 值格式 5 |
+| --------------- | --------------------- | ------------------ | ---------------- | ------------------ | -------- |
+| NSTextAlignment | left                  | right              | center           | justified          | natural  |
+|                 | 居左                  | 居右               | 居中             |                    |          |
+| UIFont          | 12                    | 12+                |                  |                    |          |
+|                 | 系统字体 12 号        | 系统字体 12 号加粗 |                  |                    |          |
+| UIEdgeInsets    | 10,20.0,30,40         |                    |                  |                    |          |
+|                 | top,left,bottom,right |                    |                  |                    |          |
+| CGSize          | 10,20.4               |                    |                  |                    |          |
+|                 | width,height          |                    |                  |                    |          |
+| CGPoint         | 10,20.4               |                    |                  |                    |          |
+|                 | x,y                   |                    |                  |                    |          |
+| Bool            | true                  | false              |                  |                    |          |
+|                 | 真                    | 假                 |                  |                    |          |
+| CGRect          | 0                     | 100.0,200          | 10.0,20,100,200  |                    |          |
+|                 | CGRect.zero           | width,height       | x,y,width,height |                    |          |
+| UIColor         | #d7d7d7               | d7d7d7             | rgb(100,200,231) | rgba(10,20,30,0.5) | red      |
+|                 | HEX 值                | HEX 值             | RGB 值           | RGBA 值            | 颜色名   |
+
+##### [2] 布局属性的值类型
+
+| 布局属性类型 | 值格式 1                | 值格式 2                 | 值格式 3                 | 值格式 4     | 值格式 5      |
+| ------------ | ----------------------- | ------------------------ | ------------------------ | ------------ | ------------- |
+| left         | 0                       | label1                   | label1,100               | textview1;20 | button1,20,30 |
+|              | 左边与 superView 距离 0 | 左边的位置与 label1 相同 | 左边的位置与 label1 相同 |              |               |
+| right        | 0                       | label1                   | label1,100               | textview1;20 | button1,20,30 |
+|              | 系统字体 12 号          | 系统字体 12 号加粗       |                          |              |               |
+| top          | 0                       | label1                   | label1,100               | textview1;20 | button1,20,30 |
+|              | top,left,bottom,right   |                          |                          |              |               |
+| bottom       | 0                       | label1                   | label1,100               | textview1;20 | button1,20,30 |
+|              | width,height            |                          |                          |              |               |
+| xCenter      | 0                       | label1                   | label1,100               | textview1;20 | button1,20,30 |
+|              | x,y                     |                          |                          |              |               |
+| yCenter      | 0                       | label1                   | label1,100               | textview1;20 | button1,20,30 |
+|              | 真                      | 假                       |                          |              |               |
+| center       | 0                       | label1                   | label1,100               | textview1;20 | button1,20,30 |
+|              | CGRect.zero             | width,height             | x,y,width,height         |              |               |
+| width        | 0                       | label1                   | label1,100               | textview1;20 | button1,20,30 |
+|              | HEX 值                  | HEX 值                   | RGB 值                   | RGBA 值      | 颜色类型      |
+| height       | 0                       | label1                   | label1,100               | textview1;20 | button1,20,30 |
+|              | HEX 值                  | HEX 值                   | RGB 值                   | RGBA 值      | 颜色类型      |
 
 #### 4.控件的设置
 
@@ -454,10 +479,18 @@ XML 布局支持大部分可静态配置的 UI 控件，例如：UIView、UIButt
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
 <views xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.koudaikr.cn/petral-ui.xsd">
-  <RedImageView
-    id="image1"
-    frame="10,50,100,20"
-    image="icon_profile"></RedImageView>
+  <scrollview
+            id="scrollview1"
+            frame="10,370,300,120"
+            contentSize="300,120"
+            contentOffset="0,0"
+            contentInset="10,20,10,10"
+            backgroundColor="#d6d6d6">
+    <RedImageView
+      id="image1"
+      frame="10,50,100,20"
+      image="icon_profile"></RedImageView>
+  </scrollview>
 </views>
 ```
 
@@ -466,6 +499,16 @@ RedImageView 类可通用父类的属性，例如 image 属性
 #### 5.控件的互相嵌套
 
 全面支持系统和自定义控件之间的互相嵌套
+
+```XML
+<?xml version="1.0" encoding="utf-8"?>
+<views xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.koudaikr.cn/petral-ui.xsd">
+  <RedImageView
+    id="image1"
+    frame="10,50,100,20"
+    image="icon_profile"></RedImageView>
+</views>
+```
 
 ### (2)iOS 引用 XML 布局
 
@@ -477,7 +520,7 @@ self.view.petralLoadXmlViews(xmlPath: "XmlViewController");
 
 上面的代码表示 self.view 加载 XmlViewController.xml 的布局文件
 
-#### 2.指定控件的访问
+#### 2.通过 id 访问指定的控件
 
 ```Swift
 let userInfoView = self.view.petralViewById(id: "userInfoView") as! UserInfoView;
