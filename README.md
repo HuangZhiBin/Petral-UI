@@ -404,6 +404,7 @@ XML 布局代码的编写有一定的规范：
 #### 3.XML 代码提示
 
 - 推荐 VSCode 编辑 XML 代码，安装插件：**XML Language Support by Red Hat**
+
   ![](http://www.koudaikr.cn/Petral/xml.png)
 
 - 属性值的类型可参考：PetralParser.swift
