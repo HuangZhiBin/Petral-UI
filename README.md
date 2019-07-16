@@ -450,7 +450,7 @@ XML 布局代码的编写有一定的规范：
 |              | 与 superView 居中       | 与 label1 居中     | 与 label1 居中，x 偏离 20，y 偏离 30 |                        |
 | width        | 0                       | label1             | label1,100                           |100%                        |
 |              | 宽度为 0                | 宽度与 label1 相同 | 宽度与 label1 一致并偏离 100         |占据superView宽度的100%                        |
-| height       | 0                       | label1             | label1,100                           |                        |
+| height       | 0                       | label1             | label1,100                           |100%                        |
 |              | 高度为 0                | 高度与 label1 相同 | 高度与 label1 一致并偏离 100         |占据superView高度的100%                        |
 
 #### 4.控件的设置
