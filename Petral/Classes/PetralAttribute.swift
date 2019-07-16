@@ -15,11 +15,11 @@ public class PetralAttribute: NSObject {
         super.init();
         self.attachedView = attachedView;
         if(self.attachedView.tag == 0){
-            print("tag == 0");
+            //print("tag == 0");
             self.attachedView.tag = self.attachedView.hash;
         }
         else{
-            print("tag == \(self.attachedView.tag)");
+            //print("tag == \(self.attachedView.tag)");
         }
     }
     
@@ -60,8 +60,8 @@ public class PetralAttribute: NSObject {
     }
     
     @discardableResult
-    public func shadowOpacity(_ shadowOpacity: Float) -> PetralAttribute {
-        self.attachedView.layer.shadowOpacity = shadowOpacity;
+    public func shadowOpacity(_ shadowOpacity: CGFloat) -> PetralAttribute {
+        self.attachedView.layer.shadowOpacity = Float(shadowOpacity);
         return self;
     }
     
@@ -83,15 +83,60 @@ public class PetralAttribute: NSObject {
         return self;
     }
     
+    @discardableResult
+    public func clipsToBounds(_ clipsToBounds: Bool) -> PetralAttribute {
+        self.attachedView.clipsToBounds = clipsToBounds;
+        return self;
+    }
+    
+    func setXmlAttribute(attributeName: String, attributeValue: String) {
+        let attributeVal = attributeValue.trimmingCharacters(in: .whitespaces);
+        
+        switch attributeName {
+        case "frame":
+            var frameArgs = PetralParser.parseFrame(attributeVal);
+            self.frame(x: frameArgs[0], y: frameArgs[1], width: frameArgs[2], height: frameArgs[3]);
+            break;
+        case "backgroundColor":
+            self.backgroundColor(PetralParser.parseColor(attributeVal));
+            break;
+        case "borderColor":
+            self.borderColor(PetralParser.parseColor(attributeVal));
+            break;
+        case "borderWidth":
+            self.borderWidth(PetralParser.parseFloat(attributeVal));
+            break;
+        case "borderRadius":
+            self.borderRadius(PetralParser.parseFloat(attributeVal));
+            break;
+        case "shadowColor":
+            self.shadowColor(PetralParser.parseColor(attributeVal));
+            break;
+        case "shadowOpacity":
+            self.shadowOpacity(PetralParser.parseFloat(attributeVal));
+            break;
+        case "shadowRadius":
+            self.shadowRadius(PetralParser.parseFloat(attributeVal));
+            break;
+        case "shadowOffset":
+            self.shadowOffset(PetralParser.parseSize(attributeVal));
+            break;
+        case "masksToBounds":
+            self.masksToBounds(PetralParser.parseBool(attributeVal));
+            break;
+        case "clipsToBounds":
+            self.clipsToBounds(PetralParser.parseBool(attributeVal));
+            break;
+        default:
+            break;
+        }
+    }
+    
 }
 
 // MARK: -
 
-extension UIButton {
-    @objc public override func petralize() -> PetralAttributeUIButton {
-        return self.petralAttribute as! PetralAttributeUIButton;
-    }
-}
+
 
 public class PetralAttributeUIButton: PetralAttribute {
     
@@ -126,7 +171,7 @@ public class PetralAttributeUIButton: PetralAttribute {
     }
     
     @discardableResult
-    public func align(_ align: NSTextAlignment) -> PetralAttributeUIButton{
+    public func align(_ align: NSTextAlignment) -> PetralAttributeUIButton {
         (self.attachedView as! UIButton).titleLabel?.textAlignment = align;
         return self;
     }
@@ -161,6 +206,80 @@ public class PetralAttributeUIButton: PetralAttribute {
         return self;
     }
     
+    @discardableResult
+    public override func shadowColor(_ shadowColor: UIColor) -> PetralAttributeUIButton {
+        super.shadowColor(shadowColor);
+        return self;
+    }
+    
+    @discardableResult
+    public override func shadowOpacity(_ shadowOpacity: CGFloat) -> PetralAttributeUIButton {
+        super.shadowOpacity(shadowOpacity);
+        return self;
+    }
+    
+    @discardableResult
+    public override func shadowRadius(_ shadowRadius: CGFloat) -> PetralAttributeUIButton {
+        super.shadowRadius(shadowRadius);
+        return self;
+    }
+    
+    @discardableResult
+    public override func shadowOffset(_ shadowOffset: CGSize) -> PetralAttributeUIButton {
+        super.shadowOffset(shadowOffset);
+        return self;
+    }
+    
+    @discardableResult
+    public override func masksToBounds(_ masksToBounds: Bool) -> PetralAttributeUIButton {
+        super.masksToBounds(masksToBounds);
+        return self;
+    }
+    
+    @discardableResult
+    public override func clipsToBounds(_ clipsToBounds: Bool) -> PetralAttributeUIButton {
+        super.clipsToBounds(clipsToBounds);
+        return self;
+    }
+    
+    override func setXmlAttribute(attributeName: String, attributeValue: String) {
+        super.setXmlAttribute(attributeName: attributeName, attributeValue: attributeValue);
+        
+        var attributeVal = attributeValue;
+        if ["text", "placeholder"].contains(attributeName) == false {
+            attributeVal = attributeVal.trimmingCharacters(in: .whitespaces);
+        }
+        switch attributeName {
+        case "font":
+            let fontValue = PetralParser.parseFont(attributeVal);
+            self.font(size: fontValue[0], bold: (fontValue[1] == 1));
+            break;
+        case "titleColor":
+            self.titleColor(PetralParser.parseColor(attributeVal), state: .normal);
+            break;
+        case "backgroundColor":
+            self.backgroundColor(PetralParser.parseColor(attributeVal), state: .normal);
+            break;
+        case "backgroundColorHighlighted":
+            self.backgroundColor(PetralParser.parseColor(attributeVal), state: .highlighted);
+            break;
+        case "backgroundImage":
+            self.backgroundImage(UIImage.init(named: attributeVal)!, state: .normal);
+            break;
+        case "backgroundImageHighlighted":
+            self.backgroundImage(UIImage.init(named: attributeVal)!, state: .highlighted);
+            break;
+        case "title":
+            self.title(attributeVal, state: .normal);
+            break;
+        case "align":
+            self.align(PetralParser.parseAlign(attributeVal));
+            break;
+        default:
+            break;
+        }
+    }
+    
     private func createImageWithColor(color: UIColor) -> UIImage
     {
         let rect = CGRect.init(x: 0, y: 0, width: 1, height: 1);
@@ -172,11 +291,12 @@ public class PetralAttributeUIButton: PetralAttribute {
         UIGraphicsEndImageContext()
         return theImage!
     }
+}
+
+extension UIButton {
     
-    @discardableResult
-    public override func masksToBounds(_ masksToBounds: Bool) -> PetralAttributeUIButton {
-        super.masksToBounds(masksToBounds);
-        return self;
+    @objc public override func petralize() -> PetralAttributeUIButton {
+        return self.petralAttribute as! PetralAttributeUIButton;
     }
 }
 
@@ -227,9 +347,55 @@ public class PetralAttributeUIImageView: PetralAttribute{
     }
     
     @discardableResult
+    public override func shadowColor(_ shadowColor: UIColor) -> PetralAttributeUIImageView {
+        super.shadowColor(shadowColor);
+        return self;
+    }
+    
+    @discardableResult
+    public override func shadowOpacity(_ shadowOpacity: CGFloat) -> PetralAttributeUIImageView {
+        super.shadowOpacity(shadowOpacity);
+        return self;
+    }
+    
+    @discardableResult
+    public override func shadowRadius(_ shadowRadius: CGFloat) -> PetralAttributeUIImageView {
+        super.shadowRadius(shadowRadius);
+        return self;
+    }
+    
+    @discardableResult
+    public override func shadowOffset(_ shadowOffset: CGSize) -> PetralAttributeUIImageView {
+        super.shadowOffset(shadowOffset);
+        return self;
+    }
+    
+    @discardableResult
     public override func masksToBounds(_ masksToBounds: Bool) -> PetralAttributeUIImageView {
         super.masksToBounds(masksToBounds);
         return self;
+    }
+    
+    @discardableResult
+    public override func clipsToBounds(_ clipsToBounds: Bool) -> PetralAttributeUIImageView {
+        super.clipsToBounds(clipsToBounds);
+        return self;
+    }
+    
+    override func setXmlAttribute(attributeName: String, attributeValue: String) {
+        super.setXmlAttribute(attributeName: attributeName, attributeValue: attributeValue);
+        
+        var attributeVal = attributeValue;
+        if ["text", "placeholder"].contains(attributeName) == false {
+            attributeVal = attributeVal.trimmingCharacters(in: .whitespaces);
+        }
+        switch attributeName {
+        case "image":
+            self.image(UIImage.init(named: attributeVal)!)
+            break;
+        default:
+            break;
+        }
     }
 }
 
@@ -304,9 +470,67 @@ public class PetralAttributeUILabel: PetralAttribute{
     }
     
     @discardableResult
+    public override func shadowColor(_ shadowColor: UIColor) -> PetralAttributeUILabel {
+        super.shadowColor(shadowColor);
+        return self;
+    }
+    
+    @discardableResult
+    public override func shadowOpacity(_ shadowOpacity: CGFloat) -> PetralAttributeUILabel {
+        super.shadowOpacity(shadowOpacity);
+        return self;
+    }
+    
+    @discardableResult
+    public override func shadowRadius(_ shadowRadius: CGFloat) -> PetralAttributeUILabel {
+        super.shadowRadius(shadowRadius);
+        return self;
+    }
+    
+    @discardableResult
+    public override func shadowOffset(_ shadowOffset: CGSize) -> PetralAttributeUILabel {
+        super.shadowOffset(shadowOffset);
+        return self;
+    }
+    
+    @discardableResult
     public override func masksToBounds(_ masksToBounds: Bool) -> PetralAttributeUILabel {
         super.masksToBounds(masksToBounds);
         return self;
+    }
+    
+    @discardableResult
+    public override func clipsToBounds(_ clipsToBounds: Bool) -> PetralAttributeUILabel {
+        super.clipsToBounds(clipsToBounds);
+        return self;
+    }
+    
+    override func setXmlAttribute(attributeName: String, attributeValue: String) {
+        super.setXmlAttribute(attributeName: attributeName, attributeValue: attributeValue);
+        var attributeVal = attributeValue;
+        if ["text", "placeholder"].contains(attributeName) == false {
+            attributeVal = attributeVal.trimmingCharacters(in: .whitespaces);
+        }
+        switch attributeName {
+        case "font":
+            let fontValue = PetralParser.parseFont(attributeVal);
+            self.font(size: fontValue[0], bold: (fontValue[1] == 1));
+            break;
+        case "textColor":
+            self.textColor(PetralParser.parseColor(attributeVal));
+            break;
+        case "text":
+            self.text(attributeVal);
+            break;
+        case "align":
+            self.align(PetralParser.parseAlign(attributeVal));
+            break;
+        case "lines":
+            self.lines(PetralParser.parseInt(attributeVal));
+            break;
+        default:
+            break;
+        }
     }
 
 }
@@ -320,6 +544,24 @@ extension UIScrollView {
 }
 
 public class PetralAttributeUIScrollView: PetralAttribute{
+    
+    @discardableResult
+    public func contentSize(_ contentSize: CGSize) -> PetralAttributeUIScrollView {
+        (self.attachedView as! UIScrollView).contentSize = contentSize;
+        return self;
+    }
+    
+    @discardableResult
+    public func contentOffset(_ contentOffset: CGPoint) -> PetralAttributeUIScrollView {
+        (self.attachedView as! UIScrollView).contentOffset = contentOffset;
+        return self;
+    }
+    
+    @discardableResult
+    public func contentInset(_ contentInset: UIEdgeInsets) -> PetralAttributeUIScrollView {
+        (self.attachedView as! UIScrollView).contentInset = contentInset;
+        return self;
+    }
     
     @discardableResult
     override public func frame(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) -> PetralAttributeUIScrollView {
@@ -352,20 +594,26 @@ public class PetralAttributeUIScrollView: PetralAttribute{
     }
     
     @discardableResult
-    public func contentSize(_ contentSize: CGSize) -> PetralAttributeUIScrollView {
-        (self.attachedView as! UIScrollView).contentSize = contentSize;
+    public override func shadowColor(_ shadowColor: UIColor) -> PetralAttributeUIScrollView {
+        super.shadowColor(shadowColor);
         return self;
     }
     
     @discardableResult
-    public func contentOffset(_ contentOffset: CGPoint) -> PetralAttributeUIScrollView {
-        (self.attachedView as! UIScrollView).contentOffset = contentOffset;
+    public override func shadowOpacity(_ shadowOpacity: CGFloat) -> PetralAttributeUIScrollView {
+        super.shadowOpacity(shadowOpacity);
         return self;
     }
     
     @discardableResult
-    public func contentInset(_ contentInset: UIEdgeInsets) -> PetralAttributeUIScrollView {
-        (self.attachedView as! UIScrollView).contentInset = contentInset;
+    public override func shadowRadius(_ shadowRadius: CGFloat) -> PetralAttributeUIScrollView {
+        super.shadowRadius(shadowRadius);
+        return self;
+    }
+    
+    @discardableResult
+    public override func shadowOffset(_ shadowOffset: CGSize) -> PetralAttributeUIScrollView {
+        super.shadowOffset(shadowOffset);
         return self;
     }
     
@@ -373,6 +621,33 @@ public class PetralAttributeUIScrollView: PetralAttribute{
     public override func masksToBounds(_ masksToBounds: Bool) -> PetralAttributeUIScrollView {
         super.masksToBounds(masksToBounds);
         return self;
+    }
+    
+    @discardableResult
+    public override func clipsToBounds(_ clipsToBounds: Bool) -> PetralAttributeUIScrollView {
+        super.clipsToBounds(clipsToBounds);
+        return self;
+    }
+    
+    override func setXmlAttribute(attributeName: String, attributeValue: String) {
+        super.setXmlAttribute(attributeName: attributeName, attributeValue: attributeValue);
+        var attributeVal = attributeValue;
+        if ["text", "placeholder"].contains(attributeName) == false {
+            attributeVal = attributeVal.trimmingCharacters(in: .whitespaces);
+        }
+        switch attributeName {
+        case "contentSize":
+            self.contentSize(PetralParser.parseSize(attributeVal));
+            break;
+        case "contentOffset":
+            self.contentOffset(PetralParser.parsePoint(attributeVal));
+            break;
+        case "contentInset":
+            self.contentInset(PetralParser.parseInset(attributeVal));
+            break;
+        default:
+            break;
+        }
     }
     
 }
@@ -386,6 +661,24 @@ extension UITableView {
 }
 
 public class PetralAttributeUITableView: PetralAttributeUIScrollView {
+    
+    @discardableResult
+    override public func contentSize(_ contentSize: CGSize) -> PetralAttributeUIScrollView {
+        super.contentSize(contentSize);
+        return self;
+    }
+    
+    @discardableResult
+    override public func contentOffset(_ contentOffset: CGPoint) -> PetralAttributeUIScrollView {
+        super.contentOffset(contentOffset);
+        return self;
+    }
+    
+    @discardableResult
+    override public func contentInset(_ contentInset: UIEdgeInsets) -> PetralAttributeUIScrollView {
+        super.contentInset(contentInset);
+        return self;
+    }
     
     @discardableResult
     override public func frame(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) -> PetralAttributeUITableView {
@@ -418,9 +711,44 @@ public class PetralAttributeUITableView: PetralAttributeUIScrollView {
     }
     
     @discardableResult
+    public override func shadowColor(_ shadowColor: UIColor) -> PetralAttributeUITableView {
+        super.shadowColor(shadowColor);
+        return self;
+    }
+    
+    @discardableResult
+    public override func shadowOpacity(_ shadowOpacity: CGFloat) -> PetralAttributeUITableView {
+        super.shadowOpacity(shadowOpacity);
+        return self;
+    }
+    
+    @discardableResult
+    public override func shadowRadius(_ shadowRadius: CGFloat) -> PetralAttributeUITableView {
+        super.shadowRadius(shadowRadius);
+        return self;
+    }
+    
+    @discardableResult
+    public override func shadowOffset(_ shadowOffset: CGSize) -> PetralAttributeUITableView {
+        super.shadowOffset(shadowOffset);
+        return self;
+    }
+    
+    @discardableResult
     public override func masksToBounds(_ masksToBounds: Bool) -> PetralAttributeUITableView {
         super.masksToBounds(masksToBounds);
         return self;
+    }
+    
+    @discardableResult
+    public override func clipsToBounds(_ clipsToBounds: Bool) -> PetralAttributeUITableView {
+        super.clipsToBounds(clipsToBounds);
+        return self;
+    }
+    
+    override func setXmlAttribute(attributeName: String, attributeValue: String) {
+        super.setXmlAttribute(attributeName: attributeName, attributeValue: attributeValue);
+        
     }
     
 }
@@ -508,9 +836,70 @@ public class PetralAttributeUITextField: PetralAttribute{
     }
     
     @discardableResult
+    public override func shadowColor(_ shadowColor: UIColor) -> PetralAttributeUITextField {
+        super.shadowColor(shadowColor);
+        return self;
+    }
+    
+    @discardableResult
+    public override func shadowOpacity(_ shadowOpacity: CGFloat) -> PetralAttributeUITextField {
+        super.shadowOpacity(shadowOpacity);
+        return self;
+    }
+    
+    @discardableResult
+    public override func shadowRadius(_ shadowRadius: CGFloat) -> PetralAttributeUITextField {
+        super.shadowRadius(shadowRadius);
+        return self;
+    }
+    
+    @discardableResult
+    public override func shadowOffset(_ shadowOffset: CGSize) -> PetralAttributeUITextField {
+        super.shadowOffset(shadowOffset);
+        return self;
+    }
+    
+    @discardableResult
     public override func masksToBounds(_ masksToBounds: Bool) -> PetralAttributeUITextField {
         super.masksToBounds(masksToBounds);
         return self;
+    }
+    
+    @discardableResult
+    public override func clipsToBounds(_ clipsToBounds: Bool) -> PetralAttributeUITextField {
+        super.clipsToBounds(clipsToBounds);
+        return self;
+    }
+    
+    override func setXmlAttribute(attributeName: String, attributeValue: String) {
+        super.setXmlAttribute(attributeName: attributeName, attributeValue: attributeValue);
+        var attributeVal = attributeValue;
+        if ["text", "placeholder"].contains(attributeName) == false {
+            attributeVal = attributeVal.trimmingCharacters(in: .whitespaces);
+        }
+        switch attributeName {
+        case "font":
+            let fontArgs = PetralParser.parseFont(attributeVal);
+            self.font(size: fontArgs[0], bold: (fontArgs[1] == 1));
+            break;
+        case "textColor":
+            self.textColor(PetralParser.parseColor(attributeVal));
+            break;
+        case "text":
+            self.text(attributeVal);
+            break;
+        case "placeholder":
+            self.placeholder(attributeVal);
+            break;
+        case "align":
+            self.align(PetralParser.parseAlign(attributeVal));
+            break;
+        case "isSecureText":
+            self.isSecureText(PetralParser.parseBool(attributeVal));
+            break;
+        default:
+            break;
+        }
     }
     
 }
@@ -592,8 +981,66 @@ public class PetralAttributeUITextView: PetralAttributeUIScrollView {
     }
     
     @discardableResult
+    public override func shadowColor(_ shadowColor: UIColor) -> PetralAttributeUITextView {
+        super.shadowColor(shadowColor);
+        return self;
+    }
+    
+    @discardableResult
+    public override func shadowOpacity(_ shadowOpacity: CGFloat) -> PetralAttributeUITextView {
+        super.shadowOpacity(shadowOpacity);
+        return self;
+    }
+    
+    @discardableResult
+    public override func shadowRadius(_ shadowRadius: CGFloat) -> PetralAttributeUITextView {
+        super.shadowRadius(shadowRadius);
+        return self;
+    }
+    
+    @discardableResult
+    public override func shadowOffset(_ shadowOffset: CGSize) -> PetralAttributeUITextView {
+        super.shadowOffset(shadowOffset);
+        return self;
+    }
+    
+    @discardableResult
     public override func masksToBounds(_ masksToBounds: Bool) -> PetralAttributeUITextView{
         super.masksToBounds(masksToBounds);
         return self;
+    }
+    
+    @discardableResult
+    public override func clipsToBounds(_ clipsToBounds: Bool) -> PetralAttributeUITextView {
+        super.clipsToBounds(clipsToBounds);
+        return self;
+    }
+    
+    override func setXmlAttribute(attributeName: String, attributeValue: String) {
+        super.setXmlAttribute(attributeName: attributeName, attributeValue: attributeValue);
+        var attributeVal = attributeValue;
+        if ["text", "placeholder"].contains(attributeName) == false {
+            attributeVal = attributeVal.trimmingCharacters(in: .whitespaces);
+        }
+        switch attributeName {
+        case "font":
+            let fontArgs = PetralParser.parseFont(attributeVal);
+            self.font(size: fontArgs[0], bold: (fontArgs[1] == 1));
+            break;
+        case "textColor":
+            self.textColor(PetralParser.parseColor(attributeVal));
+            break;
+        case "text":
+            self.text(attributeVal);
+            break;
+        case "align":
+            self.align(PetralParser.parseAlign(attributeVal));
+            break;
+        case "isEditable":
+            self.isEditable(PetralParser.parseBool(attributeVal));
+            break;
+        default:
+            break;
+        }
     }
 }

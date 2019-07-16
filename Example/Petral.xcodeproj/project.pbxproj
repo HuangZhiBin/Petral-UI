@@ -14,6 +14,16 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		934ABD3B22CE204200D9392B /* Petral-UI.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 934ABD3A22CE204200D9392B /* Petral-UI.podspec */; };
+		936C907A22DC358700C800D3 /* MyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936C907922DC358700C800D3 /* MyTableViewController.swift */; };
+		936C907C22DC360D00C800D3 /* MyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936C907B22DC360D00C800D3 /* MyTableView.swift */; };
+		936C907E22DC37FD00C800D3 /* MyTableViewCell.xml in Resources */ = {isa = PBXBuildFile; fileRef = 936C907D22DC37FD00C800D3 /* MyTableViewCell.xml */; };
+		936C908022DC516000C800D3 /* MyTableViewController.xml in Resources */ = {isa = PBXBuildFile; fileRef = 936C907F22DC516000C800D3 /* MyTableViewController.xml */; };
+		9385558722D6D07B00C1AB0C /* XmlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9385558622D6D07B00C1AB0C /* XmlViewController.swift */; };
+		9385558922D6D09500C1AB0C /* XmlViewController.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9385558822D6D09500C1AB0C /* XmlViewController.xml */; };
+		93D391C422D8834300D2ED41 /* RedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D391C322D8834300D2ED41 /* RedImageView.swift */; };
+		93D391C722D89C5000D2ED41 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D391C622D89C5000D2ED41 /* UserInfoView.swift */; };
+		93D391C922D89CAC00D2ED41 /* UserInfoView.xml in Resources */ = {isa = PBXBuildFile; fileRef = 93D391C822D89CAC00D2ED41 /* UserInfoView.xml */; };
 		B5CEF03DB2D613A73D249D09 /* Pods_Petral_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E3B4D1625D4229886C76696 /* Pods_Petral_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,9 +52,18 @@
 		607FACE51AFB9204008FA782 /* Petral_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Petral_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		934ABD3A22CE204200D9392B /* Petral-UI.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Petral-UI.podspec"; path = "../Petral-UI.podspec"; sourceTree = "<group>"; };
+		936C907922DC358700C800D3 /* MyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewController.swift; sourceTree = "<group>"; };
+		936C907B22DC360D00C800D3 /* MyTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableView.swift; sourceTree = "<group>"; };
+		936C907D22DC37FD00C800D3 /* MyTableViewCell.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MyTableViewCell.xml; sourceTree = "<group>"; };
+		936C907F22DC516000C800D3 /* MyTableViewController.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MyTableViewController.xml; sourceTree = "<group>"; };
+		9385558622D6D07B00C1AB0C /* XmlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XmlViewController.swift; sourceTree = "<group>"; };
+		9385558822D6D09500C1AB0C /* XmlViewController.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = XmlViewController.xml; sourceTree = "<group>"; };
+		93D391C322D8834300D2ED41 /* RedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedImageView.swift; sourceTree = "<group>"; };
+		93D391C622D89C5000D2ED41 /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
+		93D391C822D89CAC00D2ED41 /* UserInfoView.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = UserInfoView.xml; sourceTree = "<group>"; };
 		9E3B4D1625D4229886C76696 /* Pods_Petral_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Petral_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC52B27BD43A25096164CDE7 /* Pods-Petral_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Petral_Tests.debug.xcconfig"; path = "Target Support Files/Pods-Petral_Tests/Pods-Petral_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		B35D8B787918D83509364CD9 /* Petral.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Petral.podspec; path = ../Petral.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		B5C4FFB7278C4DBBBE6E1E43 /* Pods-Petral_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Petral_Example.debug.xcconfig"; path = "Target Support Files/Pods-Petral_Example/Pods-Petral_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		FE2F2319A1B20399BEF811B6 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,6 +112,8 @@
 		607FACD21AFB9204008FA782 /* Example for Petral */ = {
 			isa = PBXGroup;
 			children = (
+				936C907822DC355700C800D3 /* Table */,
+				9385558522D6D05700C1AB0C /* Xml */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
@@ -132,7 +153,7 @@
 		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
-				B35D8B787918D83509364CD9 /* Petral.podspec */,
+				934ABD3A22CE204200D9392B /* Petral-UI.podspec */,
 				5D8D50627A654C21A243CE85 /* README.md */,
 				FE2F2319A1B20399BEF811B6 /* LICENSE */,
 			);
@@ -148,6 +169,45 @@
 				5CA1EFDD3EABE2EE7F004068 /* Pods-Petral_Tests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		936C907822DC355700C800D3 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				93A6437F22DC58D7009F323C /* View */,
+				936C907922DC358700C800D3 /* MyTableViewController.swift */,
+				936C907F22DC516000C800D3 /* MyTableViewController.xml */,
+			);
+			name = Table;
+			sourceTree = "<group>";
+		};
+		9385558522D6D05700C1AB0C /* Xml */ = {
+			isa = PBXGroup;
+			children = (
+				93D391C522D89C2F00D2ED41 /* View */,
+				9385558622D6D07B00C1AB0C /* XmlViewController.swift */,
+				9385558822D6D09500C1AB0C /* XmlViewController.xml */,
+			);
+			name = Xml;
+			sourceTree = "<group>";
+		};
+		93A6437F22DC58D7009F323C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				936C907B22DC360D00C800D3 /* MyTableView.swift */,
+				936C907D22DC37FD00C800D3 /* MyTableViewCell.xml */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		93D391C522D89C2F00D2ED41 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				93D391C322D8834300D2ED41 /* RedImageView.swift */,
+				93D391C622D89C5000D2ED41 /* UserInfoView.swift */,
+				93D391C822D89CAC00D2ED41 /* UserInfoView.xml */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		D1AB2F5248FC9EB473E3DB85 /* Frameworks */ = {
@@ -246,8 +306,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				934ABD3B22CE204200D9392B /* Petral-UI.podspec in Resources */,
+				936C907E22DC37FD00C800D3 /* MyTableViewCell.xml in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
+				93D391C922D89CAC00D2ED41 /* UserInfoView.xml in Resources */,
+				936C908022DC516000C800D3 /* MyTableViewController.xml in Resources */,
+				9385558922D6D09500C1AB0C /* XmlViewController.xml in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,15 +332,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Petral_Example-checkManifestLockResult.txt",
 			);
@@ -289,15 +350,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Petral_Example/Pods-Petral_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Petral/Petral.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Petral.framework",
 			);
@@ -311,15 +368,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Petral_Tests-checkManifestLockResult.txt",
 			);
@@ -335,8 +388,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93D391C422D8834300D2ED41 /* RedImageView.swift in Sources */,
+				936C907A22DC358700C800D3 /* MyTableViewController.swift in Sources */,
+				9385558722D6D07B00C1AB0C /* XmlViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				936C907C22DC360D00C800D3 /* MyTableView.swift in Sources */,
+				93D391C722D89C5000D2ED41 /* UserInfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

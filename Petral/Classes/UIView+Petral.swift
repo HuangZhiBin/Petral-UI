@@ -15,6 +15,8 @@ func PETRAL(_ block: PetralExcuteBlock){
 
 var PETRAL_RESTRAINT = 1;
 var PETRAL_ATTRIBUTE = 2;
+var PETRAL_XML_RESOURCE = 3;
+var PETRAL_XML_LOADER = 4;
 
 extension UIView {
     
@@ -37,8 +39,7 @@ extension UIView {
         }
     }
     
-    //public func setPetralAttribute<T : PetralAttribute>() -> T{
-    public var petralAttribute: PetralAttribute {
+    var petralAttribute: PetralAttribute {
         get{
             let result = objc_getAssociatedObject(self, &PETRAL_ATTRIBUTE) as? PetralAttribute
             if result == nil {
@@ -59,11 +60,12 @@ extension UIView {
                 else if(self.isKind(of: UITextView.self)){
                     attribute = PetralAttributeUITextView.init(self);
                 }
-                else if(self.isKind(of: UIScrollView.self)){
-                    attribute = PetralAttributeUIScrollView.init(self);
-                }
+                //subclass should come first than superclass,e.g. UITableView->UIScrollView
                 else if(self.isKind(of: UITableView.self)){
                     attribute = PetralAttributeUITableView.init(self);
+                }
+                else if(self.isKind(of: UIScrollView.self)){
+                    attribute = PetralAttributeUIScrollView.init(self);
                 }
                 else{
                     attribute = PetralAttribute.init(self);
@@ -79,6 +81,37 @@ extension UIView {
         set{
             objc_setAssociatedObject(self, &PETRAL_ATTRIBUTE, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN);
         }
+    }
+    
+    var petralXmlResource: String? {
+        get{
+            let result = objc_getAssociatedObject(self, &PETRAL_XML_RESOURCE) as? String;
+            return result
+        }
+        set{
+            objc_setAssociatedObject(self, &PETRAL_XML_RESOURCE, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN);
+        }
+    }
+    
+    var petralXmlLoader: PetralLoader? {
+        get{
+            let result = objc_getAssociatedObject(self, &PETRAL_XML_LOADER) as? PetralLoader;
+            return result
+        }
+        set{
+            objc_setAssociatedObject(self, &PETRAL_XML_LOADER, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN);
+        }
+    }
+    
+    @objc public func petralLoadXmlViews(xmlPath: String) {
+        self.petralXmlResource = xmlPath;
+        let loader = PetralLoader.init(xmlFileName: self.petralXmlResource!);
+        self.petralXmlLoader = loader;
+        loader.injectViews(toView: self);
+    }
+    
+    @objc public func petralViewById(id: String) -> UIView? {
+        return self.petralXmlLoader?.findViewById(id: id);
     }
     
     @objc public func petralize() -> PetralAttribute {

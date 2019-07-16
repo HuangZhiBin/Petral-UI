@@ -4,23 +4,21 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Petral.xcscheme</key>
+		<key>Petral.xcscheme_^#shared#^_</key>
 		<dict>
-			<key>isShown</key>
-			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
-		<key>Pods-Petral_Example.xcscheme</key>
+		<key>Pods-Petral_Example.xcscheme_^#shared#^_</key>
 		<dict>
-			<key>isShown</key>
-			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
-		<key>Pods-Petral_Tests.xcscheme</key>
+		<key>Pods-Petral_Tests.xcscheme_^#shared#^_</key>
 		<dict>
-			<key>isShown</key>
-			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
 	</dict>
-	<key>SuppressBuildableAutocreation</key>
-	<dict/>
 </dict>
 </plist>

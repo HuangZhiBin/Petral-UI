@@ -13,9 +13,11 @@
 		491EF321FDC2DF63537845E13E181D8A /* Pods-Petral_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FC38205A32D7F3E41ECA6A6A4D050E07 /* Pods-Petral_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8485BB562993115D575627CD9374E14A /* Petral-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DD40A685F175C7EB5ABB39C4C5B75835 /* Petral-dummy.m */; };
 		919E83A9A333DCD668BA21B3CCAAEBFC /* Pods-Petral_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAC023E82CD764301D214CAA18D6732 /* Pods-Petral_Example-dummy.m */; };
-		93521E0A22B241EF001EE7AB /* PetralRestraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93521E0122B241EE001EE7AB /* PetralRestraint.swift */; };
-		9392D5EE22C35BC000A1EA84 /* PetralAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9392D5ED22C35BC000A1EA84 /* PetralAttribute.swift */; };
-		9392D5F022C363DE00A1EA84 /* UIView+Petral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9392D5EF22C363DE00A1EA84 /* UIView+Petral.swift */; };
+		9372B1B522DD7D5C00D21F32 /* UIView+Petral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9372B1B022DD7D5C00D21F32 /* UIView+Petral.swift */; };
+		9372B1B622DD7D5C00D21F32 /* PetralLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9372B1B122DD7D5C00D21F32 /* PetralLoader.swift */; };
+		9372B1B722DD7D5C00D21F32 /* PetralRestraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9372B1B222DD7D5C00D21F32 /* PetralRestraint.swift */; };
+		9372B1B822DD7D5C00D21F32 /* PetralParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9372B1B322DD7D5C00D21F32 /* PetralParser.swift */; };
+		9372B1B922DD7D5C00D21F32 /* PetralAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9372B1B422DD7D5C00D21F32 /* PetralAttribute.swift */; };
 		C68AA1F68EAD95EA059ED0A111796EC0 /* Pods-Petral_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 95A05CEBC89E7FC0311BBF49A13CB3AA /* Pods-Petral_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D526964CB1D13B057657CE8E84F529EB /* Pods-Petral_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DF52D86EBC8AE8CF233B8A3C54F25D /* Pods-Petral_Tests-dummy.m */; };
 		E85A05D0A87FCF306F5BCF1E716AB9C9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
@@ -55,9 +57,11 @@
 		8142E9155C6D0085C706B987AD63A57E /* Pods_Petral_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Petral_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81DF52D86EBC8AE8CF233B8A3C54F25D /* Pods-Petral_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Petral_Tests-dummy.m"; sourceTree = "<group>"; };
 		8E1EF8C33AF8C2F6FDB9012BD7B6F8C4 /* Pods-Petral_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Petral_Example.modulemap"; sourceTree = "<group>"; };
-		93521E0122B241EE001EE7AB /* PetralRestraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PetralRestraint.swift; path = Petral/Classes/PetralRestraint.swift; sourceTree = "<group>"; };
-		9392D5ED22C35BC000A1EA84 /* PetralAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetralAttribute.swift; sourceTree = "<group>"; };
-		9392D5EF22C363DE00A1EA84 /* UIView+Petral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Petral.swift"; sourceTree = "<group>"; };
+		9372B1B022DD7D5C00D21F32 /* UIView+Petral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Petral.swift"; path = "Petral/Classes/UIView+Petral.swift"; sourceTree = "<group>"; };
+		9372B1B122DD7D5C00D21F32 /* PetralLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PetralLoader.swift; path = Petral/Classes/PetralLoader.swift; sourceTree = "<group>"; };
+		9372B1B222DD7D5C00D21F32 /* PetralRestraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PetralRestraint.swift; path = Petral/Classes/PetralRestraint.swift; sourceTree = "<group>"; };
+		9372B1B322DD7D5C00D21F32 /* PetralParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PetralParser.swift; path = Petral/Classes/PetralParser.swift; sourceTree = "<group>"; };
+		9372B1B422DD7D5C00D21F32 /* PetralAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PetralAttribute.swift; path = Petral/Classes/PetralAttribute.swift; sourceTree = "<group>"; };
 		95A05CEBC89E7FC0311BBF49A13CB3AA /* Pods-Petral_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Petral_Example-umbrella.h"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		B41CC1A46DD1A97C3C5D4C45EA30F891 /* Petral.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Petral.modulemap; sourceTree = "<group>"; };
@@ -217,9 +221,11 @@
 		FC459B758BDDDF27F77E5538F392621F /* Petral */ = {
 			isa = PBXGroup;
 			children = (
-				9392D5EF22C363DE00A1EA84 /* UIView+Petral.swift */,
-				93521E0122B241EE001EE7AB /* PetralRestraint.swift */,
-				9392D5ED22C35BC000A1EA84 /* PetralAttribute.swift */,
+				9372B1B422DD7D5C00D21F32 /* PetralAttribute.swift */,
+				9372B1B122DD7D5C00D21F32 /* PetralLoader.swift */,
+				9372B1B322DD7D5C00D21F32 /* PetralParser.swift */,
+				9372B1B222DD7D5C00D21F32 /* PetralRestraint.swift */,
+				9372B1B022DD7D5C00D21F32 /* UIView+Petral.swift */,
 				11CEE4FBC6F15EFF2AC5581D6138256C /* Pod */,
 				0974E66B4EF0650F4B24847D34DA100F /* Support Files */,
 			);
@@ -376,10 +382,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93521E0A22B241EF001EE7AB /* PetralRestraint.swift in Sources */,
+				9372B1B722DD7D5C00D21F32 /* PetralRestraint.swift in Sources */,
+				9372B1B522DD7D5C00D21F32 /* UIView+Petral.swift in Sources */,
+				9372B1B822DD7D5C00D21F32 /* PetralParser.swift in Sources */,
+				9372B1B622DD7D5C00D21F32 /* PetralLoader.swift in Sources */,
+				9372B1B922DD7D5C00D21F32 /* PetralAttribute.swift in Sources */,
 				8485BB562993115D575627CD9374E14A /* Petral-dummy.m in Sources */,
-				9392D5F022C363DE00A1EA84 /* UIView+Petral.swift in Sources */,
-				9392D5EE22C35BC000A1EA84 /* PetralAttribute.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
