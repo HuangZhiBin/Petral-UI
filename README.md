@@ -58,11 +58,11 @@ nameLabel.petralRestraint
 
 ---
 
-### 自动布局的API
+### (1) 自动布局的API
 
 请参考：<a href="RestraintAPI.md">自动布局的API</a>
 
-### 布局的级联更新
+### (2) 布局的级联更新
 
 - **updateDependeds()**
 
@@ -76,7 +76,7 @@ a.petralRestraint.updateDependeds();
 
 ![](http://www.koudaikr.cn/Petral/relative2.png)
 
-### 布局冲突的情况
+### (3) 布局冲突的情况
 
 以下的情形会发生布局冲突，运行时抛出 fatalError：
 
@@ -89,7 +89,7 @@ a.petralRestraint.updateDependeds();
 
 运行时发现 fatalError 的情形，请通过下面的方法解决冲突。
 
-### 解决布局冲突的办法
+### (4) 解决布局冲突的办法
 
 根据 fatalError 的说明，首先应了解冲突发生的具体规则，然后选择下面的其中一个方法解决冲突。
 
@@ -114,7 +114,7 @@ a.petralRestraint.updateDependeds();
 
 通过新建 XML 的布局文件，实现 UI 控件的创建、属性设置、自动布局，实现 UI 层级的结构化，提高编辑及修改 UI 的效率。
 
-### (1)新建 XML 布局文件
+### (1) 新建 XML 布局文件
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -266,7 +266,7 @@ RedImageView 类可通用父类的属性，例如 image 属性
 </views>
 ```
 
-### (2)iOS 引用 XML 布局
+### (2) iOS 引用 XML 布局
 
 #### 1.XML 控件的加载
 
