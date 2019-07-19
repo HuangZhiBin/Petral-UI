@@ -1,149 +1,61 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <views xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.koudaikr.cn/petral-ui.xsd">
     <view left="0" right="0" top="0" bottom="0" backgroundColor="green">
-        <imageview
-            id="image1"
-            frame="150,20,50,50"
-            backgroundColor="#777777"
-            shadowColor="#880000"
-            shadowOpacity="0.95"
-            shadowRadius="20"
-            shadowOffset="2,5"
-            borderColor="#888888"
-            borderWidth="0"
-            masksToBounds="true"
-            borderRadius="12.5"
-            image="setting"
-            ></imageview>
-
-        <imageview
-            id="image1"
-            frame="190,20,50,50"
-            backgroundColor="#777777"
-            shadowColor="#880000"
-            shadowOpacity="0.95"
-            shadowRadius="20"
-            shadowOffset="2,5"
-            borderColor="#888888"
-            borderWidth="0"
-            masksToBounds="true"
-            borderRadius="12.5"
-            image="setting"
-            ></imageview>
+        <imageview id="image1" frame="150,20,50,50" backgroundColor="#777777" shadowColor="#880000" shadowOpacity="0.95" shadowRadius="20" shadowOffset="2,5" borderColor="#888888" borderWidth="0" masksToBounds="true" borderRadius="12.5" image="setting"></imageview>
         
-        <!--
-         left="label1,100"
-         right="0"
-         bottom="textview1,0"
-         top="textview1;20"
-         
-         center="button1,20,30"
-         xCenter="textfield1,-100"
-         yCenter="button1,20"
-         width="tableview1"
-         height="scrollview1"
-         -->
-        <label
-            id="label1"
-            frame="10,50,100,20"
-            font="18"
-            textColor="#555555"
-            backgroundColor="#d3d3d3"
-            text="发送短信通知功能"
-            lines="1"
-            align="right"
-            
-            top="image1;0"
-            height="image1,0"></label>
+        <imageview id="image11" frame="210,20,50,50" backgroundColor="#777777" shadowColor="#880000" shadowOpacity="0.95" shadowRadius="20" shadowOffset="2,5" borderColor="#888888" borderWidth="0" masksToBounds="true" borderRadius="12.5" image="setting"></imageview>
         
-        <!--
-         0
-         tableview1
-         textview1;20
-         label1,100
-         100,200
-         label1,100,200
-         -->
-        <textview
-            id="textview1"
-            frame="10,200,300,40"
-            contentInset="10,10,10,10"
-            backgroundColor="#f5f5f5"
-            font="13"
-            textColor="#000000"
-            text="HIMYM"
-            align="left"
-            isEditable="false"></textview>
+        <label id="label1" frame="10,50,100,20" font="18" textColor="#555555" backgroundColor="#d3d3d3" text="发送短信通知功能" lines="1" align="right" top="image1;0" height="image1,0"></label>
         
-        <textfield
-            id="textfield1"
-            frame="10,260,300,40"
-            backgroundColor="#f8f8f8"
-            font="13+"
-            textColor="#888888"
-            text="default"
-            placeholder="    this is placeholder   "
-            align="left"
-            isSecureText="false"></textfield>
+        <textview id="textview1" frame="10,200,300,40" contentInset="10,10,10,10" backgroundColor="#f5f5f5" font="13" textColor="#000000" text="HIMYM" align="left" isEditable="false"></textview>
         
-        <button
-            id="button1"
-            frame="10,320,300,40"
-            font="13+"
-            titleColor="#555555"
-            backgroundColor="#d6d6d6"
-            backgroundColorHighlighted="#c8c8c8"
-            backgroundImage="setting"
-            backgroundImageHighlighted="setting2"
-            title="Click"
-            align="center"></button>
+        <textfield id="textfield1" frame="10,260,300,40" backgroundColor="#f8f8f8" font="13+" textColor="#888888" text="default" placeholder="    this is placeholder   " align="left" isSecureText="false"></textfield>
         
-        <UserInfoView
-            id="userInfoView"
-            frame="0,0,0,120"
-            right="20"
-            left="20"
-            top="180"
-            backgroundColor="#dd7700"
-            clipsToBounds="true"
-            >
-            <imageview
-                id="image55"
-                frame="0,0,50,50"
-                image="setting"
-                ></imageview>
+        <button id="button1" frame="10,320,300,40" font="13+" titleColor="#555555" backgroundColor="#d6d6d6" backgroundColorHighlighted="#c8c8c8" backgroundImage="setting" backgroundImageHighlighted="setting2" title="Click" align="center"></button>
+        
+        <RedImageView p-show="{showRed}" id="image2" frame="250,120,50,50" image="setting" top="button1" left="button1;5"></RedImageView>
+        
+        <scrollview id="scrollview1" frame="10,370,300,120" contentSize="300,120" contentOffset="0,0" contentInset="10,20,10,10" backgroundColor="#d6d6d6">
+            <label id="label1" frame="300,120" font="12" textColor="#ffffff" backgroundColor="#912300" text="   通过直接调用.为前缀的方法，直接连续设置 View 的 UI 属性，与调用系统方法的 API 类似。" lines="13" align="right" width="50%" height="50%"></label>
+        </scrollview>
+        <tableview id="tableview1" frame="10,500,300,120" backgroundColor="#d6d6d6"></tableview>
+        
+        <scrollview p-show="{showManyView}" left="0" top="20" width="100%" height="120" contentSize="{time}00,120" backgroundColor="orange">
+            <manyview id="manyview" height="100%" width="1000" p-times="{time}" p-item-size="100,120" p-direction="row">
+                <template>
+                    <view width="100%" height="100%" backgroundColor="blue">
+                        <imageview id="cellIcon" width="50" height="50" xCenter="0" top="20" image="setting"></imageview>
+                        <label id="cellInfo" xCenter="0" width="80%" height="20" font="14" textColor="#ffffff" top="cellIcon;10" text="cell" align="center"></label>
+                    </view>
+                </template>
+            </manyview>
+        </scrollview>
+        
+        <manyview id="flexView1" frame="0,100,280,580" backgroundColor="purple" p-times="{time2}" p-item-size="280,240" p-direction="column" p-padding="0,0,0,0" p-item-space-x="10" p-item-space-y="1">
+            <template>
+                <manyview id="flexView2" width="100%" height="100%" backgroundColor="orange" p-times="3" p-item-size="100,100" p-direction="wrap" p-padding="10,20,30,40" p-item-space-x="10" p-item-space-y="5">
+                    <template>
+                        <view width="100%" height="100%" backgroundColor="blue">
+                            <label id="cellLabel" frame="50,0,50,20" font="14" textColor="#555555" backgroundColor="#d3d3d3" text="发送" lines="1" align="left"></label>
+                            <imageview id="cellImage" frame="20,30,50,50" image="setting"></imageview>
+                            <view left="0" top="0" width="40%" height="40%" backgroundColor="green">
+                                <imageview id="cellLabel2" frame="0,0,40,40" image="setting"></imageview>
+                            </view>
+                            <manyview id="flexView3" p-show="true" frame="50,20,50,80" backgroundColor="purple" p-times="5" p-item-size="20,20" p-direction="wrap" p-padding="0,0,0,0" p-item-space-x="10" p-item-space-y="5">
+                                <template>
+                                    <imageview id="subImage" frame="0,0,20,20" image="setting"></imageview>
+                                    <label id="subLabel" frame="0,0,20,20" font="7" textColor="#ffffff" text="abc" lines="1" align="center"></label>
+                                </template>
+                            </manyview>
+                        </view>
+                    </template>
+                </manyview>
+            </template>
+        </manyview>
+        
+        <UserInfoView id="userInfoView" frame="0,0,0,120" right="20" left="20" top="180" backgroundColor="#dd7700" clipsToBounds="true" data='{"text":"{element}"}'>
+            <imageview id="image55" frame="0,0,50,50" image="setting"></imageview>
         </UserInfoView>
         
-        <RedImageView
-            id="image2"
-            frame="250,120,50,50"
-            image="setting"
-            top="userInfoView"
-            left="userInfoView;10"
-            ></RedImageView>
-        
-        <scrollview
-            id="scrollview1"
-            frame="10,370,300,120"
-            contentSize="300,120"
-            contentOffset="0,0"
-            contentInset="10,20,10,10"
-            backgroundColor="#d6d6d6">
-            <label
-                id="label1"
-                frame="300,120"
-                font="12"
-                textColor="#ffffff"
-                backgroundColor="#912300"
-                text="   批量导入幼儿园添加发送短信通知功能批量导入幼儿批量导入幼儿园添加发送短信通知功能批量导入幼儿批量导入幼儿园添加发送短信通知功能批量导入幼儿批量导入幼儿园添加发送短信通知功能批量导入幼儿批量导入幼儿园添加发送短信通知功能批量导入幼儿批量导入幼儿园添加发送短信通知功能批量导入幼儿批量导入幼儿园添加发送短信通知功能批量导入幼儿批量导入幼儿园添加发送短信通知功能批量导入幼儿批量导入幼儿园添加发送短信通知功能批量导入幼儿批量导入幼儿园添加发送短信通知功能批量导入幼儿批量导入幼儿园添加发送短信通知功能批量导入幼儿批量导入幼儿园添加发送短信通知功能批量导入幼儿批量导入幼儿园添加发送短信通知功能批量导入幼儿批量导入幼儿园添加发送短信通知功能批量导入幼儿"
-                lines="13"
-                align="right"
-                width="50%"
-                height="50%"></label>
-        </scrollview>
-        <tableview
-            id="tableview1"
-            frame="10,500,300,120"
-            backgroundColor="#d6d6d6"></tableview>
     </view>
 </views>

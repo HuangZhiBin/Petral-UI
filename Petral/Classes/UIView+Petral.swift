@@ -17,6 +17,7 @@ var PETRAL_RESTRAINT = 1;
 var PETRAL_ATTRIBUTE = 2;
 var PETRAL_XML_RESOURCE = 3;
 var PETRAL_XML_LOADER = 4;
+var PETRAL_XML_VIEW_ID = 5;
 
 extension UIView {
     
@@ -83,7 +84,17 @@ extension UIView {
         }
     }
     
-    var petralXmlResource: String? {
+    var petralXmlViewId: String? {
+        get{
+            let result = objc_getAssociatedObject(self, &PETRAL_XML_VIEW_ID) as? String;
+            return result
+        }
+        set{
+            objc_setAssociatedObject(self, &PETRAL_XML_VIEW_ID, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN);
+        }
+    }
+    
+    public var petralXmlResource: String? {
         get{
             let result = objc_getAssociatedObject(self, &PETRAL_XML_RESOURCE) as? String;
             return result
@@ -103,15 +114,18 @@ extension UIView {
         }
     }
     
-    @objc public func petralLoadXmlViews(xmlPath: String) {
+    @objc public func petralLoadXmlViews(xmlPath: String, properties: [String: String]? = nil) {
         self.petralXmlResource = xmlPath;
-        let loader = PetralLoader.init(xmlFileName: self.petralXmlResource!);
-        self.petralXmlLoader = loader;
-        loader.injectViews(toView: self);
+        self.petralXmlLoader = PetralLoader.init(xmlFileName: self.petralXmlResource!, properties: properties);
+        self.petralXmlLoader!.injectViews(toView: self);
     }
     
     @objc public func petralViewById(id: String) -> UIView? {
         return self.petralXmlLoader?.findViewById(id: id);
+    }
+    
+    @objc public func petralViewById(id: String, template: UIView) -> UIView? {
+        return self.petralXmlLoader?.findViewById(id: id, template: template);
     }
     
     @objc public func petralize() -> PetralAttribute {

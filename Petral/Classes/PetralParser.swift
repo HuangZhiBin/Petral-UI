@@ -337,6 +337,25 @@ class PetralParser: NSObject {
         return color!;
     }
     
+    /**
+     允许输入的格式:
+     row
+     column
+     wrap
+     */
+    static func parseDirection(_ attributeValue: String) -> PetralFlexDirectionType {
+        if attributeValue == "row" {
+            return .row;
+        }
+        else if attributeValue == "column" {
+            return .column;
+        }
+        else if attributeValue == "wrap" {
+            return .wrap;
+        }
+        return .row;
+    }
+    
     private static func isFloat(string: String) -> Bool {
         let scan: Scanner = Scanner(string: string);
         var val: Float = 0;

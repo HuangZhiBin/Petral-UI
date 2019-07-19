@@ -23,7 +23,7 @@
             font="18"
             textColor="#555555"
             backgroundColor="#d3d3d3"
-            text="批量导入幼儿园"
+            text="{text}"
             lines="1"
             align="center"
             
