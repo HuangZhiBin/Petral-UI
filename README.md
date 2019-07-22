@@ -362,7 +362,7 @@ a.petralRestraint.updateDependeds();
 
 通过新建 XML 的布局文件，实现 UI 控件的创建、属性设置、自动布局，实现 UI 层级的结构化，提高编辑及修改 UI 的效率。
 
-### (1)新建 XML 布局文件
+### (1) 新建 XML 布局文件
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -514,7 +514,7 @@ RedImageView 类可通用父类的属性，例如 image 属性
 </views>
 ```
 
-### (2)iOS 引用 XML 布局
+### (2) iOS 引用 XML 布局
 
 #### 1.XML 控件的加载
 
@@ -550,7 +550,7 @@ self.view.petralLoadXmlViews(xmlPath: "XmlViewController", properties: propertie
 1.**p-show**属性
 true表示加载该view，false则不加载
 
-```Swift
+```xml
 <view p-show="false"></view>
 ```
 
@@ -564,7 +564,7 @@ true表示加载该view，false则不加载
 - **p-item-space-x**属性：横向item间距
 - **p-item-space-y**属性：纵向item间距
 
-```Swift
+```xml
 <manyview id="flexView1" frame="0,100,280,580" backgroundColor="purple" p-times="10" p-item-size="280,240" p-direction="column" p-padding="0,0,0,0" p-item-space-x="10" p-item-space-y="1">
   <template>
     <!-- insert any views here -->
