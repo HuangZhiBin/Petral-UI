@@ -547,14 +547,16 @@ self.view.petralLoadXmlViews(xmlPath: "XmlViewController", properties: propertie
         
 #### 4.XML流程控制
 
-1.**p-show**属性
+##### [1].**p-show**属性
+
 true表示加载该view，false则不加载
 
 ```xml
 <view p-show="false"></view>
 ```
 
-2.**manyview**视图
+##### [2].**manyview**视图
+
 可以按照template重复生成item view的视图类，包含有且只有一个<template>元素，且<template>不支持任何属性。
 
 - **p-times**：重复次数
