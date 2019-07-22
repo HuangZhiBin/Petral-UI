@@ -544,6 +544,16 @@ let properties = [
         ];
 self.view.petralLoadXmlViews(xmlPath: "XmlViewController", properties: properties);
 ```
+
+```xml
+<label text="{element}"></label>
+```
+
+注入xml格式为**{变量名}**，不支持表达式，但支持字符串拼接，例如：
+
+```xml
+<label text="{element}_abc_{element}"></label>
+```
         
 #### 4.XML流程控制
 
