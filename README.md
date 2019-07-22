@@ -338,7 +338,7 @@ true表示加载该view，false则不加载
 | **p-item-space-x** | 横向item间距 |
 | **p-item-space-y** | 纵向item间距 |
 
-- XML示例
+###### XML示例
 
 ```xml
 <manyview id="flexView" p-times="10" p-item-size="280,240" p-direction="column" p-padding="0,0,0,0" p-item-space-x="10" p-item-space-y="1">
@@ -349,7 +349,7 @@ true表示加载该view，false则不加载
 <manyview>
 ```
 
-- 代码中访问manyview
+###### 代码中访问manyview
 
 ```Swift
 let flexView = self.view.petralViewById(id: "flexView", template: templateView) as! PetralFlexView;
