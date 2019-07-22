@@ -532,6 +532,46 @@ let userInfoView = self.view.petralViewById(id: "userInfoView") as! UserInfoView
 
 上面的代码表示 userInfoView 是 XmlViewController 里 id 属性为"userInfoView"的控件。
 
+#### 3.代码注入XML
+
+```Swift
+let properties = [
+            "showManyView": String(true),
+            "time" : "10",
+            "time2" : "3",
+            "showRed" : String(true),
+            "element": "风风雨雨我都不畏惧但求共醉"
+        ];
+self.view.petralLoadXmlViews(xmlPath: "XmlViewController", properties: properties);
+```
+        
+#### 4.XML流程控制
+
+1.**p-show**属性
+true表示加载该view，false则不加载
+
+```Swift
+<view p-show="false"></view>
+```
+
+2.**manyview**视图
+可以按照template重复生成item view的视图类，包含有且只有一个template
+
+- **p-times**属性：重复次数
+- **p-item-size**属性：item的size
+- **p-direction**属性：row（横向）、column（纵向）、wrap（自动换行）
+- **p-padding**属性：manyview的内间距
+- **p-item-space-x**属性：横向item间距
+- **p-item-space-y**属性：纵向item间距
+
+```Swift
+<manyview id="flexView1" frame="0,100,280,580" backgroundColor="purple" p-times="10" p-item-size="280,240" p-direction="column" p-padding="0,0,0,0" p-item-space-x="10" p-item-space-y="1">
+  <template>
+    <!-- insert any views here -->
+  <template>
+<manyview>
+```
+
 ### 微信讨论群
 
 二维码若过期，请加微信 ikrboy，请注明 petral 或者 github。
