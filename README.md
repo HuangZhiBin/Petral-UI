@@ -362,7 +362,7 @@ for (index, templateView) in flexView.items.enumerated() {
 注意不能省略template参数，错误地写成了：
 
 ```Swift
-let cellImage = self.view.petralViewById(id: "cellImage") as? UIImageView;
+let cellImage = self.view.petralViewById(id: "cellImage") as? UIImageView;//此为错误写法
 ```
 
 因为cellImage在manyview中，存在多个view的id相同，必须写成：
