@@ -555,17 +555,17 @@ true表示加载该view，false则不加载
 ```
 
 2.**manyview**视图
-可以按照template重复生成item view的视图类，包含有且只有一个template
+可以按照template重复生成item view的视图类，包含有且只有一个<template>元素，且<template>不支持任何属性。
 
-- **p-times**属性：重复次数
-- **p-item-size**属性：item的size
-- **p-direction**属性：row（横向）、column（纵向）、wrap（自动换行）
-- **p-padding**属性：manyview的内间距
-- **p-item-space-x**属性：横向item间距
-- **p-item-space-y**属性：纵向item间距
+- **p-times**：重复次数
+- **p-item-size**：item的size
+- **p-direction**：row（横向）、column（纵向）、wrap（自动换行）
+- **p-padding**：manyview的内间距
+- **p-item-space-x**：横向item间距
+- **p-item-space-y**：纵向item间距
 
 ```xml
-<manyview id="flexView1" frame="0,100,280,580" backgroundColor="purple" p-times="10" p-item-size="280,240" p-direction="column" p-padding="0,0,0,0" p-item-space-x="10" p-item-space-y="1">
+<manyview p-times="10" p-item-size="280,240" p-direction="column" p-padding="0,0,0,0" p-item-space-x="10" p-item-space-y="1">
   <template>
     <!-- insert any views here -->
   <template>
