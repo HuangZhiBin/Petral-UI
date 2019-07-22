@@ -371,6 +371,14 @@ let cellImage = self.view.petralViewById(id: "cellImage") as? UIImageView;
 let cellImage = self.view.petralViewById(id: "cellImage", template: templateView) as? UIImageView;
 ```
 
+###### manyview点击item事件
+
+```Swift
+manyview.clickItemAction = { (template: PetralFlexTemplateView, index : Int) in
+  print(index);
+}
+```
+
 ### 微信讨论群
 
 二维码若过期，请加微信 ikrboy，请注明 petral 或者 github。
