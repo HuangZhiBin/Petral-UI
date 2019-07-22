@@ -329,12 +329,14 @@ true表示加载该view，false则不加载
 
 可以按照template重复生成item view的视图类，包含有且只有一个<template>元素，且<template>不支持任何属性。
 
-- **p-times**：重复次数
-- **p-item-size**：item的size
-- **p-direction**：row（横向）、column（纵向）、wrap（自动换行）
-- **p-padding**：manyview的内间距
-- **p-item-space-x**：横向item间距
-- **p-item-space-y**：纵向item间距
+| 属性    | 说明     |
+| ------- | -------- |
+| **p-times**    | 重复次数   |
+| **p-item-size**   | item的size   |
+| **p-direction**  | row（横向）、column（纵向）、wrap（自动换行）   |
+| **p-padding**     | manyview的内间距   |
+| **p-item-space-x** | 横向item间距 |
+| **p-item-space-y** | 纵向item间距 |
 
 - XML示例
 
