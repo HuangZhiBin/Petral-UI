@@ -551,22 +551,21 @@ self.view.petralLoadXmlViews(xmlPath: "XmlViewController", properties: propertie
 
 注入xml格式为{变量名}，不支持表达式，但支持字符串拼接，例如：
 
+```xml
+<label text="{element}_abc_{element}"></label>
+```
+
 #### 4.自定义View注入XML
 
 通过data注入json字符串
+
 ```xml
 <MyInfoView data='{"showManyView":"{showManyView}","showRed":"{showRed}"}'></MyInfoView>
-```
-
-注入xml格式为{变量名}，不支持表达式，但支持字符串拼接，例如：
-
-```xml
-<label text="{element}_abc_{element}"></label>
 ```
         
 #### 4.XML流程控制
 
-##### [1].**p-show**属性
+##### [1] **p-show**属性
 
 true表示加载该view，false则不加载
 
@@ -574,7 +573,7 @@ true表示加载该view，false则不加载
 <view p-show="false"></view>
 ```
 
-##### [2].**manyview**视图
+##### [2] **manyview**视图
 
 可以按照template重复生成item view的视图类，包含有且只有一个<template>元素，且<template>不支持任何属性。
 
