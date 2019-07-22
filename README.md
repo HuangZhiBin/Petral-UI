@@ -250,7 +250,7 @@ RedImageView 类可通用父类的属性，例如 image 属性
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
-<views xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.koudaikr.cn/petral-ui.xsd">
+<views xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.koudaikr.cn/petral.xsd">
   <scrollview
             id="scrollview1"
             frame="10,370,300,120"
