@@ -336,12 +336,37 @@ true表示加载该view，false则不加载
 - **p-item-space-x**：横向item间距
 - **p-item-space-y**：纵向item间距
 
+- XML示例
+
 ```xml
-<manyview p-times="10" p-item-size="280,240" p-direction="column" p-padding="0,0,0,0" p-item-space-x="10" p-item-space-y="1">
+<manyview id="flexView" p-times="10" p-item-size="280,240" p-direction="column" p-padding="0,0,0,0" p-item-space-x="10" p-item-space-y="1">
   <template>
     <!-- insert any views here -->
+    <imageview id="cellImage" />
   <template>
 <manyview>
+```
+
+- 代码中访问manyview
+
+```Swift
+let flexView = self.view.petralViewById(id: "flexView", template: templateView) as! PetralFlexView;
+for (index, templateView) in flexView.items.enumerated() {
+  let cellImage = self.view.petralViewById(id: "cellImage", template: templateView) as? UIImageView;
+  cellImage?.image = UIImage.init(named: "setting2");
+}
+```
+
+注意不能省略template参数，错误地写成了：
+
+```Swift
+let cellImage = self.view.petralViewById(id: "cellImage") as? UIImageView;
+```
+
+因为cellImage在manyview中，存在多个view的id相同，必须写成：
+
+```Swift
+let cellImage = self.view.petralViewById(id: "cellImage", template: templateView) as? UIImageView;
 ```
 
 ### 微信讨论群
