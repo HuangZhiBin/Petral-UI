@@ -28,9 +28,9 @@ public enum PetralRestraintType{
 }
 
 public class PetralRestraint: NSObject {
-    private weak var attachedView : UIView!;
-    private var restraints : [PetralRestraintItem]! = [];
-    private var dependings: [Int]! = [];//relative view's hash ids
+    weak var attachedView : UIView!;
+    var restraints : [PetralRestraintItem]! = [];
+    var dependings: [Int]! = [];//relative view's hash ids
     
     init(_ attachedView: UIView) {
         super.init();
@@ -143,6 +143,8 @@ public class PetralRestraint: NSObject {
             }
         }
     }
+    
+    
 }
 
 
@@ -168,16 +170,18 @@ class PetralRestraintItem: NSObject {
 extension PetralRestraint{
     
     //MARK: -
-    
-    
-    
     public func updateDependeds(){
         let dependedArray = Array(Set(self.dependings));
         for dependedViewTag in dependedArray {
-            print("dependedViewTag=>\(dependedViewTag)");
+            //print("dependedViewTag=>\(dependedViewTag)");
+            //以下顺序不能改变
+            var dependedView : UIView? = self.attachedView.viewWithTag(dependedViewTag);
+            if dependedView == nil {
+                dependedView = self.attachedView.superview?.viewWithTag(dependedViewTag);
+            }
             
-            let dependedView = self.attachedView.superview?.viewWithTag(dependedViewTag);
             self.updateRestraintFor(view: dependedView!, theReferenceView: self.attachedView);
+            
         }
     }
     
@@ -314,7 +318,7 @@ extension PetralRestraint{
         if(view.petralRestraint.dependings.count > 0){
             let dependedArray = Array(Set(view.petralRestraint.dependings));
             for dependedViewTag in dependedArray {
-                print("dependedViewTag=>\(dependedViewTag)");
+                //print("dependedViewTag=>\(dependedViewTag)");
                 
                 let dependedView = view.superview?.viewWithTag(dependedViewTag);
                 self.updateRestraintFor(view: dependedView!, theReferenceView: view);

@@ -38,6 +38,7 @@ class PetralLoader: NSObject {
     var skipParseCursor = 0;//skipParseCursor==0表示继续parse，大于0表示需要跳过parse
     
     var needDuplicateTemplateViewTags : [Int] = [];
+    var tableViewTags : [Int] = [];
     
     var xmlProperties : [String: String] = [:];
     
@@ -92,7 +93,10 @@ class PetralLoader: NSObject {
     }
     
     func finishParse() {
-        for item in self.xmlItems {
+        var enumerateIndex = 0;
+        while(enumerateIndex < self.xmlItems.count) {
+            let item = self.xmlItems[enumerateIndex];
+            
             var elementName: String = item.elementName;
             let attributeDict: [String: String] = item.attributeDict;
             let currentViewIdentifier: String = item.currentViewIdentifier;
@@ -104,7 +108,6 @@ class PetralLoader: NSObject {
                 "imageview": "UIImageView",
                 "label": "UILabel",
                 "scrollview": "UIScrollView",
-                "tableview": "UITableView",
                 "textfield": "UITextField",
                 "textview": "UITextView",
                 "collectionview": "UICollectionView",
@@ -118,53 +121,128 @@ class PetralLoader: NSObject {
                 "switch": "UISwitch",
                 "webview": "UIWebView",
                 
-                "manyview": "PetralFlexView",
-                PETRAL_ATTRIBUTE_TEMPLATE: NSStringFromClass(PetralFlexTemplateView.classForCoder())
+                "tableview": NSStringFromClass(PetralTableView.classForCoder()),
+                "UITableView": NSStringFromClass(PetralTableView.classForCoder()),
+                
+                PETRAL_FLEX_VIEW_NAME: NSStringFromClass(PetralFlexView.classForCoder()),
+                PETRAL_ATTRIBUTE_TEMPLATE: NSStringFromClass(PetralFlexTemplateView.classForCoder()),
+                
+                PETRAL_ELEMENT_HEADER: NSStringFromClass(PetralTableHeaderView.classForCoder()),
+                PETRAL_ELEMENT_FOOTER: NSStringFromClass(PetralTableFooterView.classForCoder()),
+                PETRAL_ELEMENT_CELL: NSStringFromClass(PetralTableCellView.classForCoder()),
+                PETRAL_ELEMENT_SECTION_HEADER: NSStringFromClass(PetralTableSectionHeaderView.classForCoder()),
+                PETRAL_ELEMENT_SECTION_FOOTER: NSStringFromClass(PetralTableSectionFooterView.classForCoder()),
             ];
             if shortNameClassDict.keys.contains(elementName) {
                 elementName = shortNameClassDict[elementName]!;
             }
             
-            self.creatView(elementName: elementName, attributeDict: attributeDict, currentViewIdentifier: currentViewIdentifier, superViewIdentifier: superViewIdentifier);
+            let tableViewElements : [String] = [PETRAL_ELEMENT_HEADER, PETRAL_ELEMENT_FOOTER, PETRAL_ELEMENT_CELL, PETRAL_ELEMENT_SECTION_HEADER, PETRAL_ELEMENT_SECTION_FOOTER];
+            let isTableViewElement = tableViewElements.contains(item.elementName);
+            
+            let createdView = self.creatView(className: elementName, attributeDict: attributeDict, currentViewIdentifier: currentViewIdentifier, superViewIdentifier: superViewIdentifier, needFillWidth: isTableViewElement);
+            if isTableViewElement || elementName == self.getClassName(class:PetralFlexTemplateView.classForCoder()) {
+                createdView?.petralRestraint.reset();
+                createdView?.frame.origin = CGPoint.zero;
+            }
+            
+            if createdView != nil && (createdView?.isKind(of: PetralTableView.classForCoder()))! {
+                
+                tableViewTags.append(createdView!.tag);
+                
+                /*
+                var tableViewElements : [PetralXmlItem] = [];
+                var tableViewElementsIdentifiers : [String] = [item.currentViewIdentifier];//tableview itself
+                for elementIndex in (enumerateIndex+1)...(self.xmlItems.count-1) {
+                    let elementItem = self.xmlItems[elementIndex];
+                    let elementItemIdentifier: String = elementItem.currentViewIdentifier;
+                    let elementItemSuperIdentifier: String = elementItem.superViewIdentifier;
+                    
+                    if tableViewElementsIdentifiers.contains(elementItemSuperIdentifier) {
+                        tableViewElementsIdentifiers.append(elementItemIdentifier);
+                        tableViewElements.append(elementItem);
+                        continue;
+                    }
+                    else {
+                        break;
+                    }
+                }
+                enumerateIndex += tableViewElements.count;*/
+            }
+            
+            if createdView != nil && createdView!.isKind(of: PetralFlexTemplateView.classForCoder()) {
+                self.needDuplicateTemplateViewTags.append(createdView!.tag);
+            }
+            
+            if enumerateIndex < self.xmlItems.count - 1 {
+                enumerateIndex += 1;
+                continue;
+            }
+            else {
+                break;
+            }
         }
         
-        //reversed() 解决子manyview不复制的问题.reversed()
+        //flexview: reversed() 解决子flexview不复制的问题.reversed()
         for needDuplicateTemplateViewTag in self.needDuplicateTemplateViewTags.reversed() {
             let templateView: PetralFlexTemplateView = self.targetView.viewWithTag(needDuplicateTemplateViewTag) as! PetralFlexTemplateView;
-            let flexView: PetralFlexView = templateView.flexView;
-            
-            if flexView.elementCount >= 2 {
-                for _ in 0 ... flexView.elementCount - 2 {
-                    let copyView : PetralFlexTemplateView = self.duplicateView(view: templateView) as! PetralFlexTemplateView;
-                    flexView.addItemView(view: copyView);
-                    print("sdfsddf")
+            let flexView: PetralFlexView = templateView.superview as! PetralFlexView;
+            templateView.removeFromSuperview();
+            flexView.templateView = templateView;
+        }
+        
+        //tableview
+        for tableViewTag in self.tableViewTags.reversed() {
+            let tableView: PetralTableView = self.targetView.viewWithTag(tableViewTag) as! PetralTableView;
+            for subView in tableView.subviews {
+                if subView.isKind(of: PetralTableHeaderView.classForCoder()) {
+                    subView.removeFromSuperview();
+                    tableView.tableHeaderView = subView;
+                }
+                else if subView.isKind(of: PetralTableFooterView.classForCoder()) {
+                    subView.removeFromSuperview();
+                    tableView.tableFooterView = subView;
+                }
+                else if subView.isKind(of: PetralTableCellView.classForCoder()) {
+                    subView.removeFromSuperview();
+                    tableView.cellView = subView;
+                    tableView.cellHeight = subView.frame.size.height;
+                }
+                else if subView.isKind(of: PetralTableSectionHeaderView.classForCoder()) {
+                    subView.removeFromSuperview();
+                    tableView.sectionHeaderView = subView;
+                    tableView.sectionHeightHeader = subView.frame.size.height;
+                }
+                else if subView.isKind(of: PetralTableSectionFooterView.classForCoder()) {
+                    subView.removeFromSuperview();
+                    tableView.sectionFooterView = subView;
+                    tableView.sectionHeightFooter = subView.frame.size.height;
                 }
             }
         }
     }
     
-    func creatView(elementName : String, attributeDict: [String: String], currentViewIdentifier: String, superViewIdentifier: String) {
-        
+    func creatView(className : String, attributeDict: [String: String], currentViewIdentifier: String, superViewIdentifier: String, needFillWidth: Bool) -> UIView? {
         
         var addedView : UIView?;
-        if elementName == "PetralFlexView"{
+        if NSClassFromString(className) == PetralFlexView.classForCoder() {
             addedView = PetralFlexView.init();
         }
-        else if elementName == "PetralFlexTemplateView"{
+        else if NSClassFromString(className) == PetralFlexTemplateView.classForCoder() {
             addedView = PetralFlexTemplateView.init();
         }
-        else if elementName == NSStringFromClass(UICollectionView.classForCoder()){
+        else if className == NSStringFromClass(UICollectionView.classForCoder()){
             addedView = UICollectionView.init(frame: CGRect.zero, collectionViewLayout: UICollectionViewLayout.init());
         }
         else{
             let SPACE_NAME = Bundle.main.infoDictionary!["CFBundleExecutable"] as! String;
-            var vcClass: AnyClass? = NSClassFromString(SPACE_NAME + "." + elementName);
+            var vcClass: AnyClass? = NSClassFromString(SPACE_NAME + "." + className);
             if vcClass == nil {
                 //系统类
-                vcClass = NSClassFromString(elementName);
+                vcClass = NSClassFromString(className);
             }
             if vcClass == nil {
-                fatalError("Cannot find class " + elementName);
+                fatalError("Cannot find class " + className);
             }
             let typeClass : UIView.Type = vcClass as! UIView.Type;
             addedView = typeClass.init();
@@ -177,28 +255,7 @@ class PetralLoader: NSObject {
         }
         self.viewIdentifierTagDict[currentViewIdentifier] = addedView!.tag;
         
-        // 1.add view
-        let superViewTag : Int? = self.viewIdentifierTagDict[superViewIdentifier];
-        if superViewTag == nil {
-            self.targetView.addSubview(addedView!);
-        }
-        else{
-            if self.targetView.viewWithTag(superViewTag!)!.isKind(of: PetralFlexView.classForCoder()) {
-                let templateView = addedView! as! PetralFlexTemplateView;
-                let flexView = (self.targetView.viewWithTag(superViewTag!) as! PetralFlexView);
-                flexView.addItemView(view: templateView);
-                self.needDuplicateTemplateViewTags.append(addedView!.tag);
-            }
-            else {
-                self.targetView.viewWithTag(superViewTag!)?.addSubview(addedView!);
-            }
-        }
-        
-        guard !addedView!.isKind(of: PetralFlexTemplateView.classForCoder()) else {
-            return;
-        }
-        
-        // 2.add attributes
+        // 1.add attributes
         for attributeName in attributeDict.keys {
             if PetralRestraint.isRestraintAttribute(attributeName: attributeName) {
                 continue;
@@ -210,21 +267,53 @@ class PetralLoader: NSObject {
             if addedView!.isKind(of: PetralFlexView.classForCoder()) {
                 (addedView as! PetralFlexView).setXmlParam(attributeName: attributeName, attributeValue: attributeValue);
             }
+            else if addedView!.isKind(of: PetralTableView.classForCoder()) {
+                (addedView as! PetralTableView).setXmlParam(attributeName: attributeName, attributeValue: attributeValue);
+            }
         }
+        
+        // 2.add view
+        let superViewTag : Int? = self.viewIdentifierTagDict[superViewIdentifier];
+        if superViewTag == nil {
+            self.targetView.addSubview(addedView!);
+        }
+        else{
+            self.targetView.viewWithTag(superViewTag!)?.addSubview(addedView!);
+            /*
+            if self.targetView.viewWithTag(superViewTag!)!.isKind(of: PetralFlexView.classForCoder()) {
+                let templateView = addedView! as! PetralFlexTemplateView;
+                let flexView = (self.targetView.viewWithTag(superViewTag!) as! PetralFlexView);
+                flexView.addItemView(view: templateView);
+                self.needDuplicateTemplateViewTags.append(addedView!.tag);
+            }
+            else {
+                self.targetView.viewWithTag(superViewTag!)?.addSubview(addedView!);
+            }
+ */
+        }
+        
+        if needFillWidth {
+            addedView?.frame.size.width = (addedView?.superview?.frame.size.width)!;
+        }
+        
+//        guard !addedView!.isKind(of: PetralFlexTemplateView.classForCoder()) else {
+//            return addedView;
+//        }
         
         // 3.add restraints
         for attributeName in attributeDict.keys {
             if PetralRestraint.isRestraintAttribute(attributeName: attributeName) == false {
                 continue;
             }
-            let attributeValue : String = attributeDict[attributeName]!.trimmingCharacters(in: .whitespaces);
+            var attributeValue : String = attributeDict[attributeName]!.trimmingCharacters(in: .whitespaces);
+            attributeValue = self.getRealAttributeValue(attributeValue: attributeValue);
             
             let params : PetralRestraintParam? = PetralParser.parseRestraint(attributeValue);
             if params != nil {
                 var toView: UIView?;
                 if params!.id != nil {
                     if self.viewIdTagDict[params!.id!] == nil {
-                        fatalError(elementName + ": Can not find view for view id = '" + params!.id! + "', have you defined it in the above code of xml file?");
+                        fatalError(className + ": Can not find view for view id = '" + params!.id! + "', have you defined it in the above code of xml file?");
                     }
                     toView = self.targetView.viewWithTag(self.viewIdTagDict[params!.id!]!);
                 }
@@ -235,9 +324,13 @@ class PetralLoader: NSObject {
             }
         }
         
+        
+        
         if addedView?.petralXmlResource != nil {
             addedView!.petralLoadXmlViews(xmlPath: addedView!.petralXmlResource!, properties: self.getDataFromAttribute(dataAttributeValue: attributeDict[PETRAL_ATTRIBUTE_DATA]));
         }
+        
+        return addedView;
     }
     
     func getDataFromAttribute(dataAttributeValue: String?) -> [String: String]? {
@@ -264,12 +357,6 @@ class PetralLoader: NSObject {
         return value;
     }
     
-    func duplicateView(view: UIView) -> UIView {
-        let data = NSKeyedArchiver.archivedData(withRootObject: view);
-        let duplicateView = NSKeyedUnarchiver.unarchiveObject(with: data);
-        return duplicateView as! UIView;
-    }
-    
     //随机数生成器函数
     func createRandomMan(start: Int, end: Int) ->() ->Int? {
         //根据参数初始化可选值数组
@@ -291,6 +378,14 @@ class PetralLoader: NSObject {
         
         return randomMan
     }
+    
+    func getClassName(class aClass: AnyClass) -> String {
+        var classString = NSStringFromClass(aClass);
+        if classString.contains("."){
+            classString = NSString(string: classString).substring(from: classString.index(of: ".")!.encodedOffset + 1);
+        }
+        return classString;
+    }
 
 }
 
@@ -300,7 +395,6 @@ extension PetralLoader : XMLParserDelegate {
     func parser(_ parser: XMLParser, didStartElement elementName: String,
                 namespaceURI: String?, qualifiedName qName: String?,
                 attributes attributeDict: [String : String] = [:]) {
-        
         
         if(CONTAINER_TAG == elementName){
             self.isParsing = true;
@@ -313,9 +407,6 @@ extension PetralLoader : XMLParserDelegate {
         
         print(attributeDict)
         currentElement = elementName;
-        
-        //
-        
         
         //之前已经遇到no-show
         if (self.skipParseCursor > 0) {
@@ -332,12 +423,6 @@ extension PetralLoader : XMLParserDelegate {
         if self.skipParseCursor == 0 {
             let currentIdentifier : String = String(self.randomInt()!);
             print("currentIdentifier="+String(currentIdentifier));
-//            if elementName == "manyview" {
-//                let duplicatedTimes :Int = Int(attributeDict[PETRAL_ATTRIBUTE_TIMES]!)!;
-//                for index in 0...duplicatedTimes-1 {
-//
-//                }
-//            }
             xmlItems.append(PetralXmlItem.init(elementName: elementName, attributeDict: attributeDict, currentViewIdentifier: currentIdentifier, superViewIdentifier: self.superViewIdentifiers.last!));
             self.superViewIdentifiers.append(currentIdentifier);
         }
@@ -371,7 +456,6 @@ extension PetralLoader : XMLParserDelegate {
         else {
             self.superViewIdentifiers.removeLast();
         }
-        
     }
 }
 

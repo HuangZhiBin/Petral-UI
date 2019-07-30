@@ -114,22 +114,46 @@ extension UIView {
         }
     }
     
-    @objc public func petralLoadXmlViews(xmlPath: String, properties: [String: String]? = nil) {
+    @discardableResult
+    @objc public func petralLoadXmlViews(xmlPath: String, properties: [String: String]? = nil) -> PetralViewLoader {
+        for subview in self.subviews{
+            subview.removeFromSuperview();
+        }
         self.petralXmlResource = xmlPath;
         self.petralXmlLoader = PetralLoader.init(xmlFileName: self.petralXmlResource!, properties: properties);
         self.petralXmlLoader!.injectViews(toView: self);
+        return PetralViewLoader.init(petralXmlLoader: self.petralXmlLoader);
     }
     
-    @objc public func petralViewById(id: String) -> UIView? {
-        return self.petralXmlLoader?.findViewById(id: id);
-    }
-    
-    @objc public func petralViewById(id: String, template: UIView) -> UIView? {
-        return self.petralXmlLoader?.findViewById(id: id, template: template);
-    }
+//    @objc public func petralViewById(id: String) -> UIView? {
+//        return self.petralXmlLoader?.findViewById(id: id);
+//    }
+//
+//    @objc public func petralViewById(id: String, template: UIView) -> UIView? {
+//        return self.petralXmlLoader?.findViewById(id: id, template: template);
+//    }
     
     @objc public func petralize() -> PetralAttribute {
         return self.petralAttribute;
+    }
+
+}
+
+public class PetralViewLoader: NSObject {
+    
+    weak var petralXmlLoader: PetralLoader?;
+    
+    init(petralXmlLoader: PetralLoader?) {
+        super.init();
+        self.petralXmlLoader = petralXmlLoader;
+    }
+    
+    public func petralViewById(id: String) -> UIView? {
+        return self.petralXmlLoader?.findViewById(id: id);
+    }
+    
+    public func petralViewById(id: String, inView: UIView) -> UIView? {
+        return self.petralXmlLoader?.findViewById(id: id, template: inView);
     }
 
 }
