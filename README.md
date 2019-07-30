@@ -58,259 +58,11 @@ nameLabel.petralRestraint
 
 ---
 
-### 自动布局的 API
+### (1) 自动布局的API
 
-#### 1.同级间 View 的约束
+请参考：<a href="RestraintAPI.md">自动布局的API</a>
 
-View a 与 View b 是属于同一层级的两个 View，View b 的位置可以由 View a 决定。
-
-**注意：如果 a 与 b 不是属于同一层级，调用以下方法将报错。**
-
-##### （1）to 方法
-
-- **leftTo()**
-
-View b 的左边与 View a 的距离是 n
-
-```swift
-b.petralRestraint.leftTo(a, offset: n)
-```
-
-![](http://www.koudaikr.cn/Petral/leftto.png)
-
----
-
-- **rightTo()**
-
-View b 的右边与 View a 的距离是 n
-
-```swift
-b.petralRestraint.rightTo(a, offset: n)
-```
-
-![](http://www.koudaikr.cn/Petral/rightto.png)
-
----
-
-- **topTo()**
-
-View b 的顶部与 View a 的距离是 n
-
-```swift
-b.petralRestraint.topTo(a, offset: n)
-```
-
-![](http://www.koudaikr.cn/Petral/topto.png)
-
----
-
-- **bottomTo()**
-
-View b 的底部与 View a 的距离是 n
-
-```swift
-b.petralRestraint.bottomTo(a, offset: n)
-```
-
-![](http://www.koudaikr.cn/Petral/bottomto.png)
-
-##### （2）as 方法
-
-- **leftAs**
-
-View b 的左边与 View a 的左边的水平位置一致（可偏离 n）
-
-```swift
-b.petralRestraint.leftAs(a, offset: n)
-```
-
-![](http://www.koudaikr.cn/Petral/leftas.png)
-
----
-
-- **rightAs**
-
-View b 的右边与 View a 的右边的水平位置一致（可偏离 n）
-
-```swift
-b.petralRestraint.rightAs(a, offset: n)
-```
-
-![](http://www.koudaikr.cn/Petral/rightas.png)
-
----
-
-- **topAs**
-
-View b 的顶部与 View a 的顶部的水平位置一致（可偏离 n）
-
-```swift
-b.petralRestraint.topAs(a, offset: n)
-```
-
-![](http://www.koudaikr.cn/Petral/topas.png)
-
----
-
-- **bottomAs**
-
-View b 的底部与 View a 的底部的水平位置一致（可偏离 n）
-
-```swift
-b.petralRestraint.bottomAs(a, offset: n)
-```
-
-![](http://www.koudaikr.cn/Petral/bottomas.png)
-
----
-
-- **xCenterAs**
-
-```swift
-b.petralRestraint.xCenterAs(a, offset: n)
-```
-
-View b 的中间水平位置与 View a 的中间水平位置一致（可偏离 n）
-
-![](http://www.koudaikr.cn/Petral/xcenteras.png)
-
----
-
-- **yCenterAs**
-
-```swift
-b.petralRestraint.yCenterAs(a, offset: n)
-```
-
-View b 的中间垂直位置与 View a 的中间垂直位置一致（可偏离 n）
-
-![](http://www.koudaikr.cn/Petral/ycenteras.png)
-
----
-
-- **centerAs**
-
-```swift
-b.petralRestraint.centerAs(a, xOffset: m, yOffset: n)
-```
-
-View b 的中间点与 View a 的中间点位置一致（x 可偏离 m,y 可偏离 n）
-
-![](http://www.koudaikr.cn/Petral/centeras.png)
-
-#### 2.父子间 View 的约束
-
-View a 与 View b 的父 View，View b 的位置可以由 View a 决定。
-
-**注意：如果 a 不是 b 的父 View，调用以下方法将报错。**
-
-- **leftIn()**
-
-View b 的左边与父 View 的左边的距离为 n
-
-```swift
-b.petralRestraint.leftIn(offset: n)
-```
-
-![](http://www.koudaikr.cn/Petral/leftin.png)
-
----
-
-- **rightIn()**
-
-View b 的右边与父 View 的 y 右边的距离为 n
-
-```swift
-b.petralRestraint.rightIn(offset: n)
-```
-
-![](http://www.koudaikr.cn/Petral/rightin.png)
-
----
-
-- **topIn()**
-
-View b 的顶部与父 View 的顶部的距离为 n
-
-```swift
-b.petralRestraint.topIn(offset: n)
-```
-
-![](http://www.koudaikr.cn/Petral/topin.png)
-
----
-
-- **bottomIn()**
-
-View b 的底部与父 View 的底部的距离为 n
-
-```swift
-b.petralRestraint.bottomIn(offset: n)
-```
-
-![](http://www.koudaikr.cn/Petral/bottomin.png)
-
----
-
-- **xCenterIn()**
-
-View b 的水平位置位于父 View 的中间
-
-```swift
-b.petralRestraint.xCenterIn()
-```
-
-![](http://www.koudaikr.cn/Petral/xcenterin.png)
-
----
-
-- **yCenterIn()**
-
-View b 的垂直位置位于父 View 的中间
-
-```swift
-b.petralRestraint.yCenterIn()
-```
-
-![](http://www.koudaikr.cn/Petral/ycenterin.png)
-
----
-
-- **centerIn()**
-
-View b 的水平和垂直位置位于父 View 的中间
-
-```swift
-b.petralRestraint.centerIn()
-```
-
-![](http://www.koudaikr.cn/Petral/centerin.png)
-
-#### 3.指定 View 的固定宽高
-
-- **width()**
-
-View b 的固定宽度为 n
-
-```swift
-b.petralRestraint.width(n)
-```
-
-![](http://www.koudaikr.cn/Petral/width.png)
-
----
-
-- **height()**
-
-View b 的固定高度为 n
-
-```swift
-b.petralRestraint.height(n)
-```
-
-![](http://www.koudaikr.cn/Petral/height.png)
-
-### 布局的级联更新
+### (2) 布局的级联更新
 
 - **updateDependeds()**
 
@@ -324,7 +76,7 @@ a.petralRestraint.updateDependeds();
 
 ![](http://www.koudaikr.cn/Petral/relative2.png)
 
-### 布局冲突的情况
+### (3) 布局冲突的情况
 
 以下的情形会发生布局冲突，运行时抛出 fatalError：
 
@@ -337,7 +89,7 @@ a.petralRestraint.updateDependeds();
 
 运行时发现 fatalError 的情形，请通过下面的方法解决冲突。
 
-### 解决布局冲突的办法
+### (4) 解决布局冲突的办法
 
 根据 fatalError 的说明，首先应了解冲突发生的具体规则，然后选择下面的其中一个方法解决冲突。
 
@@ -362,7 +114,7 @@ a.petralRestraint.updateDependeds();
 
 通过新建 XML 的布局文件，实现 UI 控件的创建、属性设置、自动布局，实现 UI 层级的结构化，提高编辑及修改 UI 的效率。
 
-### (1)新建 XML 布局文件
+### (1) 新建 XML 布局文件
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -448,10 +200,10 @@ XML 布局代码的编写有一定的规范：
 |              | y 与 superView 居中     | y 与 label1 居中   | y 与 label1 居中并偏离 100           |                        |
 | center       | 0                       | label1             | label1,20,30                         |                        |
 |              | 与 superView 居中       | 与 label1 居中     | 与 label1 居中，x 偏离 20，y 偏离 30 |                        |
-| width        | 0                       | label1             | label1,100                           |                        |
-|              | 宽度为 0                | 宽度与 label1 相同 | 宽度与 label1 一致并偏离 100         |                        |
-| height       | 0                       | label1             | label1,100                           |                        |
-|              | 高度为 0                | 高度与 label1 相同 | 高度与 label1 一致并偏离 100         |                        |
+| width        | 0                       | label1             | label1,100                           |100%                        |
+|              | 宽度为 0                | 宽度与 label1 相同 | 宽度与 label1 一致并偏离 100         |占据superView宽度的100%                        |
+| height       | 0                       | label1             | label1,100                           |100%                        |
+|              | 高度为 0                | 高度与 label1 相同 | 高度与 label1 一致并偏离 100         |占据superView高度的100%                        |
 
 #### 4.控件的设置
 
@@ -498,7 +250,7 @@ RedImageView 类可通用父类的属性，例如 image 属性
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
-<views xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.koudaikr.cn/petral-ui.xsd">
+<views xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.koudaikr.cn/petral.xsd">
   <scrollview
             id="scrollview1"
             frame="10,370,300,120"
@@ -514,7 +266,7 @@ RedImageView 类可通用父类的属性，例如 image 属性
 </views>
 ```
 
-### (2)iOS 引用 XML 布局
+### (2) iOS 引用 XML 布局
 
 #### 1.XML 控件的加载
 
@@ -531,6 +283,101 @@ let userInfoView = self.view.petralViewById(id: "userInfoView") as! UserInfoView
 ```
 
 上面的代码表示 userInfoView 是 XmlViewController 里 id 属性为"userInfoView"的控件。
+
+#### 3.代码注入XML
+
+```Swift
+let properties = [
+            "showManyView": String(true),
+            "time" : "10",
+            "time2" : "3",
+            "showRed" : String(true),
+            "element": "风风雨雨我都不畏惧但求共醉"
+        ];
+self.view.petralLoadXmlViews(xmlPath: "XmlViewController", properties: properties);
+```
+
+```xml
+<label text="{element}"></label>
+```
+
+注入xml格式为{变量名}，不支持表达式，但支持字符串拼接，例如：
+
+```xml
+<label text="{element}_abc_{element}"></label>
+```
+
+#### 4.自定义View注入XML
+
+通过data注入json字符串
+
+```xml
+<MyInfoView data='{"showManyView":"{showManyView}","showRed":"{showRed}"}'></MyInfoView>
+```
+        
+#### 4.XML流程控制
+
+##### [1] **p-show**属性
+
+true表示加载该view，false则不加载
+
+```xml
+<view p-show="false"></view>
+```
+
+##### [2] **manyview**视图
+
+可以按照template重复生成item view的视图类，包含有且只有一个<template>元素，且<template>不支持任何属性。
+
+| 属性    | 说明     |
+| ------- | -------- |
+| **p-times**    | 重复次数   |
+| **p-item-size**   | item的size   |
+| **p-direction**  | row（横向）、column（纵向）、wrap（自动换行）   |
+| **p-padding**     | manyview的内间距   |
+| **p-item-space-x** | 横向item间距 |
+| **p-item-space-y** | 纵向item间距 |
+
+###### XML示例
+
+```xml
+<manyview id="flexView" p-times="10" p-item-size="280,240" p-direction="column" p-padding="0,0,0,0" p-item-space-x="10" p-item-space-y="1">
+  <template>
+    <!-- insert any views here -->
+    <imageview id="cellImage" />
+  <template>
+<manyview>
+```
+
+###### 代码中访问manyview
+
+```Swift
+let flexView = self.view.petralViewById(id: "flexView", template: templateView) as! PetralFlexView;
+for (index, templateView) in flexView.items.enumerated() {
+  let cellImage = self.view.petralViewById(id: "cellImage", template: templateView) as? UIImageView;
+  cellImage?.image = UIImage.init(named: "setting2");
+}
+```
+
+注意不能省略template参数，错误地写成了：
+
+```Swift
+let cellImage = self.view.petralViewById(id: "cellImage") as? UIImageView;//此为错误写法
+```
+
+因为cellImage在manyview中，存在多个view的id相同，必须写成：
+
+```Swift
+let cellImage = self.view.petralViewById(id: "cellImage", template: templateView) as? UIImageView;
+```
+
+###### manyview点击item事件
+
+```Swift
+manyview.clickItemAction = { (template: PetralFlexTemplateView, index : Int) in
+  print(index);
+}
+```
 
 ### 微信讨论群
 
