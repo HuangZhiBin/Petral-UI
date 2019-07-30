@@ -9,18 +9,44 @@
 /* Begin PBXBuildFile section */
 		4CF74A1A2D16F0070BF185BC /* Pods_Petral_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AEDD4E3E60EFDD5B01DF3E2 /* Pods_Petral_Example.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
+		607FACD81AFB9204008FA782 /* LayoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* LayoutViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		934ABD3B22CE204200D9392B /* Petral-UI.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 934ABD3A22CE204200D9392B /* Petral-UI.podspec */; };
+		934C527822EF0A3200BCA96E /* EmbedFlexViewController.xml in Resources */ = {isa = PBXBuildFile; fileRef = 934C527622EF0A3100BCA96E /* EmbedFlexViewController.xml */; };
+		934C527922EF0A3200BCA96E /* EmbedFlexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C527722EF0A3100BCA96E /* EmbedFlexViewController.swift */; };
+		934C527B22EF163C00BCA96E /* XmlLayoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C527A22EF163C00BCA96E /* XmlLayoutViewController.swift */; };
+		934C527D22EF165300BCA96E /* XmlLayoutViewController.xml in Resources */ = {isa = PBXBuildFile; fileRef = 934C527C22EF165300BCA96E /* XmlLayoutViewController.xml */; };
+		935262D222EFD6D900C563AA /* InjectXmlLayoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935262D022EFD6D900C563AA /* InjectXmlLayoutViewController.swift */; };
+		935262D322EFD6D900C563AA /* InjectXmlLayoutViewController.xml in Resources */ = {isa = PBXBuildFile; fileRef = 935262D122EFD6D900C563AA /* InjectXmlLayoutViewController.xml */; };
+		935262D522EFD75F00C563AA /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935262D422EFD75F00C563AA /* UserProfileView.swift */; };
+		935262D722EFD77000C563AA /* UserProfileView.xml in Resources */ = {isa = PBXBuildFile; fileRef = 935262D622EFD77000C563AA /* UserProfileView.xml */; };
+		935262DD22F0154000C563AA /* DataListViewController.xml in Resources */ = {isa = PBXBuildFile; fileRef = 935262DB22F0154000C563AA /* DataListViewController.xml */; };
+		935262DE22F0154000C563AA /* DataListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935262DC22F0154000C563AA /* DataListViewController.swift */; };
+		935262E222F02FB400C563AA /* DataFlexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935262E022F02FB400C563AA /* DataFlexViewController.swift */; };
+		935262E322F02FB400C563AA /* DataFlexViewController.xml in Resources */ = {isa = PBXBuildFile; fileRef = 935262E122F02FB400C563AA /* DataFlexViewController.xml */; };
+		935F4A2922EEA10600066323 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935F4A2822EEA10600066323 /* ViewController.swift */; };
+		935F4A2B22EEA11C00066323 /* ViewController.xml in Resources */ = {isa = PBXBuildFile; fileRef = 935F4A2A22EEA11C00066323 /* ViewController.xml */; };
 		936C907A22DC358700C800D3 /* MyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936C907922DC358700C800D3 /* MyTableViewController.swift */; };
 		936C907C22DC360D00C800D3 /* MyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936C907B22DC360D00C800D3 /* MyTableView.swift */; };
 		936C907E22DC37FD00C800D3 /* MyTableViewCell.xml in Resources */ = {isa = PBXBuildFile; fileRef = 936C907D22DC37FD00C800D3 /* MyTableViewCell.xml */; };
 		936C908022DC516000C800D3 /* MyTableViewController.xml in Resources */ = {isa = PBXBuildFile; fileRef = 936C907F22DC516000C800D3 /* MyTableViewController.xml */; };
 		9385558722D6D07B00C1AB0C /* XmlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9385558622D6D07B00C1AB0C /* XmlViewController.swift */; };
 		9385558922D6D09500C1AB0C /* XmlViewController.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9385558822D6D09500C1AB0C /* XmlViewController.xml */; };
+		939333C422EEB08C00DA614C /* SectionListViewController.xml in Resources */ = {isa = PBXBuildFile; fileRef = 939333C222EEB08C00DA614C /* SectionListViewController.xml */; };
+		939333C522EEB08C00DA614C /* SectionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939333C322EEB08C00DA614C /* SectionListViewController.swift */; };
+		939333C822EEB0B600DA614C /* SimpleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939333C622EEB0B600DA614C /* SimpleListViewController.swift */; };
+		939333C922EEB0B600DA614C /* SimpleListViewController.xml in Resources */ = {isa = PBXBuildFile; fileRef = 939333C722EEB0B600DA614C /* SimpleListViewController.xml */; };
+		939333CB22EEC19C00DA614C /* RowFlexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939333CA22EEC19C00DA614C /* RowFlexViewController.swift */; };
+		939333CD22EEC1AC00DA614C /* RowFlexViewController.xml in Resources */ = {isa = PBXBuildFile; fileRef = 939333CC22EEC1AC00DA614C /* RowFlexViewController.xml */; };
+		939333D022EECBC900DA614C /* ColumnFlexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939333CE22EECBC900DA614C /* ColumnFlexViewController.swift */; };
+		939333D122EECBC900DA614C /* ColumnFlexViewController.xml in Resources */ = {isa = PBXBuildFile; fileRef = 939333CF22EECBC900DA614C /* ColumnFlexViewController.xml */; };
+		939333D422EECD0700DA614C /* WrapFlexViewController.xml in Resources */ = {isa = PBXBuildFile; fileRef = 939333D222EECD0700DA614C /* WrapFlexViewController.xml */; };
+		939333D522EECD0700DA614C /* WrapFlexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939333D322EECD0700DA614C /* WrapFlexViewController.swift */; };
+		939E271B22E5B6A500136A50 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939E271A22E5B6A500136A50 /* ListViewController.swift */; };
+		939E271D22E5B84F00136A50 /* ListViewController.xml in Resources */ = {isa = PBXBuildFile; fileRef = 939E271C22E5B84F00136A50 /* ListViewController.xml */; };
 		93D391C422D8834300D2ED41 /* RedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D391C322D8834300D2ED41 /* RedImageView.swift */; };
 		93D391C722D89C5000D2ED41 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D391C622D89C5000D2ED41 /* UserInfoView.swift */; };
 		93D391C922D89CAC00D2ED41 /* UserInfoView.xml in Resources */ = {isa = PBXBuildFile; fileRef = 93D391C822D89CAC00D2ED41 /* UserInfoView.xml */; };
@@ -45,7 +71,7 @@
 		607FACD01AFB9204008FA782 /* Petral_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Petral_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		607FACD71AFB9204008FA782 /* LayoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutViewController.swift; sourceTree = "<group>"; };
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -53,12 +79,38 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		934ABD3A22CE204200D9392B /* Petral-UI.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Petral-UI.podspec"; path = "../Petral-UI.podspec"; sourceTree = "<group>"; };
+		934C527622EF0A3100BCA96E /* EmbedFlexViewController.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = EmbedFlexViewController.xml; sourceTree = "<group>"; };
+		934C527722EF0A3100BCA96E /* EmbedFlexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmbedFlexViewController.swift; sourceTree = "<group>"; };
+		934C527A22EF163C00BCA96E /* XmlLayoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XmlLayoutViewController.swift; sourceTree = "<group>"; };
+		934C527C22EF165300BCA96E /* XmlLayoutViewController.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = XmlLayoutViewController.xml; sourceTree = "<group>"; };
+		935262D022EFD6D900C563AA /* InjectXmlLayoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InjectXmlLayoutViewController.swift; sourceTree = "<group>"; };
+		935262D122EFD6D900C563AA /* InjectXmlLayoutViewController.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = InjectXmlLayoutViewController.xml; sourceTree = "<group>"; };
+		935262D422EFD75F00C563AA /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
+		935262D622EFD77000C563AA /* UserProfileView.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = UserProfileView.xml; sourceTree = "<group>"; };
+		935262DB22F0154000C563AA /* DataListViewController.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DataListViewController.xml; sourceTree = "<group>"; };
+		935262DC22F0154000C563AA /* DataListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataListViewController.swift; sourceTree = "<group>"; };
+		935262E022F02FB400C563AA /* DataFlexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFlexViewController.swift; sourceTree = "<group>"; };
+		935262E122F02FB400C563AA /* DataFlexViewController.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DataFlexViewController.xml; sourceTree = "<group>"; };
+		935F4A2822EEA10600066323 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		935F4A2A22EEA11C00066323 /* ViewController.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ViewController.xml; sourceTree = "<group>"; };
 		936C907922DC358700C800D3 /* MyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewController.swift; sourceTree = "<group>"; };
 		936C907B22DC360D00C800D3 /* MyTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableView.swift; sourceTree = "<group>"; };
 		936C907D22DC37FD00C800D3 /* MyTableViewCell.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MyTableViewCell.xml; sourceTree = "<group>"; };
 		936C907F22DC516000C800D3 /* MyTableViewController.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MyTableViewController.xml; sourceTree = "<group>"; };
 		9385558622D6D07B00C1AB0C /* XmlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XmlViewController.swift; sourceTree = "<group>"; };
 		9385558822D6D09500C1AB0C /* XmlViewController.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = XmlViewController.xml; sourceTree = "<group>"; };
+		939333C222EEB08C00DA614C /* SectionListViewController.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SectionListViewController.xml; sourceTree = "<group>"; };
+		939333C322EEB08C00DA614C /* SectionListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionListViewController.swift; sourceTree = "<group>"; };
+		939333C622EEB0B600DA614C /* SimpleListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleListViewController.swift; sourceTree = "<group>"; };
+		939333C722EEB0B600DA614C /* SimpleListViewController.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SimpleListViewController.xml; sourceTree = "<group>"; };
+		939333CA22EEC19C00DA614C /* RowFlexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowFlexViewController.swift; sourceTree = "<group>"; };
+		939333CC22EEC1AC00DA614C /* RowFlexViewController.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = RowFlexViewController.xml; sourceTree = "<group>"; };
+		939333CE22EECBC900DA614C /* ColumnFlexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnFlexViewController.swift; sourceTree = "<group>"; };
+		939333CF22EECBC900DA614C /* ColumnFlexViewController.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ColumnFlexViewController.xml; sourceTree = "<group>"; };
+		939333D222EECD0700DA614C /* WrapFlexViewController.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = WrapFlexViewController.xml; sourceTree = "<group>"; };
+		939333D322EECD0700DA614C /* WrapFlexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WrapFlexViewController.swift; sourceTree = "<group>"; };
+		939E271A22E5B6A500136A50 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		939E271C22E5B84F00136A50 /* ListViewController.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ListViewController.xml; sourceTree = "<group>"; };
 		93D391C322D8834300D2ED41 /* RedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedImageView.swift; sourceTree = "<group>"; };
 		93D391C622D89C5000D2ED41 /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
 		93D391C822D89CAC00D2ED41 /* UserInfoView.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = UserInfoView.xml; sourceTree = "<group>"; };
@@ -112,14 +164,17 @@
 		607FACD21AFB9204008FA782 /* Example for Petral */ = {
 			isa = PBXGroup;
 			children = (
+				935F4A1C22EE9F6500066323 /* Demos */,
+				939E271922E5B68B00136A50 /* List */,
 				936C907822DC355700C800D3 /* Table */,
 				9385558522D6D05700C1AB0C /* Xml */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
+				935F4A2822EEA10600066323 /* ViewController.swift */,
+				935F4A2A22EEA11C00066323 /* ViewController.xml */,
 			);
 			name = "Example for Petral";
 			path = Petral;
@@ -171,6 +226,124 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		935262CF22EFD68E00C563AA /* InjectXml */ = {
+			isa = PBXGroup;
+			children = (
+				935262D022EFD6D900C563AA /* InjectXmlLayoutViewController.swift */,
+				935262D122EFD6D900C563AA /* InjectXmlLayoutViewController.xml */,
+				935262D422EFD75F00C563AA /* UserProfileView.swift */,
+				935262D622EFD77000C563AA /* UserProfileView.xml */,
+			);
+			name = InjectXml;
+			sourceTree = "<group>";
+		};
+		935262DA22F014F700C563AA /* DataList */ = {
+			isa = PBXGroup;
+			children = (
+				935262DC22F0154000C563AA /* DataListViewController.swift */,
+				935262DB22F0154000C563AA /* DataListViewController.xml */,
+			);
+			name = DataList;
+			sourceTree = "<group>";
+		};
+		935262DF22F02F9D00C563AA /* DataFlex */ = {
+			isa = PBXGroup;
+			children = (
+				935262E022F02FB400C563AA /* DataFlexViewController.swift */,
+				935262E122F02FB400C563AA /* DataFlexViewController.xml */,
+			);
+			name = DataFlex;
+			sourceTree = "<group>";
+		};
+		935F4A1C22EE9F6500066323 /* Demos */ = {
+			isa = PBXGroup;
+			children = (
+				935F4A2422EEA0A200066323 /* Layout */,
+				935F4A2222EE9FEA00066323 /* Xml */,
+				935262CF22EFD68E00C563AA /* InjectXml */,
+				935F4A1D22EE9F6A00066323 /* SimpleList */,
+				935F4A1E22EE9F7500066323 /* SectionList */,
+				935262DA22F014F700C563AA /* DataList */,
+				935F4A1F22EE9F8700066323 /* RowFlex */,
+				935F4A2022EE9F9500066323 /* ColumnFlex */,
+				935F4A2122EE9F9D00066323 /* WrapFlex */,
+				935F4A2322EEA07700066323 /* EmbedFlex */,
+				935262DF22F02F9D00C563AA /* DataFlex */,
+			);
+			name = Demos;
+			sourceTree = "<group>";
+		};
+		935F4A1D22EE9F6A00066323 /* SimpleList */ = {
+			isa = PBXGroup;
+			children = (
+				939333C622EEB0B600DA614C /* SimpleListViewController.swift */,
+				939333C722EEB0B600DA614C /* SimpleListViewController.xml */,
+			);
+			name = SimpleList;
+			sourceTree = "<group>";
+		};
+		935F4A1E22EE9F7500066323 /* SectionList */ = {
+			isa = PBXGroup;
+			children = (
+				939333C322EEB08C00DA614C /* SectionListViewController.swift */,
+				939333C222EEB08C00DA614C /* SectionListViewController.xml */,
+			);
+			name = SectionList;
+			sourceTree = "<group>";
+		};
+		935F4A1F22EE9F8700066323 /* RowFlex */ = {
+			isa = PBXGroup;
+			children = (
+				939333CA22EEC19C00DA614C /* RowFlexViewController.swift */,
+				939333CC22EEC1AC00DA614C /* RowFlexViewController.xml */,
+			);
+			name = RowFlex;
+			sourceTree = "<group>";
+		};
+		935F4A2022EE9F9500066323 /* ColumnFlex */ = {
+			isa = PBXGroup;
+			children = (
+				939333CE22EECBC900DA614C /* ColumnFlexViewController.swift */,
+				939333CF22EECBC900DA614C /* ColumnFlexViewController.xml */,
+			);
+			name = ColumnFlex;
+			sourceTree = "<group>";
+		};
+		935F4A2122EE9F9D00066323 /* WrapFlex */ = {
+			isa = PBXGroup;
+			children = (
+				939333D322EECD0700DA614C /* WrapFlexViewController.swift */,
+				939333D222EECD0700DA614C /* WrapFlexViewController.xml */,
+			);
+			name = WrapFlex;
+			sourceTree = "<group>";
+		};
+		935F4A2222EE9FEA00066323 /* Xml */ = {
+			isa = PBXGroup;
+			children = (
+				934C527A22EF163C00BCA96E /* XmlLayoutViewController.swift */,
+				934C527C22EF165300BCA96E /* XmlLayoutViewController.xml */,
+			);
+			name = Xml;
+			sourceTree = "<group>";
+		};
+		935F4A2322EEA07700066323 /* EmbedFlex */ = {
+			isa = PBXGroup;
+			children = (
+				934C527722EF0A3100BCA96E /* EmbedFlexViewController.swift */,
+				934C527622EF0A3100BCA96E /* EmbedFlexViewController.xml */,
+			);
+			name = EmbedFlex;
+			sourceTree = "<group>";
+		};
+		935F4A2422EEA0A200066323 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				607FACD71AFB9204008FA782 /* LayoutViewController.swift */,
+			);
+			name = Layout;
+			sourceTree = "<group>";
+		};
 		936C907822DC355700C800D3 /* Table */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +362,15 @@
 				9385558822D6D09500C1AB0C /* XmlViewController.xml */,
 			);
 			name = Xml;
+			sourceTree = "<group>";
+		};
+		939E271922E5B68B00136A50 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				939E271A22E5B6A500136A50 /* ListViewController.swift */,
+				939E271C22E5B84F00136A50 /* ListViewController.xml */,
+			);
+			name = List;
 			sourceTree = "<group>";
 		};
 		93A6437F22DC58D7009F323C /* View */ = {
@@ -306,13 +488,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				934C527D22EF165300BCA96E /* XmlLayoutViewController.xml in Resources */,
+				939333C922EEB0B600DA614C /* SimpleListViewController.xml in Resources */,
+				935F4A2B22EEA11C00066323 /* ViewController.xml in Resources */,
+				939333D422EECD0700DA614C /* WrapFlexViewController.xml in Resources */,
 				934ABD3B22CE204200D9392B /* Petral-UI.podspec in Resources */,
 				936C907E22DC37FD00C800D3 /* MyTableViewCell.xml in Resources */,
+				934C527822EF0A3200BCA96E /* EmbedFlexViewController.xml in Resources */,
+				939333C422EEB08C00DA614C /* SectionListViewController.xml in Resources */,
+				939333D122EECBC900DA614C /* ColumnFlexViewController.xml in Resources */,
+				939333CD22EEC1AC00DA614C /* RowFlexViewController.xml in Resources */,
+				935262DD22F0154000C563AA /* DataListViewController.xml in Resources */,
+				939E271D22E5B84F00136A50 /* ListViewController.xml in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
+				935262E322F02FB400C563AA /* DataFlexViewController.xml in Resources */,
 				93D391C922D89CAC00D2ED41 /* UserInfoView.xml in Resources */,
 				936C908022DC516000C800D3 /* MyTableViewController.xml in Resources */,
+				935262D322EFD6D900C563AA /* InjectXmlLayoutViewController.xml in Resources */,
 				9385558922D6D09500C1AB0C /* XmlViewController.xml in Resources */,
+				935262D722EFD77000C563AA /* UserProfileView.xml in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -388,13 +583,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				939333CB22EEC19C00DA614C /* RowFlexViewController.swift in Sources */,
 				93D391C422D8834300D2ED41 /* RedImageView.swift in Sources */,
+				934C527922EF0A3200BCA96E /* EmbedFlexViewController.swift in Sources */,
+				939333D522EECD0700DA614C /* WrapFlexViewController.swift in Sources */,
 				936C907A22DC358700C800D3 /* MyTableViewController.swift in Sources */,
+				939333C522EEB08C00DA614C /* SectionListViewController.swift in Sources */,
 				9385558722D6D07B00C1AB0C /* XmlViewController.swift in Sources */,
-				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				935262D222EFD6D900C563AA /* InjectXmlLayoutViewController.swift in Sources */,
+				607FACD81AFB9204008FA782 /* LayoutViewController.swift in Sources */,
+				939333D022EECBC900DA614C /* ColumnFlexViewController.swift in Sources */,
+				934C527B22EF163C00BCA96E /* XmlLayoutViewController.swift in Sources */,
+				935262DE22F0154000C563AA /* DataListViewController.swift in Sources */,
+				935262D522EFD75F00C563AA /* UserProfileView.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				936C907C22DC360D00C800D3 /* MyTableView.swift in Sources */,
+				939E271B22E5B6A500136A50 /* ListViewController.swift in Sources */,
+				939333C822EEB0B600DA614C /* SimpleListViewController.swift in Sources */,
+				935F4A2922EEA10600066323 /* ViewController.swift in Sources */,
 				93D391C722D89C5000D2ED41 /* UserInfoView.swift in Sources */,
+				935262E222F02FB400C563AA /* DataFlexViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,11 +748,13 @@
 			baseConfigurationReference = B5C4FFB7278C4DBBBE6E1E43 /* Pods-Petral_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Petral/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
@@ -555,6 +765,7 @@
 			baseConfigurationReference = 24BA59958FB01AB8215D610E /* Pods-Petral_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Petral/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;

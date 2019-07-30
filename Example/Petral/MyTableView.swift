@@ -3,7 +3,7 @@
 //  MyTableView.swift
 //  HdParent
 //
-//  Created by huangzhibin327 on 2019/06/11
+//  Created by huangzhibin on 2019/06/11
 //
 
 import UIKit
@@ -121,15 +121,15 @@ class MyTableViewCell: UITableViewCell {
         
         let containerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: MyTableViewCell.CELL_WIDTH, height: MyTableViewCell.CELL_HEIGHT));
         containerView.backgroundColor = UIColor.blue;
-        containerView.petralLoadXmlViews(xmlPath: "MyTableViewCell");
+        let loader = containerView.petralLoadXmlViews(xmlPath: "MyTableViewCell");
         self.contentView.addSubview(containerView);
         
         containerView.transform = CGAffineTransform(rotationAngle: .pi / 2);
         containerView.petralRestraint.leftIn().topIn();
         
-        self.topImageView = containerView.petralViewById(id: "topImageView") as? UIImageView;
-        self.nameLabel = containerView.petralViewById(id: "nameLabel") as? UILabel;
-        self.descLabel = containerView.petralViewById(id: "descLabel") as? UILabel;
+        self.topImageView = loader.petralViewById(id: "topImageView") as? UIImageView;
+        self.nameLabel = loader.petralViewById(id: "nameLabel") as? UILabel;
+        self.descLabel = loader.petralViewById(id: "descLabel") as? UILabel;
         
 //        self.contentView.petralRestraint.rightIn().topIn();
     }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.koudaikr.cn/petral.xsd">
+    <view left="0" right="0" top="0" bottom="0" backgroundColor="white">
+        <scrollview id="scrollview" left="0" top="64" width="100%" height="90%" backgroundColor="yellow">
+            <flexview id="flexview" width="100%" p-item-count="4" p-direction="column">
+                <template id="template1" width="100%" height="120" backgroundColor="#f9f9f9">
+                    <flexview id="flexview2" width="100%" height="100%" p-item-count="3" p-direction="row">
+                        <template width="100" height="120" backgroundColor="#f9f9f9">
+                            <imageview id="cellImage" width="50" height="50" top="30" xCenter="0"></imageview>
+                            <label id="cellLabel" xCenter="0" width="80%" height="20" font="14" textColor="#333333" top="cellImage;5" text="cell" align="center"></label>
+                        </template>
+                    </flexview>
+                    <label id="rowLabel" left="10" width="80%" height="20" font="14+" textColor="#333333" top="5" text="cell" align="left"></label>
+                    <view id="line" height="1" width="100%" bottom="0" backgroundColor="#d8d8d8"></view>
+                </template>
+            </flexview>
+        </scrollview>
+    </view>
+</views>

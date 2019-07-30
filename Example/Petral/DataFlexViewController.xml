@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.koudaikr.cn/petral.xsd">
+    <view left="0" right="0" top="0" bottom="0" backgroundColor="white">
+        <scrollview id="scrollview" left="0" top="64" width="100%" bottom="70" backgroundColor="yellow">
+            <flexview id="flexview" width="100%" p-direction="column">
+                <template width="100%" backgroundColor="#f9f9f9">
+                    <imageview id="cellImage" width="50" height="50" left="10" yCenter="0"></imageview>
+                    <label id="cellLabel" yCenter="0" height="20" font="14" textColor="#333333" left="cellImage;10" right="10"></label>
+                    <view id="line" height="1" width="100%" bottom="0" backgroundColor="#d8d8d8"></view>
+                </template>
+            </flexview>
+        </scrollview>
+        <button id="changeBtn" title="切换数据" backgroundColor="#16a051" backgroundColorHighlighted="#83b001" bottom="10" masksToBounds="true" borderRadius="6" height="44" xCenter="0" width="90%" />
+    </view>
+</views>

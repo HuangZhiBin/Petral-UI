@@ -15,10 +15,10 @@ class MyTableViewController: UIViewController {
         
         self.view.backgroundColor = UIColor.white;
         
-        self.view.petralLoadXmlViews(xmlPath: "MyTableViewController");
+        let loader = self.view.petralLoadXmlViews(xmlPath: "MyTableViewController");
 
         // Do any additional setup after loading the view.
-        let tableView : MyTableView = self.view.petralViewById(id: "tableView") as! MyTableView;
+        let tableView : MyTableView = loader.petralViewById(id: "tableView") as! MyTableView;
 //        tableView.petralRestraint.leftIn().rightIn().topIn().height(200);
         
         tableView.items = [
@@ -30,7 +30,7 @@ class MyTableViewController: UIViewController {
             MyTableModel.init(image: "setting", name: "name6", desc: "desc6")
         ];
         
-        let button = self.view.petralViewById(id: "button") as! UIButton;
+        let button = loader.petralViewById(id: "button") as! UIButton;
         button.addTarget(self, action: #selector(self.back), for: .touchUpInside);
     }
     

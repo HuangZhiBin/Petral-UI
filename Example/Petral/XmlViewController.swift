@@ -23,54 +23,69 @@ class XmlViewController: UIViewController {
             "showRed" : String(true),
             "element": "风风雨雨我都不畏惧但求共醉"
         ];
-        self.view.petralLoadXmlViews(xmlPath: "XmlViewController", properties: properties);
+        let loader = self.view.petralLoadXmlViews(xmlPath: "XmlViewController", properties: properties);
         
-        let imageView = self.view.petralViewById(id: "image1") as! UIImageView;
+        let imageView = loader.petralViewById(id: "image1") as! UIImageView;
         imageView.image = UIImage.init(named: "setting2");
         
-        let userInfoView = self.view.petralViewById(id: "userInfoView") as! UserInfoView;
+        let userInfoView = loader.petralViewById(id: "userInfoView") as! UserInfoView;
         userInfoView.petralRestraint.leftIn(offset: 50).rightIn(offset: 150);
         userInfoView.petralRestraint.updateDependeds();
         
-        let button1 = self.view.petralViewById(id: "button1") as! UIButton;
+        let button1 = loader.petralViewById(id: "button1") as! UIButton;
         button1.addTarget(self, action: #selector(self.back), for: .touchUpInside);
         
-        let flexView1 = self.view.petralViewById(id: "flexView1") as! PetralFlexView;
-        for (index,templateView) in flexView1.items.enumerated() {
+        /*
+        let flexView1 = loader.petralViewById(id: "flexView1") as! PetralFlexView;
+        flexView1.itemDisplayAction = { [weak self] (templateView: PetralFlexTemplateView, index : Int) in
             print(index);
             
-            let flexView2 = self.view.petralViewById(id: "flexView2", template: templateView) as! PetralFlexView;
-            for (index2,templateView2) in flexView2.items.enumerated() {
-                let cellImage = self.view.petralViewById(id: "cellImage", template: templateView2) as? UIImageView;
+            let flexView2 = loader.petralViewById(id: "flexView2", inView: templateView) as! PetralFlexView;
+            
+            flexView2.itemDisplayAction = { [weak self] (templateView2: PetralFlexTemplateView, index2 : Int) in
+                let cellImage = loader.petralViewById(id: "cellImage", inView: templateView2) as? UIImageView;
                 cellImage?.image = UIImage.init(named: "setting2");
                 
-                let cellLabel = self.view.petralViewById(id: "cellLabel", template: templateView2) as? UILabel;
+                let cellLabel = loader.petralViewById(id: "cellLabel", inView: templateView2) as? UILabel;
                 cellLabel?.text = "Item" + String(index2 + 1);
                 
-                let flexView3 = self.view.petralViewById(id: "flexView3", template: templateView2) as! PetralFlexView;
-                for (index3,templateView3) in flexView3.items.enumerated() {
-                    
-                    let subImage = self.view.petralViewById(id: "subImage", template: templateView3) as? UIImageView;
+                let flexView3 = loader.petralViewById(id: "flexView3", inView: templateView2) as! PetralFlexView;
+                
+                flexView3.itemDisplayAction = { [weak self] (templateView3: PetralFlexTemplateView, index3 : Int) in
+                    let subImage = loader.petralViewById(id: "subImage", inView: templateView3) as? UIImageView;
                     subImage?.image = UIImage.init(named: "setting2");
                     
-                    let subLabel = self.view.petralViewById(id: "subLabel", template: templateView3) as? UILabel;
+                    let subLabel = loader.petralViewById(id: "subLabel", inView: templateView3) as? UILabel;
                     subLabel?.text = String(index + 1) + "-" + String(index2 + 1) + "-" + String(index3 + 1);
                 }
-            }
+            };
         }
-        
-        let manyview = self.view.petralViewById(id: "manyview") as! PetralFlexView;
-        for (index,templateView) in manyview.items.enumerated() {
+        */
+        let flexview = loader.petralViewById(id: "flexview") as! PetralFlexView;
+        flexview.itemWidthAction = { (index: Int) in
+            return CGFloat(index + 1) * 10;
+        };
+        flexview.itemHeightAction = { (index: Int) in
+            return CGFloat(index + 1) * 12;
+        };
+        flexview.itemDisplayAction = { (templateView: PetralFlexTemplateView, index : Int) in
             print(index);
-            let cellImage = self.view.petralViewById(id: "cellIcon", template: templateView) as? UIImageView;
+            let cellImage = loader.petralViewById(id: "cellIcon", inView: templateView) as? UIImageView;
             cellImage?.image = UIImage.init(named: "setting2");
             
-            let cellLabel = self.view.petralViewById(id: "cellInfo", template: templateView) as? UILabel;
+            let cellLabel = loader.petralViewById(id: "cellInfo", inView: templateView) as? UILabel;
             cellLabel?.text = "Item" + String(index + 1);
-        }
-        manyview.clickItemAction = { (template: PetralFlexTemplateView, index : Int) in
+        };
+        flexview.itemClickAction = { (template: PetralFlexTemplateView, index : Int) in
             print(index);
         }
+        
+        //self.view.petralLoadXmlViews(xmlPath: "ListViewController");
+        
+        let testView = loader.petralViewById(id: "testView");
+        testView?.frame.size.width = 300;
+        testView?.frame.size.height = 100;
+        testView?.petralRestraint.updateDependeds();
     }
     
     @objc func back(){

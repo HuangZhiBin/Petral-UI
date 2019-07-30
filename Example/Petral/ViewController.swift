@@ -1,9 +1,9 @@
 //
 //  ViewController.swift
-//  Petral
+//  Petral_Example
 //
-//  Created by bin on 2019/6/9.
-//  Copyright © 2019年 BinHuang. All rights reserved.
+//  Created by huangzhibin on 2019/7/29.
+//  Copyright © 2019 CocoaPods. All rights reserved.
 //
 
 import UIKit
@@ -11,163 +11,62 @@ import Petral
 
 class ViewController: UIViewController {
     
+    let SECTIONS = ["基础功能", "XML布局", "UITableView", "FlexView"];
+    
+    let CELLS = [
+        ["属性连续调用+自动布局"],
+        ["XML布局的例子", "动态变量注入"],
+        ["基本样式", "丰富样式", "动态数据刷新"],
+        ["横向Flex", "纵向Flex", "横向平铺Flex", "多层嵌套Flex", "动态数据刷新"]
+    ];
+    
+    let VCS = [
+        [LayoutViewController.classForCoder()],
+        [XmlLayoutViewController.classForCoder(), InjectXmlLayoutViewController.classForCoder()],
+        [SimpleListViewController.classForCoder(), SectionListViewController.classForCoder(), DataListViewController.classForCoder()],
+        [RowFlexViewController.classForCoder(), ColumnFlexViewController.classForCoder(), WrapFlexViewController.classForCoder(), EmbedFlexViewController.classForCoder(), DataFlexViewController.classForCoder()]
+    ];
+
     override func viewDidLoad() {
         super.viewDidLoad();
         
-        let label = UILabel.init();
-        label.petralize()
-            .frame(x: 100, y: 100, width: 200, height: 20)
-            .font(size: 18, bold: true)
-            .text("label")
-            .textColor(UIColor.white)
-            .lines(1)
-            .align(.center)
-            .backgroundColor(UIColor.gray)
-            .borderColor(UIColor.red)
-            .borderWidth(2)
-            .borderRadius(12);
-        self.view.addSubview(label);
-        label.petralRestraint
-            .leftIn(offset: 50)
-            .width(320)
-            .height(120);
+        self.title = "Petral-UI";
         
-        let textField = UITextField.init();
-        textField.petralize()
-            .frame(x: 0, y: 100, width: 280, height: 50)
-            .font(size: 18, bold: true)
-            .text("textField")
-            .placeholder("this is hint")
-            .textColor(UIColor.white)
-            .align(.center)
-            .keyboardType(.numberPad)
-            .backgroundColor(UIColor.gray)
-            .borderColor(UIColor.red)
-            .borderWidth(2)
-            .borderRadius(12);
-        self.view.addSubview(textField);
-        textField.petralRestraint
-            .leftAs(label)
-            .topTo(label, offset: 10)
+        let loader = self.view.petralLoadXmlViews(xmlPath: "ViewController");
         
-        //                .width(30)
-        //                .height(50)
-        
-        let button = UIButton.init();
-        button.petralize()
-            .frame(x: 0, y: 200, width: 120, height: 50)
-            .font(size: 18, bold: true)
-            .backgroundColor(UIColor.green, state: .normal)
-            .backgroundColor(UIColor.blue, state: .highlighted)
-            .title("XML实例", state: .normal)
-            .title("UIButton2", state: .highlighted)
-            .titleColor(UIColor.black, state: .normal)
-            .titleColor(UIColor.white, state: .highlighted)
-            .align(.center)
-            .masksToBounds(true)
-            .borderColor(UIColor.red)
-            .borderWidth(2)
-            .borderRadius(12);
-        self.view.addSubview(button);
-        button.petralRestraint
-            .xCenterAs(label, offset: 40);
-        button.addTarget(self, action: #selector(self.xmlVC), for: .touchUpInside);
-//            .leftAs(label, offset: 20)
-        
-        let button2 = UIButton.init();
-        button2.petralize()
-            .frame(x: 0, y: 280, width: 120, height: 50)
-            .font(size: 18, bold: true)
-            .backgroundColor(UIColor.green, state: .normal)
-            .backgroundColor(UIColor.blue, state: .highlighted)
-            .title("XML实例2", state: .normal)
-            .title("UIButton2", state: .highlighted)
-            .titleColor(UIColor.black, state: .normal)
-            .titleColor(UIColor.white, state: .highlighted)
-            .align(.center)
-            .masksToBounds(true)
-            .borderColor(UIColor.red)
-            .borderWidth(2)
-            .borderRadius(12);
-        self.view.addSubview(button2);
-        button2.petralRestraint
-            .xCenterAs(label, offset: 40)
-        //.centerAs(label);
-        button2.addTarget(self, action: #selector(self.xmlVC2), for: .touchUpInside);
-        
-        let label2 = UILabel.init();
-        label2.petralize()
-            .frame(x: 20, y: 0, width: 120, height: 100)
-            .backgroundColor(UIColor.blue)
-            .text("label2");
-        self.view.addSubview(label2);
-        label2.petralRestraint
-            .leftIn(offset: 30)
-            .rightIn(offset: 30)
-            .height(40)
-            .topTo(textField, offset: 20);
-        
-        let label3 = UILabel.init();
-        label3.petralize()
-            .frame(x: 20, y: 0, width: 120, height: 100)
-            .backgroundColor(UIColor.purple)
-            .text("label3");
-        self.view.addSubview(label3);
-        label3.petralRestraint
-            .widthAs(label2, offset: 2)
-            .heightAs(label2, offset: 0)
-            .topTo(label2, offset: 10)
-            .leftAs(label2, offset: 0);
-        //        label3.petralRestraint
-        //            .locateIn(self.view, inset: UIEdgeInsets.init(top: 200, left: 100, bottom: 360, right: 140));
-        
-        let view = UIView.init();
-        view.petralize()
-            .frame(x: 0, y: 360, width: 300, height: 300)
-            .backgroundColor(UIColor.lightGray)
-            .borderColor(UIColor.red)
-            .borderWidth(2)
-            .borderRadius(12);
-        self.view.addSubview(view);
-        view.petralRestraint
-            .leftIn(offset: 20)
-            .rightIn(offset: 20)
-            //                .topIn(self.view, distance: 20)
-            .bottomIn(offset: 20);
-        
-        let textView = UITextView.init();
-        textView.petralize()
-            .frame(x: 0, y: 0, width: 140, height: 50)
-            .backgroundColor(UIColor.lightGray)
-            .font(size: 18, bold: true)
-            .text("textView")
-            .textColor(UIColor.black)
-            .align(.center)
-            .borderColor(UIColor.red)
-            .borderWidth(2)
-            .borderRadius(12);
-        view.addSubview(textView);
-        textView.petralRestraint
-            .centerIn()
-            .width(200)
-            .height(100)
-        
-        view.petralRestraint.reset();
-        view.petralRestraint.topTo(label3, offset: 20).leftIn(offset: 50).rightIn(offset: 80).height(200);
-        view.petralRestraint.updateDependeds();
+        let tableView : PetralTableView = loader.petralViewById(id: "tableview1") as! PetralTableView;
+        tableView.tableCellDisplayAction = { [weak self]  (cell: UITableViewCell, indexPath: IndexPath) in
+            let cellLabel : UILabel = loader.petralViewById(id: "cellLabel", inView: cell) as! UILabel;
+            cellLabel.text = String(indexPath.row + 1) + ". " + (self?.CELLS[indexPath.section][indexPath.row])!;
+            cell.selectedBackgroundView = UIView.init(frame: cell.frame);
+            cell.selectedBackgroundView?.backgroundColor = UIColor.init(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 1);
+        };
+        tableView.tableSectionHeaderDisplayAction = { [weak self]  (headerView: UIView, section: Int) in
+            let sectionHeaderLabel : UILabel = loader.petralViewById(id: "sectionHeaderLabel", inView: headerView) as! UILabel;
+            sectionHeaderLabel.text = self?.SECTIONS[section];
+        };
+        tableView.tableCellRowCountAction = {  [weak self] (section: Int) in
+            return (self?.CELLS[section].count)!;
+        };
+        tableView.tableSectionCountAction = { [weak self]  in
+            return self!.SECTIONS.count;
+        };
+        tableView.tableCellClickAction = { [weak self] (indexPath: IndexPath) in
+            print(indexPath.row);
+            let typeClass : UIViewController.Type = (self?.VCS[indexPath.section][indexPath.row])! as! UIViewController.Type;
+            self?.show(typeClass.init(), sender: nil);
+        };
     }
     
-    @objc func xmlVC() {
-        self.show(XmlViewController(), sender: nil);
-    }
-    
-    @objc func xmlVC2() {
-        self.show(MyTableViewController(), sender: nil);
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-}
 
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}
