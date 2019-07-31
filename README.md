@@ -330,7 +330,7 @@ true表示加载该view，false则不加载
 <view p-show="false"></view>
 ```
 
-##### 5.**flexview**视图
+#### 5.**flexview**视图
 
 可以按照template重复生成item view的视图类。
 
@@ -342,7 +342,7 @@ true表示加载该view，false则不加载
 | **p-item-space-x** | 横向item间距 |
 | **p-item-space-y** | 纵向item间距 |
 
-###### XML示例
+##### XML示例
 
 ```xml
 <flexview id="flexview" width="100%" p-item-count="12" p-direction="column">
@@ -353,14 +353,14 @@ true表示加载该view，false则不加载
 </flexview>
 ```
 
-###### 代码中访问flexview
+##### 代码中访问flexview
 
 ```Swift
 let loader = self.view.petralLoadXmlViews(xmlPath: "ColumnFlexViewController");
 let flexview = loader.petralViewById(id: "flexview") as! PetralFlexView;
 ```
 
-###### flexview的action方法
+##### flexview的action方法
 
 | 属性    | 类型     | 说明     |
 | ------- | -------- | -------- |
