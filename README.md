@@ -330,14 +330,13 @@ true表示加载该view，false则不加载
 <view p-show="false"></view>
 ```
 
-##### [2] **manyview**视图
+##### 5.**flexview**视图
 
-可以按照template重复生成item view的视图类，包含有且只有一个<template>元素，且<template>不支持任何属性。
+可以按照template重复生成item view的视图类。
 
 | 属性    | 说明     |
 | ------- | -------- |
 | **p-times**    | 重复次数   |
-| **p-item-size**   | item的size   |
 | **p-direction**  | row（横向）、column（纵向）、wrap（自动换行）   |
 | **p-padding**     | manyview的内间距   |
 | **p-item-space-x** | 横向item间距 |
@@ -346,43 +345,30 @@ true表示加载该view，false则不加载
 ###### XML示例
 
 ```xml
-<manyview id="flexView" p-times="10" p-item-size="280,240" p-direction="column" p-padding="0,0,0,0" p-item-space-x="10" p-item-space-y="1">
-  <template>
-    <!-- insert any views here -->
-    <imageview id="cellImage" />
-  <template>
-<manyview>
+<flexview id="flexview" width="100%" p-item-count="12" p-direction="column">
+  <template width="100" height="120" backgroundColor="#f9f9f9">
+    <imageview id="cellImage" width="50" height="50" top="30" xCenter="0" image="setting"></imageview>
+    <label id="cellLabel" xCenter="0" width="80%" height="20" font="14" textColor="#333333" top="cellImage;5" text="cell" align="center"></label>
+  </template>
+</flexview>
 ```
 
-###### 代码中访问manyview
+###### 代码中访问flexview
 
 ```Swift
-let flexView = self.view.petralViewById(id: "flexView", template: templateView) as! PetralFlexView;
-for (index, templateView) in flexView.items.enumerated() {
-  let cellImage = self.view.petralViewById(id: "cellImage", template: templateView) as? UIImageView;
-  cellImage?.image = UIImage.init(named: "setting2");
-}
+let loader = self.view.petralLoadXmlViews(xmlPath: "ColumnFlexViewController");
+let flexview = loader.petralViewById(id: "flexview") as! PetralFlexView;
 ```
 
-注意不能省略template参数，错误地写成了：
+###### flexview的action方法
 
-```Swift
-let cellImage = self.view.petralViewById(id: "cellImage") as? UIImageView;//此为错误写法
-```
-
-因为cellImage在manyview中，存在多个view的id相同，必须写成：
-
-```Swift
-let cellImage = self.view.petralViewById(id: "cellImage", template: templateView) as? UIImageView;
-```
-
-###### manyview点击item事件
-
-```Swift
-manyview.clickItemAction = { (template: PetralFlexTemplateView, index : Int) in
-  print(index);
-}
-```
+| 属性    | 类型     | 说明     |
+| ------- | -------- | -------- |
+| **itemCountAction**    | PetralFlexViewItemCountAction   | item的数量   |
+| **itemWidthAction**  | PetralFlexViewItemWidthAction   | item的宽度   |
+| **itemHeightAction**     | PetralFlexViewItemHeightAction   | item的高度   |
+| **itemDisplayAction** | PetralFlexViewItemDisplayAction | item的UI展示   |
+| **itemClickAction** | PetralFlexViewItemClickAction | item的点击事件   |
 
 ### 微信讨论群
 
