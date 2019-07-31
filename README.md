@@ -6,6 +6,11 @@
 - 2.自动布局
 - 3.解析 XML 布局(重点推荐)
 
+## 功能演示
+
+<img width="375" height="667" src="https://github.com/HuangZhiBin/Petral-UI/raw/2.2.0/x5jia-ix8ur.gif"/>
+
+
 ## 接入条件
 
 ```
