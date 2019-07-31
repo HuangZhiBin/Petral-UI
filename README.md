@@ -8,7 +8,7 @@
 
 ## 功能演示
 
-<img width="375" height="667" src="https://github.com/HuangZhiBin/Petral-UI/raw/2.2.0/2a0uk-v7b70.gif"/>
+<img width="375" height="667" src="https://github.com/HuangZhiBin/Petral-UI/raw/2.2.0/x1idi-ptwxa.gif"/>
 
 
 ## 接入条件
