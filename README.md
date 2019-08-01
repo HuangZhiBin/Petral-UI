@@ -292,6 +292,8 @@ let userInfoView = self.view.petralViewById(id: "userInfoView") as! UserInfoView
 
 #### 3.代码注入XML
 
+##### [1] 变量动态注入XML
+
 ```Swift
 let properties = [
             "showManyView": String(true),
@@ -313,7 +315,7 @@ self.view.petralLoadXmlViews(xmlPath: "XmlViewController", properties: propertie
 <label text="{element}_abc_{element}"></label>
 ```
 
-#### 4.自定义View注入XML
+##### [2] 外部变量注入自定义View的XML
 
 通过data注入json字符串
 
@@ -321,9 +323,9 @@ self.view.petralLoadXmlViews(xmlPath: "XmlViewController", properties: propertie
 <MyInfoView data='{"showManyView":"{showManyView}","showRed":"{showRed}"}'></MyInfoView>
 ```
         
-#### 4.XML流程控制
+#### 4.XML的控件显示控制
 
-##### [1] **p-show**属性
+##### **p-show**属性
 
 true表示加载该view，false则不加载
 
