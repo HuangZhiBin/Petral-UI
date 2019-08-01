@@ -239,7 +239,7 @@ XML 布局支持大部分可静态配置的 UI 控件，例如：UIView、UIButt
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
-<views xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.koudaikr.cn/petral-ui.xsd">
+<views xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://github.com/HuangZhiBin/Petral-UI/raw/2.2.0/Example/Petral/petral-ui.xsd">
   <RedImageView
     id="image1"
     frame="10,50,100,20"
