@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:group name="viewGroup">
+        <xs:sequence>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="view" />
+                <xs:element ref="UIView" />
+                <xs:element ref="button" />
+                <xs:element ref="UIButton" />
+                <xs:element ref="imageview" />
+                <xs:element ref="UIImageView" />
+                <xs:element ref="label" />
+                <xs:element ref="UILabel" />
+                <xs:element ref="scrollview" />
+                <xs:element ref="UIScrollView" />
+                <xs:element ref="tableview" />
+                <xs:element ref="UITableView" />
+                <xs:element ref="textfield" />
+                <xs:element ref="UITextField" />
+                <xs:element ref="textview" />
+                <xs:element ref="UITextView" />
+                <xs:element ref="collectionview" />
+                <xs:element ref="UICollectionView" />
+                <xs:element ref="datepicker" />
+                <xs:element ref="UIDatePicker" />
+                <xs:element ref="pickerview" />
+                <xs:element ref="UIPickerView" />
+                <xs:element ref="progressview" />
+                <xs:element ref="UIProgressView" />
+                <xs:element ref="searchbar" />
+                <xs:element ref="UISearchBar" />
+                <xs:element ref="segmentedcontrol" />
+                <xs:element ref="UISegmentedControl" />
+                <xs:element ref="slider" />
+                <xs:element ref="UISlider" />
+                <xs:element ref="stepper" />
+                <xs:element ref="UIStepper" />
+                <xs:element ref="switch" />
+                <xs:element ref="UISwitch" />
+                <xs:element ref="webview" />
+                <xs:element ref="UIWebView" />
+                <xs:element ref="flexview" />
+            </xs:choice>
+
+        </xs:sequence>
+    </xs:group>
+
+    <xs:attributeGroup name="attributeAttr">
+        <xs:attribute name="p-show" type="xs:string" />
+        <xs:attribute name="id" type="xs:string" />
+        <xs:attribute name="frame" type="xs:string" />
+        <xs:attribute name="backgroundColor" type="xs:string" />
+        <xs:attribute name="borderColor" type="xs:string" />
+        <xs:attribute name="borderWidth" type="xs:string" />
+        <xs:attribute name="borderRadius" type="xs:string" />
+        <xs:attribute name="shadowColor" type="xs:string" />
+        <xs:attribute name="shadowOpacity" type="xs:string" />
+        <xs:attribute name="shadowRadius" type="xs:string" />
+        <xs:attribute name="shadowOffset" type="xs:string" />
+        <xs:attribute name="masksToBounds" type="xs:string" />
+        <xs:attribute name="clipsToBounds" type="xs:string" />
+    </xs:attributeGroup>
+
+    <xs:attributeGroup name="restraintAttr">
+        <xs:attribute name="left" type="xs:string" />
+        <xs:attribute name="right" type="xs:string" />
+        <xs:attribute name="top" type="xs:string" />
+        <xs:attribute name="bottom" type="xs:string" />
+        <xs:attribute name="xCenter" type="xs:string" />
+        <xs:attribute name="yCenter" type="xs:string" />
+        <xs:attribute name="center" type="xs:string" />
+        <xs:attribute name="width" type="xs:string" />
+        <xs:attribute name="height" type="xs:string" />
+    </xs:attributeGroup>
+
+    <xs:element name="button">
+        <xs:complexType>
+            <xs:attributeGroup ref="attributeAttr" />
+            <xs:attributeGroup ref="restraintAttr" />
+            <xs:attribute name="font" type="xs:string" />
+            <xs:attribute name="titleColor" type="xs:string" />
+            <xs:attribute name="backgroundColorHighlighted" type="xs:string" />
+            <xs:attribute name="backgroundImage" type="xs:string" />
+            <xs:attribute name="backgroundImageHighlighted" type="xs:string" />
+            <xs:attribute name="title" type="xs:string" />
+            <xs:attribute name="align" type="xs:string" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="UIButton" substitutionGroup="button"></xs:element>
+
+    <xs:element name="imageview">
+        <xs:complexType>
+            <xs:attributeGroup ref="attributeAttr" />
+            <xs:attributeGroup ref="restraintAttr" />
+            <xs:attribute name="image" type="xs:string" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="UIImageView" substitutionGroup="imageview"></xs:element>
+
+    <xs:element name="label">
+        <xs:complexType>
+            <xs:attributeGroup ref="attributeAttr" />
+            <xs:attributeGroup ref="restraintAttr" />
+            <xs:attribute name="font" type="xs:string" />
+            <xs:attribute name="textColor" type="xs:string" />
+            <xs:attribute name="text" type="xs:string" />
+            <xs:attribute name="align" type="xs:string" />
+            <xs:attribute name="lines" type="xs:string" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="UILabel" substitutionGroup="label"></xs:element>
+
+    <xs:element name="textfield">
+        <xs:complexType>
+            <xs:attributeGroup ref="attributeAttr" />
+            <xs:attributeGroup ref="restraintAttr" />
+            <xs:attribute name="font" type="xs:string" />
+            <xs:attribute name="textColor" type="xs:string" />
+            <xs:attribute name="text" type="xs:string" />
+            <xs:attribute name="placeholder" type="xs:string" />
+            <xs:attribute name="align" type="xs:string" />
+            <xs:attribute name="isSecureText" type="xs:string" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="UITextField" substitutionGroup="textfield"></xs:element>
+
+    <xs:element name="textview">
+        <xs:complexType>
+            <xs:attributeGroup ref="attributeAttr" />
+            <xs:attributeGroup ref="restraintAttr" />
+            <xs:attribute name="font" type="xs:string" />
+            <xs:attribute name="textColor" type="xs:string" />
+            <xs:attribute name="text" type="xs:string" />
+            <xs:attribute name="align" type="xs:string" />
+            <xs:attribute name="isEditable" type="xs:string" />
+            <xs:attribute name="contentSize" type="xs:string" />
+            <xs:attribute name="contentOffset" type="xs:string" />
+            <xs:attribute name="contentInset" type="xs:string" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="UITextView" substitutionGroup="textview"></xs:element>
+
+
+    <xs:element name="datepicker" substitutionGroup="view"></xs:element>
+    <xs:element name="UIDatePicker" substitutionGroup="datepicker"></xs:element>
+
+    <xs:element name="pickerview" substitutionGroup="view"></xs:element>
+    <xs:element name="UIPickerView" substitutionGroup="pickerview"></xs:element>
+
+    <xs:element name="progressview" substitutionGroup="view"></xs:element>
+    <xs:element name="UIProgressView" substitutionGroup="progressview"></xs:element>
+
+    <xs:element name="searchbar" substitutionGroup="view"></xs:element>
+    <xs:element name="UISearchBar" substitutionGroup="searchbar"></xs:element>
+
+    <xs:element name="segmentedcontrol" substitutionGroup="view"></xs:element>
+    <xs:element name="UISegmentedControl" substitutionGroup="segmentedcontrol"></xs:element>
+
+    <xs:element name="slider" substitutionGroup="view"></xs:element>
+    <xs:element name="UISlider" substitutionGroup="slider"></xs:element>
+
+    <xs:element name="stepper" substitutionGroup="view"></xs:element>
+    <xs:element name="UIStepper" substitutionGroup="stepper"></xs:element>
+
+    <xs:element name="switch" substitutionGroup="view"></xs:element>
+    <xs:element name="UISwitch" substitutionGroup="switch"></xs:element>
+
+    <xs:element name="webview" substitutionGroup="view"></xs:element>
+    <xs:element name="UIWebView" substitutionGroup="webview"></xs:element>
+
+    <xs:element name="scrollview">
+        <xs:complexType>
+            <xs:group ref="viewGroup" minOccurs="0" maxOccurs="unbounded" />
+            <xs:attributeGroup ref="attributeAttr" />
+            <xs:attributeGroup ref="restraintAttr" />
+            <xs:attribute name="contentSize" type="xs:string" />
+            <xs:attribute name="contentOffset" type="xs:string" />
+            <xs:attribute name="contentInset" type="xs:string" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="UIScrollView" substitutionGroup="scrollview"></xs:element>
+
+    <xs:element name="tableview">
+        <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="header" minOccurs="0" maxOccurs="1" />
+                <xs:element ref="footer" minOccurs="0" maxOccurs="1" />
+                <xs:element ref="section-header" minOccurs="0" maxOccurs="1" />
+                <xs:element ref="section-footer" minOccurs="0" maxOccurs="1" />
+                <xs:element ref="cell" minOccurs="1" maxOccurs="1" />
+            </xs:choice>
+            <xs:attributeGroup ref="attributeAttr" />
+            <xs:attributeGroup ref="restraintAttr" />
+            <xs:attribute name="p-rows" type="xs:string" />
+            <xs:attribute name="p-sections" type="xs:string" />
+            <xs:attribute name="contentSize" type="xs:string" />
+            <xs:attribute name="contentOffset" type="xs:string" />
+            <xs:attribute name="contentInset" type="xs:string" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="UITableView" substitutionGroup="tableview"></xs:element>
+    <xs:element name="header">
+        <xs:complexType>
+            <xs:group ref="viewGroup" minOccurs="0" maxOccurs="unbounded" />
+            <xs:attributeGroup ref="attributeAttr" />
+            <xs:attributeGroup ref="restraintAttr" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="footer">
+        <xs:complexType>
+            <xs:group ref="viewGroup" minOccurs="0" maxOccurs="unbounded" />
+            <xs:attributeGroup ref="attributeAttr" />
+            <xs:attributeGroup ref="restraintAttr" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="section-header">
+        <xs:complexType>
+            <xs:group ref="viewGroup" minOccurs="0" maxOccurs="unbounded" />
+            <xs:attributeGroup ref="attributeAttr" />
+            <xs:attributeGroup ref="restraintAttr" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="section-footer">
+        <xs:complexType>
+            <xs:group ref="viewGroup" minOccurs="0" maxOccurs="unbounded" />
+            <xs:attributeGroup ref="attributeAttr" />
+            <xs:attributeGroup ref="restraintAttr" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="cell">
+        <xs:complexType>
+            <xs:group ref="viewGroup" minOccurs="0" maxOccurs="unbounded" />
+            <xs:attributeGroup ref="attributeAttr" />
+            <xs:attributeGroup ref="restraintAttr" />
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="collectionview" substitutionGroup="scrollview"></xs:element>
+    <xs:element name="UICollectionView" substitutionGroup="collectionview"></xs:element>
+
+    <xs:element name="flexview">
+        <xs:complexType>
+            <!-- <xs:group ref="viewGroup" minOccurs="0" maxOccurs="unbounded" /> -->
+            <xs:sequence minOccurs="1" maxOccurs="1">
+                <xs:element ref="template" />
+            </xs:sequence>
+            <xs:attributeGroup ref="attributeAttr" />
+            <xs:attributeGroup ref="attributeFlexviewAttr" />
+            <xs:attributeGroup ref="restraintAttr" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="template">
+        <xs:complexType>
+            <xs:group ref="viewGroup" minOccurs="0" maxOccurs="unbounded" />
+            <xs:attributeGroup ref="attributeAttr" />
+            <xs:attributeGroup ref="restraintAttr" />
+        </xs:complexType>
+    </xs:element>
+    <xs:attributeGroup name="attributeFlexviewAttr">
+        <xs:attribute name="p-item-count" type="xs:string" />
+        <xs:attribute name="p-direction" type="xs:string" />
+        <xs:attribute name="p-padding" type="xs:string" />
+        <xs:attribute name="p-item-space-x" type="xs:string" />
+        <xs:attribute name="p-item-space-y" type="xs:string" />
+    </xs:attributeGroup>
+
+    <xs:element name="view">
+        <xs:complexType>
+            <xs:group ref="viewGroup" minOccurs="0" maxOccurs="unbounded" />
+            <xs:attributeGroup ref="attributeAttr" />
+            <xs:attributeGroup ref="restraintAttr" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="UIView" substitutionGroup="view"></xs:element>
+
+
+    <xs:element name="views">
+        <xs:complexType>
+            <xs:group ref="viewGroup" minOccurs="0" maxOccurs="unbounded" />
+        </xs:complexType>
+        <xs:unique name="idUnique">
+            <xs:selector xpath=".//*" />
+            <xs:field xpath="@id" />
+        </xs:unique>
+    </xs:element>
+</xs:schema>
