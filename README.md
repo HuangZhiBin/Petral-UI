@@ -123,7 +123,7 @@ a.petralRestraint.updateDependeds();
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
-<views xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.koudaikr.cn/petral-ui.xsd">
+<views xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://github.com/HuangZhiBin/Petral-UI/raw/2.2.0/Example/Petral/petral-ui.xsd">
   <label
     id="label1"
     frame="10,50,100,20"
@@ -153,7 +153,7 @@ XML 布局代码的编写有一定的规范：
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
-<views xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.koudaikr.cn/petral-ui.xsd">
+<views xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://github.com/HuangZhiBin/Petral-UI/raw/2.2.0/Example/Petral/petral-ui.xsd">
   <!-- insert any view here -->
 </views>
 ```
@@ -255,7 +255,7 @@ RedImageView 类可通用父类的属性，例如 image 属性
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
-<views xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.koudaikr.cn/petral.xsd">
+<views xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://github.com/HuangZhiBin/Petral-UI/raw/2.2.0/Example/Petral/petral-ui.xsd">
   <scrollview
             id="scrollview1"
             frame="10,370,300,120"
