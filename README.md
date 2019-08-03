@@ -339,7 +339,7 @@ true表示加载该view，false则不加载
 
 | 属性    | 说明     |
 | ------- | -------- |
-| **p-times**    | 重复次数   |
+| **p-item-count**    | 重复次数   |
 | **p-direction**  | row（横向）、column（纵向）、wrap（自动换行）   |
 | **p-padding**     | manyview的内间距   |
 | **p-item-space-x** | 横向item间距 |
