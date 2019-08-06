@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Petral
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,6 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationVC = UINavigationController.init(rootViewController: vc);
         self.window?.rootViewController = navigationVC;
         self.window?.makeKeyAndVisible();
+        
+//        PetralHttpManager.sharedInstance().startServer("/Users/huang/Petral-UI/Example/");
+//        PetralConfig.shared.reloadUrl = PetralHttpManager.sharedInstance().url;
+        
         return true
     }
 

@@ -18,6 +18,15 @@ class XmlLayoutViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @objc func resetUI() {
+        print("resetUI---->>>>>>>\(self.classForCoder)");
+        for subview in self.view.subviews {
+            subview.removeFromSuperview();
+        }
+        
+        self.view.petralLoadXmlViews(xmlPath: "XmlLayoutViewController");
+    }
+    
 
     /*
     // MARK: - Navigation

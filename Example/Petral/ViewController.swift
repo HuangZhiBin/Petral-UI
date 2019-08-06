@@ -32,6 +32,10 @@ class ViewController: UIViewController {
         
         self.title = "Petral-UI";
         
+        self.initUI();
+    }
+    
+    func initUI() {
         let loader = self.view.petralLoadXmlViews(xmlPath: "ViewController");
         
         let tableView : PetralTableView = loader.petralViewById(id: "tableview1") as! PetralTableView;
@@ -39,7 +43,7 @@ class ViewController: UIViewController {
             let cellLabel : UILabel = loader.petralViewById(id: "cellLabel", inView: cell) as! UILabel;
             cellLabel.text = String(indexPath.row + 1) + ". " + (self?.CELLS[indexPath.section][indexPath.row])!;
             cell.selectedBackgroundView = UIView.init(frame: cell.frame);
-            cell.selectedBackgroundView?.backgroundColor = UIColor.init(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 1);
+            cell.selectedBackgroundView?.backgroundColor = UIColor.init(red: 230/255.0, green: 230/255.0, blue: 230/255.0, alpha: 1);
         };
         tableView.tableSectionHeaderDisplayAction = { [weak self]  (headerView: UIView, section: Int) in
             let sectionHeaderLabel : UILabel = loader.petralViewById(id: "sectionHeaderLabel", inView: headerView) as! UILabel;
@@ -58,7 +62,11 @@ class ViewController: UIViewController {
         };
     }
     
-
+    @objc func resetUI() {
+        print("resetUI---->>>>>>>\(self.classForCoder)");
+        self.initUI();
+    }
+    
     /*
     // MARK: - Navigation
 

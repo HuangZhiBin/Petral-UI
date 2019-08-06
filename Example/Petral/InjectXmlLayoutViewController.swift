@@ -18,6 +18,15 @@ class InjectXmlLayoutViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @objc func resetUI() {
+        print("resetUI---->>>>>>>\(self.classForCoder)");
+//        for subview in self.view.subviews {
+//            subview.removeFromSuperview();
+//        }
+        
+        self.view.petralLoadXmlViews(xmlPath: "InjectXmlLayoutViewController", properties: ["text":"这是外层的text","name":"天线德德B","image":"head1"]);
+    }
+    
 
     /*
     // MARK: - Navigation

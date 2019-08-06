@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<views xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.koudaikr.cn/petral.xsd">
+<views xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://github.com/HuangZhiBin/Petral-UI/raw/2.2.0/Example/Petral/petral-ui.xsd">
     <view left="0" right="0" top="0" bottom="0" backgroundColor="white">
         <scrollview id="scrollview" left="0" top="64" width="100%" height="120" backgroundColor="yellow">
             <flexview id="flexview" height="100%" p-direction="row">
