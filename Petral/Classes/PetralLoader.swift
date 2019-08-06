@@ -54,14 +54,6 @@ class PetralLoader: NSObject {
                 self.xmlProperties["{" + key + "}"] = properties![key]!;
             }
         }
-        
-        //获取xml文件路径
-        let file = Bundle.main.path(forResource: self.xmlFileName, ofType: "xml")
-        //初始化parser
-        let parser = XMLParser(contentsOf: URL.init(fileURLWithPath: file!))!;
-        self.xmlParser = parser;
-        //设置delegate
-        parser.delegate = self;
     }
     
     func injectViews(toView: UIView) {
@@ -71,6 +63,25 @@ class PetralLoader: NSObject {
         }
         self.superViewIdentifiers.append(String(self.targetView.tag));
         
+        var parser : XMLParser?;
+        if PetralConfig.shared.reloadUrl == nil {
+            //获取xml文件路径
+            let file = Bundle.main.path(forResource: self.xmlFileName, ofType: "xml")
+            //初始化parser
+            parser = XMLParser(contentsOf: URL.init(fileURLWithPath: file!))!;
+        }
+        else{
+            //初始化parser
+            do{
+                let data = try Data.init(contentsOf: URL.init(string: "http://" + PetralConfig.shared.reloadUrl! + "/" + self.targetView.petralXmlResource! + ".xml")!);
+                parser = XMLParser(data: data);
+            } catch{
+                print("Fail to get local XML: \(error)");
+            }
+        }
+        self.xmlParser = parser;
+        //设置delegate
+        parser!.delegate = self;
         //开始解析
         self.xmlParser.parse();
         self.finishParse();

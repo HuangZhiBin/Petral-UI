@@ -61,7 +61,7 @@ public class PetralTableView: UITableView {
     
     var sectionFooterView: UIView?;
     
-    override init(frame: CGRect, style: UITableView.Style) {
+    override init(frame: CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: style);
         
 //        let tableView = self;
