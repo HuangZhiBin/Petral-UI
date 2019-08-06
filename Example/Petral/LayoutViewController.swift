@@ -118,6 +118,10 @@ class LayoutViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @objc func resetUI() {
+        print("resetUI---->>>>>>>\(self.classForCoder)");
+    }
+    
     deinit {
         print("deinit");
     }
