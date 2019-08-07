@@ -837,7 +837,7 @@ extension PetralRestraint{
             viewTop = (self.attachedView.superview!.frame.size.height - height) / 2;
         }
         else if(self.existType(type: .yCenter, referenceType: .same)){
-            let item = self.filterType(type: .bottom);
+            let item = self.filterType(type: .yCenter);
             let referenceView : UIView = (self.attachedView.superview?.viewWithTag(item.referenceViewTag))!;
             viewTop = referenceView.frame.origin.y + referenceView.frame.size.height / 2 - height / 2;
         }
