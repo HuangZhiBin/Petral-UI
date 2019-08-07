@@ -27,7 +27,7 @@ class LayoutViewController: UIViewController {
             .backgroundColor(UIColor.gray)
             .borderColor(UIColor.red)
             .borderWidth(2)
-            .borderRadius(12);
+            .cornerRadius(12);
         self.view.addSubview(label);
         label.petralRestraint
             .leftIn(offset: 50)
@@ -46,7 +46,7 @@ class LayoutViewController: UIViewController {
             .backgroundColor(UIColor.gray)
             .borderColor(UIColor.red)
             .borderWidth(2)
-            .borderRadius(12);
+            .cornerRadius(12);
         self.view.addSubview(textField);
         textField.petralRestraint
             .leftAs(label)
@@ -84,7 +84,7 @@ class LayoutViewController: UIViewController {
             .backgroundColor(UIColor.lightGray)
             .borderColor(UIColor.red)
             .borderWidth(2)
-            .borderRadius(12);
+            .cornerRadius(12);
         self.view.addSubview(view);
         view.petralRestraint
             .leftIn(offset: 20)
@@ -101,7 +101,7 @@ class LayoutViewController: UIViewController {
             .align(.center)
             .borderColor(UIColor.red)
             .borderWidth(2)
-            .borderRadius(12);
+            .cornerRadius(12);
         view.addSubview(textView);
         textView.petralRestraint
             .centerIn()

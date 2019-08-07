@@ -3,7 +3,7 @@
     <view left="0" right="0" top="0" bottom="0" backgroundColor="white">
         <MyTableView id="tableView" left="0" right="0" top="50" height="140"></MyTableView>
         <button backgroundColor="#a3a3a3" id="button" title="back" width="60" height="44" top="tableView;20" left="20" />
-        <label font="13" text="123123123123" right="12" borderRadius="12" />
+        <label font="13" text="123123123123" right="12" cornerRadius="12" />
         <textfield />
     </view>
 </views>
