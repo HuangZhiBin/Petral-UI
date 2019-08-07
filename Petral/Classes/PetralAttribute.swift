@@ -36,7 +36,7 @@ public class PetralAttribute: NSObject {
     }
     
     @discardableResult
-    public func borderRadius(_ radius: CGFloat) -> PetralAttribute {
+    public func cornerRadius(_ radius: CGFloat) -> PetralAttribute {
         self.attachedView.layer.cornerRadius = radius;
         return self;
     }
@@ -106,8 +106,8 @@ public class PetralAttribute: NSObject {
         case "borderWidth":
             self.borderWidth(PetralParser.parseFloat(attributeVal));
             break;
-        case "borderRadius":
-            self.borderRadius(PetralParser.parseFloat(attributeVal));
+        case "cornerRadius":
+            self.cornerRadius(PetralParser.parseFloat(attributeVal));
             break;
         case "shadowColor":
             self.shadowColor(PetralParser.parseColor(attributeVal));
@@ -189,8 +189,8 @@ public class PetralAttributeUIButton: PetralAttribute {
     }
     
     @discardableResult
-    override public func borderRadius(_ radius: CGFloat) -> PetralAttributeUIButton {
-        super.borderRadius(radius);
+    override public func cornerRadius(_ radius: CGFloat) -> PetralAttributeUIButton {
+        super.cornerRadius(radius);
         return self;
     }
     
@@ -329,8 +329,8 @@ public class PetralAttributeUIImageView: PetralAttribute{
     }
     
     @discardableResult
-    override public func borderRadius(_ radius: CGFloat) -> PetralAttributeUIImageView {
-        super.borderRadius(radius);
+    override public func cornerRadius(_ radius: CGFloat) -> PetralAttributeUIImageView {
+        super.cornerRadius(radius);
         return self;
     }
     
@@ -452,8 +452,8 @@ public class PetralAttributeUILabel: PetralAttribute{
     }
     
     @discardableResult
-    override public func borderRadius(_ radius: CGFloat) -> PetralAttributeUILabel {
-        super.borderRadius(radius);
+    override public func cornerRadius(_ radius: CGFloat) -> PetralAttributeUILabel {
+        super.cornerRadius(radius);
         return self;
     }
     
@@ -576,8 +576,8 @@ public class PetralAttributeUIScrollView: PetralAttribute{
     }
     
     @discardableResult
-    override public func borderRadius(_ radius: CGFloat) -> PetralAttributeUIScrollView {
-        super.borderRadius(radius);
+    override public func cornerRadius(_ radius: CGFloat) -> PetralAttributeUIScrollView {
+        super.cornerRadius(radius);
         return self;
     }
     
@@ -693,8 +693,8 @@ public class PetralAttributeUITableView: PetralAttributeUIScrollView {
     }
     
     @discardableResult
-    override public func borderRadius(_ radius: CGFloat) -> PetralAttributeUITableView {
-        super.borderRadius(radius);
+    override public func cornerRadius(_ radius: CGFloat) -> PetralAttributeUITableView {
+        super.cornerRadius(radius);
         return self;
     }
     
@@ -818,8 +818,8 @@ public class PetralAttributeUITextField: PetralAttribute{
     }
     
     @discardableResult
-    override public func borderRadius(_ radius: CGFloat) -> PetralAttributeUITextField {
-        super.borderRadius(radius);
+    override public func cornerRadius(_ radius: CGFloat) -> PetralAttributeUITextField {
+        super.cornerRadius(radius);
         return self;
     }
     
@@ -963,8 +963,8 @@ public class PetralAttributeUITextView: PetralAttributeUIScrollView {
     }
     
     @discardableResult
-    override public func borderRadius(_ radius: CGFloat) -> PetralAttributeUITextView {
-        super.borderRadius(radius);
+    override public func cornerRadius(_ radius: CGFloat) -> PetralAttributeUITextView {
+        super.cornerRadius(radius);
         return self;
     }
     

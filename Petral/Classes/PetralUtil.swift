@@ -13,7 +13,27 @@ class PetralUtil: NSObject {
     static func duplicateView(view: UIView) -> UIView {
         let data = NSKeyedArchiver.archivedData(withRootObject: view);
         let duplicateView = NSKeyedUnarchiver.unarchiveObject(with: data);
+        self.copyLayer(sourceView: view, toView: (duplicateView as! UIView));
+        
+        //复制layer配置
+        let subviews = self.getSubViews(view: (duplicateView as! UIView));
+        let sourceSubviews = self.getSubViews(view: view);
+        for (index,subview) in subviews.enumerated() {
+            self.copyLayer(sourceView: sourceSubviews[index], toView: subview);
+        }
+        
         return duplicateView as! UIView;
+    }
+    
+    static func copyLayer(sourceView: UIView, toView: UIView){
+        toView.layer.masksToBounds = sourceView.layer.masksToBounds;
+        toView.layer.cornerRadius = sourceView.layer.cornerRadius;
+        toView.layer.borderColor = sourceView.layer.borderColor;
+        toView.layer.borderWidth = sourceView.layer.borderWidth;
+        toView.layer.shadowColor = sourceView.layer.shadowColor;
+        toView.layer.shadowOffset = sourceView.layer.shadowOffset;
+        toView.layer.shadowRadius = sourceView.layer.shadowRadius;
+        toView.layer.shadowOpacity = sourceView.layer.shadowOpacity;
     }
     
     static func duplicateRestraints(sourceView: UIView, toView: UIView) {
