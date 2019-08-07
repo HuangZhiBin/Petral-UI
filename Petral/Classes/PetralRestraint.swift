@@ -738,6 +738,12 @@ extension PetralRestraint{
             let referenceView : UIView = (self.attachedView.superview?.viewWithTag(item.referenceViewTag))!;
             viewLeft = referenceView.frame.origin.x + referenceView.frame.size.width +  item.distance;
         }
+        else if(self.existType(type: .left, referenceType: .same)){
+            //changed
+            let item = self.filterType(type: .left);
+            let referenceView : UIView = (self.attachedView.superview?.viewWithTag(item.referenceViewTag))!;
+            viewLeft = referenceView.frame.origin.x + item.distance;
+        }
         else if(self.existType(type: .right, referenceType: .inside)){
             let item = self.filterType(type: .right);
             viewLeft = self.attachedView.superview!.frame.size.width - width - item.distance;
@@ -746,6 +752,12 @@ extension PetralRestraint{
             let item = self.filterType(type: .right);
             let referenceView : UIView = (self.attachedView.superview?.viewWithTag(item.referenceViewTag))!;
             viewLeft = referenceView.frame.origin.x - item.distance - width;
+        }
+        else if(self.existType(type: .right, referenceType: .same)){
+            //changed
+            let item = self.filterType(type: .right);
+            let referenceView : UIView = (self.attachedView.superview?.viewWithTag(item.referenceViewTag))!;
+            viewLeft = referenceView.frame.origin.x + referenceView.frame.size.width + item.distance - width;
         }
         else if(self.existType(type: .xCenter, referenceType: .inside)){
             viewLeft = (self.attachedView.superview!.frame.size.width - width) / 2;
@@ -802,6 +814,11 @@ extension PetralRestraint{
             let referenceView : UIView = (self.attachedView.superview?.viewWithTag(item.referenceViewTag))!;
             viewTop = referenceView.frame.size.height + referenceView.frame.origin.y + item.distance;
         }
+        else if(self.existType(type: .top, referenceType: .same)){
+            let item = self.filterType(type: .top);
+            let referenceView : UIView = (self.attachedView.superview?.viewWithTag(item.referenceViewTag))!;
+            viewTop = referenceView.frame.origin.y + item.distance;
+        }
         else if(self.existType(type: .bottom, referenceType: .inside)){
             let item = self.filterType(type: .bottom);
             viewTop = self.attachedView.superview!.frame.size.height - height - item.distance;
@@ -810,6 +827,11 @@ extension PetralRestraint{
             let item = self.filterType(type: .bottom);
             let referenceView : UIView = (self.attachedView.superview?.viewWithTag(item.referenceViewTag))!;
             viewTop = referenceView.frame.origin.y - item.distance - height;
+        }
+        else if(self.existType(type: .bottom, referenceType: .same)){
+            let item = self.filterType(type: .bottom);
+            let referenceView : UIView = (self.attachedView.superview?.viewWithTag(item.referenceViewTag))!;
+            viewTop = referenceView.frame.origin.y + referenceView.frame.size.height + item.distance - height;
         }
         else if(self.existType(type: .yCenter, referenceType: .inside)){
             viewTop = (self.attachedView.superview!.frame.size.height - height) / 2;
