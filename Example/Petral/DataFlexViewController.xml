@@ -10,6 +10,6 @@
                 </template>
             </flexview>
         </scrollview>
-        <button id="changeBtn" title="切换数据" backgroundColor="#16a051" backgroundColorHighlighted="#83b001" bottom="10" masksToBounds="true" borderRadius="6" height="44" xCenter="0" width="90%" />
+        <button id="changeBtn" title="切换数据" backgroundColor="#16a051" backgroundColorHighlighted="#83b001" bottom="10" masksToBounds="true" cornerRadius="6" height="44" xCenter="0" width="90%" />
     </view>
 </views>

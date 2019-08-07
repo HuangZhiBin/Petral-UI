@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <views xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://github.com/HuangZhiBin/Petral-UI/raw/2.2.0/Example/Petral/petral-ui.xsd">
     <view left="0" right="0" top="0" bottom="0" backgroundColor="green">
-        <imageview id="image1" frame="150,20,50,50" backgroundColor="#777777" shadowColor="#880000" shadowOpacity="0.95" shadowRadius="20" shadowOffset="2,5" borderColor="#888888" borderWidth="0" masksToBounds="true" borderRadius="12.5" image="setting"></imageview>
+        <imageview id="image1" frame="150,20,50,50" backgroundColor="#777777" shadowColor="#880000" shadowOpacity="0.95" shadowRadius="20" shadowOffset="2,5" borderColor="#888888" borderWidth="0" masksToBounds="true" cornerRadius="12.5" image="setting"></imageview>
         
-        <imageview id="image11" frame="210,20,50,50" backgroundColor="#777777" shadowColor="#880000" shadowOpacity="0.95" shadowRadius="20" shadowOffset="2,5" borderColor="#888888" borderWidth="0" masksToBounds="true" borderRadius="12.5" image="setting"></imageview>
+        <imageview id="image11" frame="210,20,50,50" backgroundColor="#777777" shadowColor="#880000" shadowOpacity="0.95" shadowRadius="20" shadowOffset="2,5" borderColor="#888888" borderWidth="0" masksToBounds="true" cornerRadius="12.5" image="setting"></imageview>
         
         <label id="label1" frame="10,50,100,20" font="18" textColor="#555555" backgroundColor="#d3d3d3" text="发送短信通知功能" lines="1" align="right" top="image1;0" height="image1,0"></label>
         

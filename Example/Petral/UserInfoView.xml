@@ -11,7 +11,7 @@
             borderColor="#888888"
             borderWidth="0"
             masksToBounds="true"
-            borderRadius="12.5"
+            cornerRadius="12.5"
             image="setting"
             
             top="0"
