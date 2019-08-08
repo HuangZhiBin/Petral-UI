@@ -175,8 +175,8 @@ XML 布局代码的编写有一定的规范：
 |                 | 居左                  | 居右         | 居中             |                    |          |
 | UIFont          | 12                    | 12+          |                  |                    |          |
 |                 | 系统 12               | 系统 12 加粗 |                  |                    |          |
-| UIEdgeInsets    | 10,20.0,30,40         |              |                  |                    |          |
-|                 | top,left,bottom,right |              |                  |                    |          |
+| UIEdgeInsets    | 10,20.0,30,40         | 10,20             |10                  |                    |          |
+|                 | top,left,bottom,right |top/bottom,left/right              |top,left,bottom,right                  |                    |          |
 | CGSize          | 10,20.4               |              |                  |                    |          |
 |                 | width,height          |              |                  |                    |          |
 | CGPoint         | 10,20.4               |              |                  |                    |          |
@@ -240,7 +240,7 @@ XML 布局支持大部分可静态配置的 UI 控件，例如：UIView、UIButt
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
-<views xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://github.com/HuangZhiBin/Petral-UI/raw/2.2.0/Example/Petral/petral-ui.xsd">
+<views xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.koudaikr.cn/org/petral-ui.xsd">
   <RedImageView
     id="image1"
     frame="10,50,100,20"
@@ -256,7 +256,7 @@ RedImageView 类可通用父类的属性，例如 image 属性
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
-<views xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://github.com/HuangZhiBin/Petral-UI/raw/2.2.0/Example/Petral/petral-ui.xsd">
+<views xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.koudaikr.cn/org/petral-ui.xsd">
   <scrollview
             id="scrollview1"
             frame="10,370,300,120"
@@ -372,6 +372,42 @@ let flexview = loader.petralViewById(id: "flexview") as! PetralFlexView;
 | **itemHeightAction**     | PetralFlexViewItemHeightAction   | item的高度   |
 | **itemDisplayAction** | PetralFlexViewItemDisplayAction | item的UI展示   |
 | **itemClickAction** | PetralFlexViewItemClickAction | item的点击事件   |
+
+### (3) XML的即时UI调试，不需重新编译app
+
+#### 1.引入调试工具Petral-UI-Updator
+
+```Swift
+pod 'Petral-UI-Updator'
+```
+
+#### 2.增加调试代码
+
+```Swift
+#if DEBUG
+        Bundle(path: "/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle")?.load()
+        PetralHttpManager.sharedInstance().startServer("/Users/huang/MyProject/");//当前项目的绝对路径
+        PetralConfig.shared.reloadUrl = PetralHttpManager.sharedInstance().url;
+#endif
+```
+
+#### 3.ViewController实现resetUI()
+
+ViewController的resetUI方法提供重新渲染XML文件的功能，在此处添加刷新XML的UI。
+
+```Swift
+@objc func resetUI() {
+    self.view.petralLoadXmlViews(xmlPath: "MyXmlFileName");
+}
+```
+
+注：重复petralLoadXmlViews方法，重复的一次执行前，view的所有subview将会自动移除。
+
+#### 4.启动App
+
+配置成功后，App出现悬浮的橙色球，点击即可执行当前的ViewController的resetUI方法。
+
+- 在AppDelegate的
 
 ### 微信讨论群
 
