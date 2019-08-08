@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Petral
 
 class XmlLayoutViewController: UIViewController {
 
@@ -14,16 +15,11 @@ class XmlLayoutViewController: UIViewController {
         super.viewDidLoad();
         
         self.view.petralLoadXmlViews(xmlPath: "XmlLayoutViewController");
-
-        // Do any additional setup after loading the view.
+        
     }
     
     @objc func resetUI() {
         print("resetUI---->>>>>>>\(self.classForCoder)");
-        for subview in self.view.subviews {
-            subview.removeFromSuperview();
-        }
-        
         self.view.petralLoadXmlViews(xmlPath: "XmlLayoutViewController");
     }
     
