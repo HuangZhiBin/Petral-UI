@@ -123,7 +123,7 @@ a.petralRestraint.updateDependeds();
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
-<views xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://github.com/HuangZhiBin/Petral-UI/raw/2.2.0/Example/Petral/petral-ui.xsd">
+<views xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.koudaikr.cn/org/petral-ui.xsd">
   <label
     id="label1"
     frame="10,50,100,20"
@@ -404,7 +404,7 @@ ViewController的resetUI方法提供重新渲染XML文件的功能，在此处�
 
 #### 4.启动App
 
-配置成功后，App出现悬浮的橙色球（配置不成功则不出现），点击即可执行当前的ViewController的resetUI方法。
+配置成功后，App出现悬浮的橙色球（配置不成功则不出现），点击即可执行当前的ViewController的resetUI方法。仅支持**Xcode模拟器**调试。
 
 ### 微信讨论群
 
