@@ -277,7 +277,7 @@ RedImageView 类可通用父类的属性，例如 image 属性
 #### 1.XML 控件的加载
 
 ```Swift
-self.view.petralLoadXmlViews(xmlPath: "XmlViewController");
+let loader = self.view.petralLoadXmlViews(xmlPath: "XmlViewController");
 ```
 
 上面的代码表示 self.view 加载 XmlViewController.xml 的布局文件
@@ -285,7 +285,7 @@ self.view.petralLoadXmlViews(xmlPath: "XmlViewController");
 #### 2.通过 id 访问指定的控件
 
 ```Swift
-let userInfoView = self.view.petralViewById(id: "userInfoView") as! UserInfoView;
+let userInfoView = loader.petralViewById(id: "userInfoView") as! UserInfoView;
 ```
 
 上面的代码表示 userInfoView 是 XmlViewController 里 id 属性为"userInfoView"的控件。
