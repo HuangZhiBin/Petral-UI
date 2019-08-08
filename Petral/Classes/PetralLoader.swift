@@ -331,7 +331,24 @@ class PetralLoader: NSObject {
                 else{
                     toView = addedView?.superview;
                 }
-                addedView!.petralRestraint.setXmlRestraint(attributeName: attributeName, restraintParam: params!, toView: toView!);
+                
+                if addedView!.isKind(of: PetralFlexTemplateView.classForCoder()) && params?.type == .percent {
+                    let flexView: PetralFlexView = toView as! PetralFlexView;
+                    
+                    if attributeName == "width"{
+                        params?.percentOffset = flexView.padding.left + flexView.padding.right;
+//                        params?.value = (flexView.frame.size.width - flexView.padding.left - flexView.padding.right) / flexView.frame.size.width * params!.value;
+                    }
+                    else if attributeName == "height"{
+                        params?.percentOffset = flexView.padding.top + flexView.padding.bottom;
+//                        params?.value = (flexView.frame.size.height - flexView.padding.top - flexView.padding.bottom) / flexView.frame.size.height * params!.value;
+                    }
+                    
+                    addedView!.petralRestraint.setXmlRestraint(attributeName: attributeName, restraintParam: params!, toView: toView!);
+                }
+                else{
+                    addedView!.petralRestraint.setXmlRestraint(attributeName: attributeName, restraintParam: params!, toView: toView!);
+                }
             }
         }
         

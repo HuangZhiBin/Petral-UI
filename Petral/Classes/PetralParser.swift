@@ -11,8 +11,9 @@ import UIKit
 class PetralRestraintParam: NSObject {
     var id : String?;
     var value: CGFloat! = 0;
-    var value2: CGFloat! = 0;
+    var value2: CGFloat! = 0;//第二个参数,例如label1,2的2
     var type: PetralReferenceType!;//to/same
+    var percentOffset: CGFloat! = 0;//percent的偏移减少量,例如padding，在减少padding的基础上计算百分比
     
     init(id : String?, value: CGFloat , value2: CGFloat? = nil, type: PetralReferenceType) {
         self.id = id;
@@ -127,14 +128,30 @@ class PetralParser: NSObject {
     /**
      允许输入的格式:
      10,20,30,40
+     10,20
+     10
      */
     static func parseInset(_ attributeValue: String) -> UIEdgeInsets {
-        let top = CGFloat(Double(attributeValue.split(separator: ",")[0])!);
-        let left = CGFloat(Double(attributeValue.split(separator: ",")[1])!);
-        let bottom = CGFloat(Double(attributeValue.split(separator: ",")[2])!);
-        let right = CGFloat(Double(attributeValue.split(separator: ",")[3])!);
-        
-        return UIEdgeInsets.init(top: top, left: left, bottom: bottom, right: right);
+        if attributeValue.split(separator: ",").count == 4 {
+            let top = CGFloat(Double(attributeValue.split(separator: ",")[0])!);
+            let left = CGFloat(Double(attributeValue.split(separator: ",")[1])!);
+            let bottom = CGFloat(Double(attributeValue.split(separator: ",")[2])!);
+            let right = CGFloat(Double(attributeValue.split(separator: ",")[3])!);
+            
+            return UIEdgeInsets.init(top: top, left: left, bottom: bottom, right: right);
+        }
+        else if attributeValue.split(separator: ",").count == 2 {
+            let topAndBottom = CGFloat(Double(attributeValue.split(separator: ",")[0])!);
+            let leftAndRight = CGFloat(Double(attributeValue.split(separator: ",")[1])!);
+            
+            return UIEdgeInsets.init(top: topAndBottom, left: leftAndRight, bottom: topAndBottom, right: leftAndRight);
+        }
+        else if attributeValue.split(separator: ",").count == 1 {
+            let all = CGFloat(Double(attributeValue)!);
+            
+            return UIEdgeInsets.init(top: all, left: all, bottom: all, right: all);
+        }
+        return UIEdgeInsets.zero;
     }
     
     /**

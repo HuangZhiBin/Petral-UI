@@ -101,7 +101,7 @@ public class PetralFlexView: UIView {
         get{
             var templates: [PetralFlexTemplateView] = [];
             if self.subviews.count > 0 {
-                for templateView in self.subviews[0].subviews {
+                for templateView in self.subviews {
                     templates.append(templateView as! PetralFlexTemplateView);
                 }
             }
@@ -109,28 +109,12 @@ public class PetralFlexView: UIView {
         }
     }
     
-    lazy var containerView: UIView! = {
-        let containerView = UIView.init();
-        containerView.clipsToBounds = true;
-        return containerView;
-    }();
-    
     @discardableResult
     public func resize() -> CGSize {
         if self.items.count > 0 {
             let lastItem = self.items.last;
-            if self.direction == .row {
-                self.frame.size.width = (lastItem?.frame.size.width)! + (lastItem?.frame.origin.x)! + self.padding.left + self.padding.right;
-                self.containerView.frame.size.width = self.frame.size.width;
-            }
-            else if self.direction == .column {
-                self.frame.size.height = (lastItem?.frame.size.height)! + (lastItem?.frame.origin.y)! + self.padding.top + self.padding.bottom;
-                self.containerView.frame.size.height = self.frame.size.height;
-            }
-            else if self.direction == .wrap {
-                self.frame.size.height = (lastItem?.frame.size.height)! + (lastItem?.frame.origin.y)! + self.padding.top + self.padding.bottom;
-                self.containerView.frame.size.height = self.frame.size.height;
-            }
+            self.frame.size.width = (lastItem?.frame.size.width)! + (lastItem?.frame.origin.x)! + self.padding.right;
+            self.frame.size.height = (lastItem?.frame.size.height)! + (lastItem?.frame.origin.y)! + self.padding.bottom;
         }
         return self.frame.size;
     }
@@ -156,27 +140,16 @@ public class PetralFlexView: UIView {
     }
     
     func reinitItems(){
-        if self.containerView.superview == nil {
-            self.addSubview(self.containerView);
-//            let realContainerWidth = self.frame.size.width - padding.left - padding.right;
-//            let realContainerHeight = self.frame.size.height - padding.top - padding.bottom;
-            self.containerView.petralRestraint
-                .topIn(offset: self.padding.top)
-                .leftIn(offset: self.padding.left)
-                .rightIn(offset: self.padding.right)
-                .bottomIn(offset: self.padding.right)
-        }
-        else{
-            for item in self.items {
-                item.removeFromSuperview();
-            }
+        for item in self.items {
+            item.removeFromSuperview();
         }
         
         if self.elementCount > 0 {
             for _ in 0 ... self.elementCount - 1 {
                 let copyView : PetralFlexTemplateView = PetralUtil.duplicateView(view: self.templateView) as! PetralFlexTemplateView;
                 PetralUtil.duplicateRestraints(sourceView: templateView, toView: copyView);
-                self.addItemView(view: copyView);
+                self.addSubview(copyView);
+                copyView.flexView = self;
             }
             self.refreshRectForItems();
         }
@@ -202,13 +175,17 @@ public class PetralFlexView: UIView {
             }
             
             if index == 0 {
+                view.frame.origin.x = self.padding.left;
+                view.frame.origin.y = self.padding.top;
                 continue;
             }
             let prevView = self.items[index - 1];
             if self.direction == .row {
                 view.frame.origin.x = prevView.frame.origin.x + prevView.frame.size.width + self.itemSpaceX;
+                view.frame.origin.y = prevView.frame.origin.y;
             }
             else if self.direction == .column {
+                view.frame.origin.x = prevView.frame.origin.x;
                 view.frame.origin.y = prevView.frame.origin.y + prevView.frame.size.height + self.itemSpaceY;
             }
             else if self.direction == .wrap {
@@ -216,7 +193,7 @@ public class PetralFlexView: UIView {
                 var x = prevView.frame.origin.x + prevView.frame.size.width + self.itemSpaceX;
                 
                 if x + view.frame.size.width > realContainerWidth {
-                    x = 0;
+                    x = self.padding.left;
                     let y = prevView.frame.origin.y + prevView.frame.size.height + self.itemSpaceY;
                     view.frame.origin = CGPoint.init(x: x, y: y);
                 }
@@ -228,18 +205,7 @@ public class PetralFlexView: UIView {
     }
     
     func viewForIndex(index: Int) -> PetralFlexTemplateView {
-        return self.containerView.subviews[index] as! PetralFlexTemplateView;
-    }
-    
-    func addItemView(view: PetralFlexTemplateView) {
-        
-        self.containerView.addSubview(view);
-        view.flexView = self;
-        
-        
-        
-//        let position = self.positionForItem(view: view, index: self.containerView.subviews.count - 1);
-//        view.frame.origin = CGPoint.init(x: position.x, y: position.y);
+        return self.subviews[index] as! PetralFlexTemplateView;
     }
     
     /*
@@ -294,7 +260,8 @@ public class PetralFlexTemplateView: UIView {
     
     public override init(frame: CGRect) {
         super.init(frame: frame);
-        self.clipsToBounds = true;
+//        self.clipsToBounds = true;等价功能
+//        self.layer.masksToBounds = false;
     }
     
     required init?(coder aDecoder: NSCoder) {
