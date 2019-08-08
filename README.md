@@ -161,9 +161,9 @@ XML 布局代码的编写有一定的规范：
 
 #### 3.XML 代码提示
 
-- 推荐 VSCode 编辑 XML 代码，安装插件：**XML Language Support by Red Hat**
+- 推荐 Mac 软件：**Oxygen XML Editor**
 
-  ![](http://www.koudaikr.cn/Petral/xml.png)
+  ![](https://www.oxygenxml.com/img/mb_xml_editor.png)
 
 - 属性值的类型可参考：PetralParser.swift
 
@@ -385,7 +385,6 @@ pod 'Petral-UI-Updator'
 
 ```Swift
 #if DEBUG
-        Bundle(path: "/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle")?.load()
         PetralHttpManager.sharedInstance().startServer("/Users/huang/MyProject/");//当前项目的绝对路径
         PetralConfig.shared.reloadUrl = PetralHttpManager.sharedInstance().url;
 #endif
@@ -405,9 +404,7 @@ ViewController的resetUI方法提供重新渲染XML文件的功能，在此处�
 
 #### 4.启动App
 
-配置成功后，App出现悬浮的橙色球，点击即可执行当前的ViewController的resetUI方法。
-
-- 在AppDelegate的
+配置成功后，App出现悬浮的橙色球（配置不成功则不出现），点击即可执行当前的ViewController的resetUI方法。
 
 ### 微信讨论群
 
