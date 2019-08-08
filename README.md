@@ -404,7 +404,11 @@ ViewController的resetUI方法提供重新渲染XML文件的功能，在此处�
 
 #### 4.启动App
 
-配置成功后，App出现悬浮的橙色球（配置不成功则不出现），点击即可执行当前的ViewController的resetUI方法。仅支持**Xcode模拟器**调试。
+配置成功后，App出现悬浮的橙色球（配置不成功则不出现），点击即可执行当前的ViewController的resetUI方法。
+
+仅支持**Xcode模拟器**调试。
+
+![](https://github.com/HuangZhiBin/Petral-UI/raw/master/65qe0-2hq08.gif)
 
 ### 微信讨论群
 
