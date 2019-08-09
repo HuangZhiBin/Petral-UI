@@ -148,10 +148,25 @@ public class PetralFlexView: UIView {
             for _ in 0 ... self.elementCount - 1 {
                 let copyView : PetralFlexTemplateView = PetralUtil.duplicateView(view: self.templateView) as! PetralFlexTemplateView;
                 PetralUtil.duplicateRestraints(sourceView: templateView, toView: copyView);
+                self.saveSubTemplates(templateView: self.templateView, copiedView: copyView);
                 self.addSubview(copyView);
                 copyView.flexView = self;
             }
             self.refreshRectForItems();
+        }
+    }
+    
+    func saveSubTemplates(templateView: PetralFlexTemplateView, copiedView: PetralFlexTemplateView) {
+        for (index,subview) in templateView.subviews.enumerated() {
+            if subview.isKind(of: PetralFlexView.classForCoder()){
+                let copiedFlexView : PetralFlexView = copiedView.subviews[index] as! PetralFlexView;
+                copiedFlexView.elementCount = (subview as? PetralFlexView)!.elementCount;
+                copiedFlexView.direction = (subview as? PetralFlexView)?.direction;
+                copiedFlexView.padding = (subview as? PetralFlexView)?.padding;
+                copiedFlexView.itemSpaceX = (subview as? PetralFlexView)!.itemSpaceX;
+                copiedFlexView.itemSpaceY = (subview as? PetralFlexView)!.itemSpaceY;
+                copiedFlexView.templateView = (subview as? PetralFlexView)?.templateView;
+            }
         }
     }
     

@@ -321,9 +321,15 @@ extension PetralRestraint{
             let dependedArray = Array(Set(view.petralRestraint.dependings));
             for dependedViewTag in dependedArray {
                 //print("dependedViewTag=>\(dependedViewTag)");
+                var dependedView : UIView? = view.viewWithTag(dependedViewTag);
+                if dependedView == nil {
+                    dependedView = view.superview?.viewWithTag(dependedViewTag);
+                }
                 
-                let dependedView = view.superview?.viewWithTag(dependedViewTag);
-                self.updateRestraintFor(view: dependedView!, theReferenceView: view);
+                if dependedView != nil {
+                    self.updateRestraintFor(view: dependedView!, theReferenceView: view);
+                }
+                
             }
         }
     }
