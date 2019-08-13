@@ -217,11 +217,28 @@ class PetralTableViewCell: UITableViewCell {
         let template : UIView = identifierMitTemplate[self.reuseIdentifier!]!;
         
         self.cellInnerView = PetralUtil.duplicateView(view: template);
+        PetralUtil.duplicateRestraints(sourceView: template, toView: self.cellInnerView);
+        
+        let copyViewSubs = PetralUtil.getSubViews(view: self.cellInnerView);
+        for (index,subview) in PetralUtil.getSubViews(view: template).enumerated() {
+            if subview.isKind(of: PetralFlexView.classForCoder()) {
+                self.saveSubTemplates(templateView: (subview as! PetralFlexView), copiedView: copyViewSubs[index] as! PetralFlexView);
+            }
+        }
+        
         self.contentView.addSubview(self.cellInnerView);
         
-        PetralUtil.duplicateRestraints(sourceView: template, toView: self.cellInnerView);
         self.cellInnerView.petralRestraint.reset();
         self.cellInnerView.petralRestraint.leftIn().rightIn().topIn().bottomIn();
+    }
+    
+    func saveSubTemplates(templateView: PetralFlexView, copiedView: PetralFlexView) {
+        copiedView.elementCount = templateView.elementCount;
+        copiedView.direction = templateView.direction;
+        copiedView.padding = templateView.padding;
+        copiedView.itemSpaceX = templateView.itemSpaceX;
+        copiedView.itemSpaceY = templateView.itemSpaceY;
+        copiedView.templateView = templateView.templateView;
     }
     
     required init?(coder aDecoder: NSCoder) {
